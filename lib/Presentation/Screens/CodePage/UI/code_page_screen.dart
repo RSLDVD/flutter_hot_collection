@@ -1,27 +1,37 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter_hot/Presentation/Screens/CodePage/Widgets/code_item_execute.dart';
-import '../../../../Data/Repositories/code_data.dart';
+import 'package:flutter_hot/Routes/widget_icon_ex.dart';
+
 
 class CodePageScreen extends StatelessWidget {
   //final String id;
   final String category;
   final String section;
   final String title;
+  final String sourceFilePath;
   //final String code;
-  const CodePageScreen({
+   CodePageScreen({
     Key? key,
     // required this.id,
     required this.category,
     required this.section,
     required this.title,
+    required this.sourceFilePath
     // required this.code
   }) : super(key: key);
 
+  Widget _selectCode() {
+ return Padding(padding: const EdgeInsets.fromLTRB(150,0,0,0),child: WidgetIconEx());
+  }
+
+
   @override
   Widget build(BuildContext context) {
-    final codeItem = CodeRepository.codeData
-        .firstWhere((code) => code.category == category && code.title == title);
+
+    
+
+    // final codeItem = CodeRepository.codeData
+    //     .firstWhere((code) => code.category == category && code.title == title);
         
 
     return MaterialApp(
@@ -30,7 +40,7 @@ class CodePageScreen extends StatelessWidget {
         child: Scaffold(
             appBar: AppBar(
               title: Text(
-                codeItem.title,
+                title,
               ),
               centerTitle: true,
               bottom:  const PreferredSize(
@@ -45,12 +55,10 @@ class CodePageScreen extends StatelessWidget {
                   )),
             ),
             body: TabBarView(children: [
-              Center(
-                child: CodeItemExecute(codeData: codeItem.code),
-              ),
+              _selectCode(),
               Padding(
                 padding: const EdgeInsets.all(20),
-                child: SingleChildScrollView(child: Text(codeItem.code)),
+                child: SingleChildScrollView(child: Text(_selectCode().toString(), overflow: TextOverflow.clip,)),
               )
             ])
             //SingleChildScrollView(child: Text(codeItem.code)),

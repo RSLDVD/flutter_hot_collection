@@ -12,6 +12,7 @@ class SectionItem extends StatelessWidget {
   final String subtitle;
   final String description;
   final String imagePath;
+  final String sourceFilePath;
 
   const SectionItem({
     Key? key,
@@ -22,6 +23,7 @@ class SectionItem extends StatelessWidget {
     required this.subtitle,
     required this.description,
     required this.imagePath,
+    required this.sourceFilePath,
   }) : super(key: key);
 //
   void _selectSection(BuildContext c) {
@@ -29,7 +31,7 @@ class SectionItem extends StatelessWidget {
     Navigator.of(c).push(
       MaterialPageRoute(
         builder: ((_) {
-          return CodePageScreen(category:category  ,section:id , title: title , );
+          return CodePageScreen(category:category  ,section:id , title: title , sourceFilePath: sourceFilePath, );
         }),
       ),
     );

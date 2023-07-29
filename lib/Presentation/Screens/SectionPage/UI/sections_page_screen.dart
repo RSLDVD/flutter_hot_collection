@@ -65,6 +65,7 @@ class SectionsPageScreen extends StatelessWidget {
                   subtitle: sectionItem[index].subtitle,
                   description: sectionItem[index].description,
                   imagePath: sectionItem[index].imagePath,
+                  sourceFilePath: sectionItem[index].sourceFilePath,
                 );
               },
               childCount: sectionData.length,

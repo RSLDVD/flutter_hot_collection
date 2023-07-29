@@ -6,6 +6,7 @@ class Section {
   final String subtitle;
   final String description;
   final String imagePath;
+  final String sourceFilePath;
   //final Widget code;
 
   Section({
@@ -15,6 +16,7 @@ class Section {
     required this.subtitle,
     required this.description,
     required this.imagePath,
+    required this.sourceFilePath
    // required this.code
 }
   );}
