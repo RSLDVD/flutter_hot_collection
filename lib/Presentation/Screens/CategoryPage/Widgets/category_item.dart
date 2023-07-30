@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../SectionPage/UI/sections_page_screen.dart';
 
 class CategoryItem extends StatelessWidget {
   final String id;
@@ -15,20 +14,30 @@ class CategoryItem extends StatelessWidget {
       required this.imagePath})
       : super(key: key);
 
-  void _selectCategory(BuildContext c) {
-    // must change and update  navigator.of(c).pushNamed('/categories', arguments :{'id' : id })
-    Navigator.of(c).push(
-      MaterialPageRoute(
-        builder: ((_) {
-          return SectionsPageScreen(
-              categoryId: id,
-              categoryTitle: title,
-              categoryDescription: '',
-              categoryImagePath: imagePath);
-        }),
-      ),
-    );
+  // void _selectCategory(BuildContext c) {
+  //   // must change and update  navigator.of(c).pushNamed('/categories', arguments :{'id' : id })
+  //   Navigator.of(c).push(
+  //     MaterialPageRoute(
+  //       builder: ((_) {
+  //         return SectionsPageScreen(
+  //             categoryId: id,
+  //             categoryTitle: title,
+  //            // sectionDescription: '',
+  //             categoryImagePath: imagePath);
+  //       }),
+  //     ),
+  //   );
+  // }
+void _selectCategory(BuildContext c) {
+    Navigator.of(c)
+        .pushNamed('/sections',
+        arguments: {
+      'id': id,
+      'title': title,
+      'imagePath': imagePath,
+    });
   }
+ 
 
   @override
   Widget build(BuildContext context) {

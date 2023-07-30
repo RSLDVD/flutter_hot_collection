@@ -1,31 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hot/Data/Repositories/section_data.dart';
-import 'package:flutter_hot/Presentation/Screens/Widgets/section_item.dart';
+
+import '../../Widgets/section_item.dart';
 
 class SectionsPageScreen extends StatelessWidget {
-  final String categoryId;
-  final String categoryTitle;
-  final String categoryDescription;
-  final String categoryImagePath;
+  const SectionsPageScreen({Key? key}) : super(key: key);
 
-  const SectionsPageScreen(
-      {Key? key,
-      required this.categoryId,
-      required this.categoryTitle,
-      required this.categoryDescription,
-      required this.categoryImagePath})
-      : super(key: key);
+  // final String categoryId;
+  // final String categoryTitle;
+  // //final String sectionDescription;
+  // final String categoryImagePath;
+
+  // const SectionsPageScreen(
+  //     {Key? key,
+  //     required this.categoryId,
+  //     required this.categoryTitle,
+  //     //required this.sectionDescription,
+  //     required this.categoryImagePath})
+  //     : super(key: key);
+
 
   @override
   Widget build(BuildContext context) {
-    // final routArg = ModalRoute.of(context)!.settings.arguments as String;
-    // final categoryId= routArg['id'] ;
+     final routArg = ModalRoute.of(context)!.settings.arguments as Map<String, String>;
+     final categoryId= routArg['id'] ;
+     final categoryTitle= routArg['title'] as String;
+     final categoryImagePath= routArg['imagePath'] as String;
     return Scaffold(
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
             elevation: 5,
             backgroundColor: Colors.white,
+           
             pinned: true,
             //floating: true,
             expandedHeight: MediaQuery.of(context).size.height *
@@ -60,7 +67,7 @@ class SectionsPageScreen extends StatelessWidget {
                 return  SectionItem(
                   id: sectionItem[index].id,
                   category: sectionItem[index].category,
-                  index: index + 1,
+                  index: index  ,
                   title: sectionItem[index].title,
                   subtitle: sectionItem[index].subtitle,
                   description: sectionItem[index].description,

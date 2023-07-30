@@ -9,18 +9,19 @@ final sectionData = [
     subtitle: 'subtitle',
     description: 'description',
     imagePath: 'imagePath',
-    sourceFilePath: 'lib/routes/widget_icon_ex.dart'
+    sourceFilePath: '/widget_icon_ex'
     //code: const Text(''),
   ),
-  // Section(
-  //   id: 's2',
-  //   category: 'cat1',
-  //   title: 'Text',
-  //   subtitle: 'subtitle',
-  //   description: 'description',
-  //   imagePath: 'imagePath',
-  //   //code: '',
-  // ),
+  Section(
+    id: 's2',
+    category: 'cat1',
+    title: 'Text',
+    subtitle: 'subtitle',
+    description: 'description',
+    imagePath: 'imagePath',
+    sourceFilePath: '/widget_text_ex'
+    //code: '',
+  ),
   // Section(
   //   id: 's3',
   //   category: 'cat1',
