@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hot/Data/Repositories/category_data.dart';
+import 'package:provider/provider.dart';
+import '../../../../Providers/app_data_provider.dart';
 import '../Widgets/category_item.dart';
 
 class CategoryPageScreen extends StatelessWidget {
@@ -7,7 +8,8 @@ class CategoryPageScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
+    final categoryData=Provider.of<AppDataProvider>(context) ;
+     final categories= categoryData.categoryItems;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xfff8ffd8),
@@ -19,19 +21,19 @@ class CategoryPageScreen extends StatelessWidget {
               color: Color(0xff090088)),
         ),
       ),
-      body: GridView(
+      body: GridView.builder(
         gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
             maxCrossAxisExtent: 250,
             childAspectRatio: 8 / 11,
             crossAxisSpacing: 0,
             mainAxisSpacing: 0),
-        children: categoryData
-            .map((d) => CategoryItem(
-                id: d.id,
-                title: d.tittle,
-                color: d.color,
-                imagePath: d.imagePath))
-            .toList(),
+            itemCount: categories.length,
+        itemBuilder: (context, index) => CategoryItem(
+            id: categories[index].id,
+            title: categories[index].title,
+            color: categories[index].color,
+            imagePath: categories[index].imagePath),
+       
       ),
     );
   }

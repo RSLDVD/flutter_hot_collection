@@ -8,7 +8,7 @@ class CodePageScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final routeArgs = ModalRoute.of(context)!.settings.arguments;
+    final routeArgs = ModalRoute.of(context)!.settings.arguments as Map<String, String> ;
 
     if (routeArgs == null || routeArgs is! Map<String, String>) {
       // Handle invalid or missing route arguments
@@ -19,7 +19,7 @@ class CodePageScreen extends StatelessWidget {
       );
     }
     //final id = routeArgs['id'] as String;
-    final index = int.parse(routeArgs['index']!) + 1;
+    final index = int.parse(routeArgs['index']!) ;
     final title = routeArgs['title']!;
     // ignore: unused_local_variable
     final description = routeArgs['description']!;
@@ -32,9 +32,9 @@ class CodePageScreen extends StatelessWidget {
       // Add more mappings for other section classes
     };
 
-    Widget _selectCode(BuildContext context, List<String> section, int index) {
+    Widget _selectCode(BuildContext context, List<String> sectionNames, int index) {
       // Get the corresponding widget class based on the section name
-      final Widget Function()? widgetBuilder = sectionWidgets[section[index]];
+      final Widget Function()? widgetBuilder = sectionWidgets[sectionNames[index]];
 
       // If the section is not mapped or the widgetBuilder is null, return a placeholder widget
       if (widgetBuilder == null) {
@@ -108,8 +108,8 @@ class CodePageScreen extends StatelessWidget {
           ),
           body: TabBarView(
             children: [
-              _selectCode(context, sectionWidgets.keys.toList(), index - 1),
-              const CodeItemTextEx(),
+              _selectCode(context, sectionWidgets.keys.toList(), index ),
+               CodeItemTextEx(  index: index,),
             ],
           ),
         ),

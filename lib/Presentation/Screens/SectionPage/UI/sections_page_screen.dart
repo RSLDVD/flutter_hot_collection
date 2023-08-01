@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hot/Data/Repositories/section_data.dart';
+import 'package:flutter_hot/Data/Models/section.dart';
 
+import 'package:flutter_hot/Providers/app_data_provider.dart';
 import '../../Widgets/section_item.dart';
+import 'package:provider/provider.dart';
 
 class SectionsPageScreen extends StatelessWidget {
   const SectionsPageScreen({Key? key}) : super(key: key);
@@ -24,8 +26,11 @@ class SectionsPageScreen extends StatelessWidget {
   Widget build(BuildContext context) {
      final routArg = ModalRoute.of(context)!.settings.arguments as Map<String, String>;
      final categoryId= routArg['id'] ;
-     final categoryTitle= routArg['title'] as String;
-     final categoryImagePath= routArg['imagePath'] as String;
+    // final categoryTitle= routArg['title'] as String;
+     //final categoryImagePath= routArg['imagePath'] as String;
+    final loadedCategory = Provider.of<AppDataProvider>(context)
+        .categoryItems.firstWhere((c) => c.id == categoryId);
+
     return Scaffold(
       body: CustomScrollView(
         slivers: [
@@ -39,7 +44,7 @@ class SectionsPageScreen extends StatelessWidget {
                 0.2, // Adjust the height as needed
             flexibleSpace: FlexibleSpaceBar(
               background: Image.asset(
-                categoryImagePath, // Replace with the actual image path
+                loadedCategory.imagePath, // Replace with the actual image path
                 fit:
                     BoxFit.contain, // Adjust the image's fit property as needed
               ),
@@ -50,7 +55,7 @@ class SectionsPageScreen extends StatelessWidget {
                   color: Colors.white70,
                 ),
                 child: Text(
-                  categoryTitle,
+                  loadedCategory.title,
                   style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
@@ -62,8 +67,8 @@ class SectionsPageScreen extends StatelessWidget {
           SliverList(
             delegate: SliverChildBuilderDelegate(
               (BuildContext context, int index) {
-                final sectionItem = sectionData
-                    .where((s) => s.category == categoryId).toList();
+                final sectionItem = loadedCategory.sections.
+                                    where((s) => s.category == categoryId).toList();
                 return  SectionItem(
                   id: sectionItem[index].id,
                   category: sectionItem[index].category,
@@ -75,7 +80,7 @@ class SectionsPageScreen extends StatelessWidget {
                   sourceFilePath: sectionItem[index].sourceFilePath,
                 );
               },
-              childCount: sectionData.length,
+              childCount: loadedCategory.sections.length,
             ),
           ),
           // Add other slivers as needed

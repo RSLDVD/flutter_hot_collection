@@ -2,29 +2,27 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-
-
 class SectionItem extends StatelessWidget {
- final String id;
-   final String category;
- final int index;
-   final String title;
-   final String subtitle;
-   final String description;
+  final String id;
+  final String category;
+  final int index;
+  final String title;
+  final String subtitle;
+  final String description;
   final String imagePath;
   final String sourceFilePath;
 
-   const SectionItem({
+  const SectionItem({
     Key? key,
     required this.id,
-     required this.category,
-     required this.index,
-     required this.title,
+    required this.category,
+    required this.index,
+    required this.title,
     required this.subtitle,
-     required this.description,
-     required this.imagePath,
-     required this.sourceFilePath,
-   }) : super(key: key);
+    required this.description,
+    required this.imagePath,
+    required this.sourceFilePath,
+  }) : super(key: key);
 //
   // void _selectSection(BuildContext c) {
   //   // must change and update  navigator.of(c).pushNamed('/categories', arguments :{'id' : id })
@@ -43,8 +41,8 @@ class SectionItem extends StatelessWidget {
   // }
 //
   void _selectSection(BuildContext context) {
-     // ignore: avoid_print
-     print('Tapped on section item: $title');
+    // ignore: avoid_print
+    print('Tapped on section item: $title');
     Navigator.of(context).pushNamed('/section', arguments: {
       'id': id,
       'index': (index).toString(),
@@ -58,7 +56,6 @@ class SectionItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-   
 //
     Color getRandomColor() {
       Random random = Random();
@@ -82,7 +79,7 @@ class SectionItem extends StatelessWidget {
             backgroundColor: getRandomColor(),
             radius: 20,
             child: Text(
-              '${index+1}',
+              '${index + 1}',
               style: const TextStyle(
                   color: Colors.white, fontWeight: FontWeight.bold),
             ),

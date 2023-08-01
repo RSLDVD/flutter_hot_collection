@@ -1,14 +1,24 @@
-
 import 'package:flutter/material.dart';
-import 'package:flutter_hot/Presentation/Screens/CategoryPage/UI/category_page_screen.dart';
-import 'package:flutter_hot/Presentation/Screens/CodePage/UI/code_page_screen.dart';
-import 'package:flutter_hot/Presentation/Screens/SectionPage/UI/sections_page_screen.dart';
-import 'package:flutter_hot/Routes/widget_text_ex.dart';
+import 'package:provider/provider.dart';
 
+import 'Presentation/Screens/CategoryPage/UI/category_page_screen.dart';
+import 'Presentation/Screens/CodePage/UI/code_page_screen.dart';
+import 'Presentation/Screens/SectionPage/UI/sections_page_screen.dart';
+import 'Providers/app_data_provider.dart';
+import 'Routes/widget_text_ex.dart';
 import 'Routes/widget_icon_ex.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers:[
+        ChangeNotifierProvider<AppDataProvider>(
+        create: (_) => AppDataProvider(),
+      ),
+      
+    ],
+      
+      child:  const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
