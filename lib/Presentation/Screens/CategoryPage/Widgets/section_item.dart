@@ -1,6 +1,11 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_hot/Data/Models/category.dart';
+import 'package:flutter_hot/Data/Models/section.dart';
+import 'package:provider/provider.dart';
+
+import '/../../Providers/category_provider.dart';
 
 class SectionItem extends StatelessWidget {
   final String id;
@@ -23,39 +28,29 @@ class SectionItem extends StatelessWidget {
     required this.imagePath,
     required this.sourceFilePath,
   }) : super(key: key);
-//
-  // void _selectSection(BuildContext c) {
-  //   // must change and update  navigator.of(c).pushNamed('/categories', arguments :{'id' : id })
-  //   Navigator.of(c).push(
-  //     MaterialPageRoute(
-  //       builder: ((_) {
-  //         return CodePageScreen(
-  //           category: category,
-  //           section: id,
-  //           title: title,
-  //           sourceFilePath: sourceFilePath,
-  //         );
-  //       }),
-  //     ),
-  //   );
-  // }
-//
+
+
   void _selectSection(BuildContext context) {
     // ignore: avoid_print
     print('Tapped on section item: $title');
-    Navigator.of(context).pushNamed('/section', arguments: {
+    Navigator.pushNamed(context,'/section_page', arguments: 
+     {
       'id': id,
-      'index': (index).toString(),
-      'title': title,
+    //  'index': index.toString(),
+    //  'title': title,
       'category': category,
-      'subtitle': subtitle,
-      'description': description,
-      'sourceFilePath': sourceFilePath
-    });
+    //  'subtitle': subtitle,
+    //  'description': description,
+    //  'sourceFilePath': sourceFilePath
+     },
+    );
   }
 
   @override
   Widget build(BuildContext context) {
+   // List<Category> categories= context.watch<CategoryProvider>().categoryData;
+     
+
 //
     Color getRandomColor() {
       Random random = Random();

@@ -1,24 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hot/Data/Models/section.dart';
+import 'package:flutter_hot/Presentation/Screens/CategoriesPage/UI/categories_page_screen.dart';
+import 'package:flutter_hot/Presentation/Screens/SectionPage/UI/section_page_screen.dart';
 import 'package:provider/provider.dart';
 
 import 'Presentation/Screens/CategoryPage/UI/category_page_screen.dart';
-import 'Presentation/Screens/CodePage/UI/code_page_screen.dart';
-import 'Presentation/Screens/SectionPage/UI/sections_page_screen.dart';
-import 'Providers/app_data_provider.dart';
+import 'Providers/category_provider.dart';
 import 'Routes/widget_text_ex.dart';
 import 'Routes/widget_icon_ex.dart';
 
 void main() {
-  runApp(
-    MultiProvider(
-      providers:[
-        ChangeNotifierProvider<AppDataProvider>(
-        create: (_) => AppDataProvider(),
-      ),
-      
-    ],
-      
-      child:  const MyApp()));
+  runApp(MultiProvider(providers: [
+    ChangeNotifierProvider<CategoryProvider>(
+      create: (_) => CategoryProvider(),
+    ),
+  ], child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -26,17 +22,23 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Hot',
-      home: const CategoryPageScreen(),
+      home: const CategoriesPageScreen(),
+      // onGenerateRoute: ((settings) {
+      //   if(settings.name == '/section_page' ){
+      //     final Section section = settings.arguments as Section;
+      //     return MaterialPageRoute(builder: (context) =>  SectionPageScreen());
+      //   }
+      //   return null;
+      // }),
       routes: {
-        '/sections': (context) =>  const SectionsPageScreen() ,
-        '/section': (context) =>  const CodePageScreen(),
-        '/widget_icon_ex':(context) => const WidgetIconEx(),
-        '/widget_text_ex':(context) => const WidgetTextEx(),
+        '/category': (context) => const CategoryPageScreen(),
+        '/section_page': (context) => const SectionPageScreen(),
+        '/widget_icon_ex': (context) => const WidgetIconEx(),
+        '/widget_text_ex': (context) => const WidgetTextEx(),
       },
     );
   }
 }
-
