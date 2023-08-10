@@ -1,11 +1,20 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
+import 'package:flutter_highlight/themes/solarized-dark.dart';
+
 import 'package:flutter_hot/Data/Models/category.dart';
 import 'package:flutter_hot/Data/Models/section.dart';
+import 'package:flutter_hot/Routes/widget_checkbox_ex.dart';
+import 'package:flutter_hot/Routes/widget_chip_ex.dart';
+import 'package:flutter_hot/Routes/widget_dropdown_ex.dart';
 import 'package:flutter_hot/Routes/widget_icon_ex.dart';
+import 'package:flutter_hot/Routes/widget_radio_ex.dart';
+import 'package:flutter_hot/Routes/widget_switch_ex.dart';
 import 'package:flutter_hot/Routes/widget_text_ex.dart';
 
 import 'package:http/http.dart' as http;
-import 'package:flutter_highlight/themes/github.dart';
 import 'package:flutter_highlight/flutter_highlight.dart';
 import 'package:provider/provider.dart';
 import '/../../Providers/category_provider.dart';
@@ -21,156 +30,135 @@ class _SectionPageScreenState extends State<SectionPageScreen>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
-  String _text = '';
-
-  //Map<String, String>? routeArgs;
+  final Map<String, Widget Function()> sectionWidgets = {
+    '/widget_icon_ex': () => const WidgetIconEx(),
+    '/widget_text_ex': () => const WidgetTextEx(),
+    '/widget_checkbox_ex': () => const WidgetCheckBoxEx(),
+    '/widget_switch_ex': () => const WidgetSwitchEx(),
+    '/widget_radio_ex': () => const WidgetRadioEx(),
+    '/widget_dropdown_ex': () => const WidgetDropDownEx(),
+    'widget_chip_ex': () => const WidgetChipEx(),
+  };
 
   @override
   void initState() {
     super.initState();
-  
-
-    // Call fetchTextFromGitHub here or wherever you need to fetch the text
+    _tabController = TabController(initialIndex: 0, length: 2, vsync: this);
   }
 
   @override
   void dispose() {
     _tabController.dispose();
-    // Perform cleanup operations here (if needed)
     super.dispose();
   }
 
-  @override
-  void didChangeDependencies() {
-  _tabController = TabController(length: 2, vsync: this);
-    _tabController.addListener(_onTabChanged);
-    print('_onTabChanged');
-   // print('Fetch');
+  Widget _buildTabContent(
+    BuildContext context,
+    String sectionSourceNames,
+    bool isViewTab,
+  ) {
+    final Widget Function()? widgetBuilder = sectionWidgets[sectionSourceNames];
 
-    super.didChangeDependencies();
+    if (widgetBuilder == null) {
+      return Container(
+        alignment: Alignment.center,
+        child: const Text('Section Not Implemented'),
+      );
+    }
+
+    if (isViewTab) {
+      return widgetBuilder(); // Return the actual widget for the "View" tab
+    } else {
+      return FutureBuilder<String>(
+        future: fetchTextFromGit(sectionSourceNames),
+        builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
+          }
+
+          if (snapshot.hasError) {
+            return Text('Error: ${snapshot.error}');
+          }
+
+          final String codeText = snapshot.data ?? 'Failed to fetch code';
+
+          return Scaffold(
+            //backgroundColor:  Theme.of(context).scaffoldBackgroundColor,
+            body: Container(
+              color: Colors.black87, //ThemeData.dark().scaffoldBackgroundColor,
+              width: double.maxFinite,
+              height: double.maxFinite,
+              child: SingleChildScrollView(
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    HighlightView(
+                      textStyle: const TextStyle(
+                        fontSize: 12,
+                      ),
+                      codeText,
+                      language: 'dart',
+                      theme: solarizedDarkTheme, //githubTheme,
+                      padding:
+                          const EdgeInsets.only(top: 50, right: 15, left: 20),
+                    ),
+                    Positioned(
+                      top: 0,
+                      right: 2,
+                      child: ElevatedButton(
+                          onPressed: () {
+                            // Add your button logic here
+                            // For example, you can copy the text to the clipboard
+                            if (codeText != null) {
+                              Clipboard.setData(ClipboardData(text: codeText));
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                    content: Text('Text copied to clipboard')),
+                              );
+                            }
+                          },
+                          child: const Icon(
+                            Icons.copy,
+                            semanticLabel: 'Copy to Clipboard',
+                          )),
+                    )
+                  ],
+                ),
+              ),
+            ),
+          );
+        },
+      );
+    }
   }
 
-  void _onTabChanged() {
-    if (_tabController.index == 0) {
-      // The user switched to the "Code" tab
-      fetchTextFromGitHub();
+  Future<String> fetchTextFromGit(String sectionSourceFilePath) async {
+    try {
+      var response = await http.get(
+        Uri.parse(
+          'https://raw.githubusercontent.com/RSLDVD/flutter_hot_collection/master/lib/Routes$sectionSourceFilePath.dart',
+        ),
+      );
+
+      if (response.statusCode == 200) {
+        return response.body;
+      } else {
+        return 'Failed to fetch code. Status Code: ${response.statusCode}';
+      }
+    } catch (e) {
+      return 'Error occurred while fetching code: $e';
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    final routArg =
+    final routeArgs =
         ModalRoute.of(context)!.settings.arguments as Map<String, String>;
-    final sectionId = routArg['id'] as String;
-    final categoryId = routArg['category'] as String;
+    final sectionId = routeArgs['id'] as String;
+    final categoryId = routeArgs['category'] as String;
     Category category =
         context.watch<CategoryProvider>().findCategoryById(categoryId);
     Section section = category.sections.firstWhere((s) => s.id == sectionId);
-
-
-    if (section is! Section) {
-      // Handle invalid or missing route arguments
-      return const Scaffold(
-        body: Center(
-          child: Text('Invalid or Missing Route Arguments'),
-        ),
-      );
-    }
-
-    if (section == null) {
-      // Handle the case when 'index' is missing or not an integer
-      return const Scaffold(
-        body: Center(
-          child: Text('Invalid index'),
-        ),
-      );
-    }
-
-    //final description = routeArgs['description'] as String?;
-
-    final Map<String, Widget Function()> sectionWidgets = {
-      '/widget_icon_ex': () => const WidgetIconEx(),
-      '/widget_text_ex': () => const WidgetTextEx(),
-      // Add more mappings for other section classes
-    };
-
-    Widget _selectCode(
-      BuildContext context,
-      String sectionNames,
-    ) {
-      // Get the corresponding widget class based on the section name
-      //Navigator.of(context).pushNamed('/code_page',arguments: {'id': id,});
-      final Widget Function()? widgetBuilder = sectionWidgets[sectionNames];
-
-      // If the section is not mapped or the widgetBuilder is null, return a placeholder widget
-      if (widgetBuilder == null) {
-        return Container(
-          alignment: Alignment.center,
-          child: const Text('Section Not Implemented'),
-        );
-      }
-
-      // Build the widget using the retrieved widget class
-      return FutureBuilder<Object?>(
-        future: Future.value(
-            widgetBuilder()), // Return a completed future with the widget
-        builder: (BuildContext context, AsyncSnapshot<Object?> snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const CircularProgressIndicator(); // or any other loading indicator
-          }
-
-          // Add your logic for other connection states
-          if (snapshot.hasError) {
-            return Text('Error: ${snapshot.error}');
-          }
-
-          // Return the widget built from the retrieved widget class
-          return snapshot.data as Widget;
-        },
-      );
-    }
-
-    Future<void> fetchTextFromGitHub() async {
-      //final routeArgs = ModalRoute.of(context)!.settings.arguments as Map<String, String>;
-      if (section == null) {
-        // Handle the case when route arguments are missing or invalid
-        setState(() {
-          _text = 'Invalid or Missing Route Arguments';
-        });
-        return;
-      }
-      if (section.category == null) {
-        // Handle the case when 'id' or 'category' is missing in the route arguments
-        setState(() {
-          _text = 'Invalid section or category';
-        });
-        return;
-      }
-
-      if (section.id != null) {
-        var response = await http.get(
-          Uri.parse(
-              'https://raw.githubusercontent.com/RSLDVD/flutter_hot_collection/master/lib/Routes${section.sourceFilePath}.dart'),
-        );
-        if (response.statusCode == 200) {
-          setState(() {
-            _text = response.body;
-            print('Response Body: $_text');
-          });
-        } else {
-          // Failed to fetch code from GitHub, display an error message
-          setState(() {
-            _text = 'Failed to fetch code from GitHub: ${response.statusCode}';
-            print('Error: $_text');
-          });
-        }
-      } else {
-        // Invalid index, display an error message
-        setState(() {
-          _text = 'Invalid index: ';
-        });
-      }
-    }
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -178,35 +166,55 @@ class _SectionPageScreenState extends State<SectionPageScreen>
         length: 2,
         child: Scaffold(
           appBar: AppBar(
-            backgroundColor: const Color(0xfff8ffd8),
+            backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
+            leading: IconButton(
+              color: Theme.of(context).appBarTheme.iconTheme!.color,
+              icon: const Icon(Icons.arrow_back),
+              onPressed: () {
+                // Add the code to handle the back button press here
+                // For example, you can use Navigator to pop the current route
+                Navigator.pop(context);
+              },
+            ),
+            //backgroundColor: const Color(0xfff8ffd8),
             title: Text(
               section.title,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
-                color: Color(0xff090088),
+                color: Theme.of(context).appBarTheme.titleTextStyle?.color,
               ),
             ),
             centerTitle: true,
-            bottom: const PreferredSize(
-              preferredSize: Size.fromHeight(15),
+            bottom: PreferredSize(
+              preferredSize: const Size.fromHeight(50),
               child: TabBar(
                 tabs: [
                   Tab(
+                    icon: Icon(
+                      Icons.aod_rounded,
+                      color: Theme.of(context).appBarTheme.iconTheme?.color,
+                    ),
                     child: Text(
                       'View',
                       style: TextStyle(
-                        fontSize: 17,
-                        color: Color(0xff090088),
+                        fontSize: 15,
+                        color:
+                            Theme.of(context).appBarTheme.titleTextStyle?.color,
                       ),
                     ),
                   ),
                   Tab(
+                    icon: Icon(
+                      Icons.source,
+                      color: Theme.of(context).appBarTheme.iconTheme?.color,
+                    ),
                     child: Text(
                       'Code',
                       style: TextStyle(
-                        fontSize: 17,
-                        color: Color(0xff090088),
+                        fontSize: 15,
+                        color:
+                            Theme.of(context).appBarTheme.titleTextStyle?.color,
                       ),
                     ),
                   ),
@@ -215,30 +223,16 @@ class _SectionPageScreenState extends State<SectionPageScreen>
             ),
           ),
           body: TabBarView(
-            controller: _tabController,
+            dragStartBehavior: DragStartBehavior.down,
             children: [
-              _selectCode(
-                context,
-                section.sourceFilePath,
-              ),
-              
-                 SingleChildScrollView(
-                  child: HighlightView(
-                    _text,
-                    language: 'dart',
-                    theme: githubTheme,
-                    padding: const EdgeInsets.all(9),
-                  ),
-                )
-              ,
+              _buildTabContent(
+                  context, section.sourceFilePath, true), // View tab
+              _buildTabContent(
+                  context, section.sourceFilePath, false), // Code tab
             ],
           ),
         ),
       ),
     );
   }
-  
-  void fetchTextFromGitHub() {}
-
-  //void fetchTextFromGitHub() {}
 }

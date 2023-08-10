@@ -3,6 +3,7 @@
         "ARGB",
         "cupertino",
         "LTRB",
-        "Schyler"
+        "Schyler",
+        "vsync"
     ]
 }

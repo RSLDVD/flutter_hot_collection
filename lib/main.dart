@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hot/Data/Models/section.dart';
 import 'package:flutter_hot/Presentation/Screens/CategoriesPage/UI/categories_page_screen.dart';
 import 'package:flutter_hot/Presentation/Screens/SectionPage/UI/section_page_screen.dart';
+import 'package:flutter_hot/Providers/theme_provider.dart';
+import 'package:flutter_hot/Theme/app_theme.dart';
 import 'package:provider/provider.dart';
 
 import 'Presentation/Screens/CategoryPage/UI/category_page_screen.dart';
@@ -10,11 +11,19 @@ import 'Routes/widget_text_ex.dart';
 import 'Routes/widget_icon_ex.dart';
 
 void main() {
-  runApp(MultiProvider(providers: [
-    ChangeNotifierProvider<CategoryProvider>(
-      create: (_) => CategoryProvider(),
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider<CategoryProvider>(
+          create: (_) => CategoryProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => ThemeProvider(),
+        )
+      ],
+      child: const MyApp(),
     ),
-  ], child: const MyApp()));
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -25,6 +34,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Hot',
+      theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
+      themeMode: Provider.of<ThemeProvider>(context).isDarkMode ? ThemeMode.dark : ThemeMode.light,
       home: const CategoriesPageScreen(),
       // onGenerateRoute: ((settings) {
       //   if(settings.name == '/section_page' ){

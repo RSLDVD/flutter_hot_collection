@@ -1,11 +1,6 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_hot/Data/Models/category.dart';
-import 'package:flutter_hot/Data/Models/section.dart';
-import 'package:provider/provider.dart';
-
-import '/../../Providers/category_provider.dart';
 
 class SectionItem extends StatelessWidget {
   final String id;
@@ -29,47 +24,51 @@ class SectionItem extends StatelessWidget {
     required this.sourceFilePath,
   }) : super(key: key);
 
-
   void _selectSection(BuildContext context) {
     // ignore: avoid_print
     print('Tapped on section item: $title');
-    Navigator.pushNamed(context,'/section_page', arguments: 
-     {
-      'id': id,
-    //  'index': index.toString(),
-    //  'title': title,
-      'category': category,
-    //  'subtitle': subtitle,
-    //  'description': description,
-    //  'sourceFilePath': sourceFilePath
-     },
+    Navigator.pushNamed(
+      context,
+      '/section_page',
+      arguments: {
+        'id': id,
+        //  'index': index.toString(),
+        //  'title': title,
+        'category': category,
+        //  'subtitle': subtitle,
+        //  'description': description,
+        //  'sourceFilePath': sourceFilePath
+      },
     );
   }
 
   @override
   Widget build(BuildContext context) {
-   // List<Category> categories= context.watch<CategoryProvider>().categoryData;
-     
+    // List<Category> categories= context.watch<CategoryProvider>().categoryData;
 
 //
     Color getRandomColor() {
       Random random = Random();
-      int r = random
-          .nextInt(256); // Generate a random value between 0 and 255 for red
-      int g = random
-          .nextInt(256); // Generate a random value between 0 and 255 for green
       int b = random
-          .nextInt(256); // Generate a random value between 0 and 255 for blue
+          .nextInt(255); // Generate a random value between 0 and 255 for red
+      int g = 0; // Generate a random value between 0 and 255 for green
+      int r = random
+          .nextInt(255); // Generate a random value between 0 and 255 for blue
       return Color.fromARGB(
-          150, r, g, b); // Create a Color object using the random RGB values
+          85, r, g, b); // Create a Color object using the random RGB values
     }
 
 //
     return InkWell(
-      child: Card(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-        elevation: 8,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(5),
         child: ListTile(
+          isThreeLine: true,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(50),
+          ),
+          //minLeadingWidth: 200,
+
           leading: CircleAvatar(
             backgroundColor: getRandomColor(),
             radius: 20,
@@ -79,8 +78,11 @@ class SectionItem extends StatelessWidget {
                   color: Colors.white, fontWeight: FontWeight.bold),
             ),
           ),
-          title: Text(title),
-          subtitle: Text(subtitle),
+          title: Text(
+            title,
+            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          ),
+          subtitle: Text(subtitle, style: const TextStyle(fontSize: 14)),
           trailing: Text(category),
         ),
       ),
