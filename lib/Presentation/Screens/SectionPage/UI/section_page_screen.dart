@@ -1,6 +1,9 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_hot/Routes/widget_card_ex.dart';
+import 'package:flutter_hot/Routes/widget_expansionpanellist_ex.dart';
+import 'package:flutter_hot/Routes/widget_slider_ex.dart';
 import 'package:flutter_hot/Routes/widget_stateless_ex.dart';
 import 'package:flutter_hot/Routes/widget_container_ex.dart';
 import 'package:flutter_hot/Routes/widget_dialogs_ex.dart';
@@ -8,6 +11,8 @@ import 'package:flutter_hot/Routes/widget_placeholder_ex.dart';
 import 'package:flutter_hot/Routes/widget_stack_ex.dart';
 import 'package:flutter_hot/Routes/widget_stateful_ex.dart';
 import 'package:flutter_hot/Routes/widget_rowcolumn_ex.dart';
+import 'package:flutter_hot/Routes/widget_stepper_ex.dart';
+import 'package:flutter_hot/Routes/widget_textformfield_ex.dart';
 import 'package:provider/provider.dart';
 import '/../../Providers/category_provider.dart';
 import 'package:http/http.dart' as http;
@@ -54,6 +59,11 @@ class _SectionPageScreenState extends State<SectionPageScreen>
     '/widget_stack_ex': () => WidgetStackEx(),
     '/widget_placeholder_ex': () => WidgetPlaceHolderEx(),
     '/widget_dialogs_ex': () => WidgetDialogsEx(),
+    '/widget_stepper_ex': () => const WidgetStepperEx(),
+    '/widget_slider_ex' : () => const WidgetSliderEx(),
+    '/widget_card_ex' : () => const WidgetCardEx(),
+    '/widget_expansionpanellist_ex' : () => const WidgetExpansionPanelListEx(),
+    '/widget_textformfield_ex' : () =>  WidgetTextFormFieldEx(),
   };
 
   @override

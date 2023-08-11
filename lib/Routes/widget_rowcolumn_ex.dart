@@ -7,53 +7,60 @@ class WidgetRowColumnEx extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Row, Column & Expanded Example'),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: const [
-                ColorBox(color: Colors.blue),
-                ColorBox(color: Colors.green),
-              ],
-            ),
-            const SizedBox(height: 20),
-            Column(
-              children: const [
-                ColorBox(color: Colors.orange),
-                ColorBox(color: Colors.purple),
-              ],
-            ),
-            const SizedBox(height: 20),
-            Row(
-              children: const [
-                Expanded(
-                  child: ColorBox(color: Colors.red),
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: const [
+                  ColorBox(color: Colors.pink,),
+                  ColorBox(color: Colors.green),
+                ],
+              ),
+              const SizedBox(height: 20),
+              Column(
+                children: const [
+                  ColorBox(color: Colors.orange),
+                  ColorBox(color: Colors.purple),
+                ],
+              ),
+              const SizedBox(height: 20),
+              SizedBox(
+                height: 400,
+                child: Column(
+                  children: const [
+                    Expanded(
+                      flex: 1,
+                      child: ColorBox(color: Colors.red),
+                    ),
+                    Expanded(
+                      flex: 3,
+                      child: ColorBox(color: Colors.teal),
+                    ),
+                  ],
                 ),
-                Expanded(
-                  child: ColorBox(color: Colors.teal),
-                ),
-              ],
-            ),
-            const SizedBox(height: 20),
-            Row(
-              children: const [
-                Expanded(
-                  flex: 2,
-                  child: ColorBox(color: Colors.yellow),
-                ),
-                Expanded(
-                  flex: 3,
-                  child: ColorBox(color: Colors.indigo),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: ColorBox(color: Colors.cyan),
-                ),
-              ],
-            ),
-          ],
+              ),
+              const SizedBox(height: 20),
+              Row(
+                children: const [
+                  Expanded(
+                    flex: 2,
+                    child: ColorBox(color: Colors.yellow),
+                  ),
+                  Expanded(
+                    flex: 3,
+                    child: ColorBox(color: Colors.indigo),
+                  ),
+                  Expanded(
+                    flex: 1,
+                    child: ColorBox(color: Colors.cyan),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

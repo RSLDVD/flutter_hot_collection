@@ -144,6 +144,56 @@ List<Section> K1sectionData = [
     imagePath: 'imagePath',
     sourceFilePath: '/widget_dialogs_ex',
   ),
+   Section(
+    id: 's16',
+    category: 'cat1',
+    title: 'Stepper',
+    subtitle:
+        'Guided Step-by-Step Progress: Creating Interactive User Flows with the Stepper Widget in Flutter',
+    description: 'description',
+    imagePath: 'imagePath',
+    sourceFilePath: '/widget_stepper_ex',
+  ),
+  Section(
+    id: 's17',
+    category: 'cat1',
+    title: 'Slider',
+    subtitle:
+        'Interactive Data Control: Crafting Colorful and Engaging User Experiences with the Slider Widget in Flutter',
+    description: 'description',
+    imagePath: 'imagePath',
+    sourceFilePath: '/widget_slider_ex',
+  ),
+    Section(
+    id: 's18',
+    category: 'cat1',
+    title: 'Card',
+    subtitle:
+        'Crafting Eye-catching Cards with Textual Information using the Card Widget in Flutter',
+    description: 'description',
+    imagePath: 'imagePath',
+    sourceFilePath: '/widget_card_ex',
+  ),
+      Section(
+    id: 's19',
+    category: 'cat1',
+    title: 'ExpansionPanelList',
+    subtitle:
+        'Creating Organized and Expandable Content using the ExpansionPanelList Widget in Flutter',
+    description: 'description',
+    imagePath: 'imagePath',
+    sourceFilePath: '/widget_expansionpanellist_ex',
+  ),
+    Section(
+    id: 's20',
+    category: 'cat1',
+    title: 'TextFormField',
+    subtitle:
+        'User Input Management: Creating Colorful Input Fields with Validation using the TextFormField Widget',
+    description: 'description',
+    imagePath: 'imagePath',
+    sourceFilePath: '/widget_textformfield_ex',
+  ),
 ];
 
 // ignore: non_constant_identifier_names
