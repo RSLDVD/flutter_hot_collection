@@ -48,20 +48,22 @@ List<Section> K1sectionData = [
     imagePath: 'imagePath',
     sourceFilePath: '/widget_text_ex',
   ),
-     Section(
+  Section(
     id: 's6',
     category: 'cat1',
     title: 'Row,Column & Expanded',
-    subtitle: 'Layouts with Row, Column & Expanded: Crafting Versatile UIs in Flutter',
+    subtitle:
+        'Layouts with Row, Column & Expanded: Crafting Versatile UIs in Flutter',
     description: 'description',
     imagePath: 'imagePath',
     sourceFilePath: '/widget_rowcolumn_ex',
   ),
-   Section(
+  Section(
     id: 's7',
     category: 'cat1',
     title: 'Container',
-    subtitle: 'Layout and Spacing: Creating Aesthetic UIs with Container, Margin & Padding',
+    subtitle:
+        'Layout and Spacing: Creating Aesthetic UIs with Container, Margin & Padding',
     description: 'description',
     imagePath: 'imagePath',
     sourceFilePath: '/widget_container_ex',
@@ -75,11 +77,12 @@ List<Section> K1sectionData = [
     imagePath: 'imagePath',
     sourceFilePath: '/widget_placeholder_ex',
   ),
-     Section(
+  Section(
     id: 's9',
     category: 'cat1',
     title: 'Stack',
-    subtitle: 'Layered and Indexed UI Composition: Crafting Dynamic Layouts with Stack & IndexedStack in Flutter',
+    subtitle:
+        'Layered and Indexed UI Composition: Crafting Dynamic Layouts with Stack & IndexedStack in Flutter',
     description: 'description',
     imagePath: 'imagePath',
     sourceFilePath: '/widget_stack_ex',
