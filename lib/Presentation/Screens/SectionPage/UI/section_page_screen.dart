@@ -1,23 +1,31 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
+import 'package:flutter_hot/Routes/widget-stateless_ex.dart';
+import 'package:flutter_hot/Routes/widget_container_ex.dart';
+import 'package:flutter_hot/Routes/widget_dialogs_ex.dart';
+import 'package:flutter_hot/Routes/widget_placeholder_ex.dart';
+import 'package:flutter_hot/Routes/widget_stack_ex.dart';
+import 'package:flutter_hot/Routes/widget_stateful_ex.dart';
+import 'package:flutter_hot/Routes/wifget_rowcolumn_ex.dart';
+import 'package:provider/provider.dart';
+import '/../../Providers/category_provider.dart';
+import 'package:http/http.dart' as http;
+import 'package:flutter_highlight/flutter_highlight.dart';
+//
 import 'package:flutter_highlight/themes/solarized-dark.dart';
-
+//
 import 'package:flutter_hot/Data/Models/category.dart';
 import 'package:flutter_hot/Data/Models/section.dart';
+//
 import 'package:flutter_hot/Routes/widget_checkbox_ex.dart';
 import 'package:flutter_hot/Routes/widget_chip_ex.dart';
 import 'package:flutter_hot/Routes/widget_dropdown_ex.dart';
 import 'package:flutter_hot/Routes/widget_icon_ex.dart';
 import 'package:flutter_hot/Routes/widget_radio_ex.dart';
+import 'package:flutter_hot/Routes/widget_scaffold_ex.dart';
 import 'package:flutter_hot/Routes/widget_switch_ex.dart';
 import 'package:flutter_hot/Routes/widget_text_ex.dart';
-
-import 'package:http/http.dart' as http;
-import 'package:flutter_highlight/flutter_highlight.dart';
-import 'package:provider/provider.dart';
-import '/../../Providers/category_provider.dart';
 
 class SectionPageScreen extends StatefulWidget {
   const SectionPageScreen({Key? key}) : super(key: key);
@@ -37,7 +45,15 @@ class _SectionPageScreenState extends State<SectionPageScreen>
     '/widget_switch_ex': () => const WidgetSwitchEx(),
     '/widget_radio_ex': () => const WidgetRadioEx(),
     '/widget_dropdown_ex': () => const WidgetDropDownEx(),
-    'widget_chip_ex': () => const WidgetChipEx(),
+    '/widget_chip_ex': () => const WidgetChipEx(),
+    '/widget_scaffold_ex': () => const WidgetScaffoldEx(),
+    '/widget_stateless_ex': () => const WidgetStatelessEx(),
+    '/widget_stateful_ex': () => WidgetStatefulEx(),
+    '/widget_container_ex': () => WidgetContainerEx(),
+    '/widget_rowcolumn_ex': () => WidgetRowColumnEx(),
+    '/widget_stack_ex': () => WidgetStackEx(),
+    '/widget_placeholder_ex': () => WidgetPlaceHolderEx(),
+    '/widget_dialogs_ex': () => WidgetDialogsEx(),
   };
 
   @override

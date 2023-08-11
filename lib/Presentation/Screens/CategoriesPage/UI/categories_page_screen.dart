@@ -56,6 +56,7 @@ class _CategoriesPageScreenState extends State<CategoriesPageScreen>
           padding: EdgeInsets.zero,
           children: <Widget>[
             DrawerHeader(
+              margin: const EdgeInsets.only(bottom: 10),
               duration: const Duration(milliseconds: 377),
               decoration: BoxDecoration(
                 color: Provider.of<ThemeProvider>(context, listen: false)
@@ -68,6 +69,7 @@ class _CategoriesPageScreenState extends State<CategoriesPageScreen>
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Text(
                         'Theme Mood',
@@ -99,7 +101,7 @@ class _CategoriesPageScreenState extends State<CategoriesPageScreen>
                       opacity: Tween<double>(begin: 0.0, end: 1.0)
                           .animate(_animationController),
                       child: CircleAvatar(
-                        radius: 25,
+                        radius: 20,
                         backgroundImage: AssetImage(
                             Provider.of<ThemeProvider>(context).isDarkMode
                                 ? "assets/images/d_dark.jpg"
@@ -111,13 +113,40 @@ class _CategoriesPageScreenState extends State<CategoriesPageScreen>
               ),
             ),
             ListTile(
-              title: const Text('Item 1'),
+              title: const Text(
+                'Flutter Hot Collection',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
+              ),
               onTap: () {
                 // Handle Drawer item tap
               },
             ),
             ListTile(
-              title: Text('Item 2'),
+              title: const Text('About Us'),
+              onTap: () {
+                // Handle Drawer item tap
+              },
+            ),
+            ListTile(
+              title: const Text('Rate Us'),
+              onTap: () {
+                // Handle Drawer item tap
+              },
+            ),
+            ListTile(
+              title: const Text('Share App'),
+              onTap: () {
+                // Handle Drawer item tap
+              },
+            ),
+            ListTile(
+              title: const Text('Privacy Policy'),
+              onTap: () {
+                // Handle Drawer item tap
+              },
+            ),
+            ListTile(
+              title: const Text('Terms & Conditions'),
               onTap: () {
                 // Handle Drawer item tap
               },

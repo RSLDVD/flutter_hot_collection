@@ -1,10 +1,37 @@
-
 import '../Models/section.dart';
 
 // ignore: non_constant_identifier_names
 List<Section> K1sectionData = [
   Section(
     id: 's1',
+    category: 'cat1',
+    title: 'Scaffold',
+    subtitle:
+        'Elevating UI with Scaffold: Creating Multifaceted, Interactive Interfaces in Flutter',
+    description: 'description',
+    imagePath: 'imagePath',
+    sourceFilePath: '/widget_scaffold_ex',
+  ),
+  Section(
+    id: 's2',
+    category: 'cat1',
+    title: 'Stateless',
+    subtitle: 'Building Vibrant and Consistent Interfaces in Flutter',
+    description: 'description',
+    imagePath: 'imagePath',
+    sourceFilePath: '/widget_stateless_ex',
+  ),
+  Section(
+    id: 's3',
+    category: 'cat1',
+    title: 'Stateful',
+    subtitle: 'Crafting Dynamic and Engaging Interfaces in Flutter',
+    description: 'description',
+    imagePath: 'imagePath',
+    sourceFilePath: '/widget_stateful_ex',
+  ),
+  Section(
+    id: 's4',
     category: 'cat1',
     title: 'Icon',
     subtitle: 'Enhancing Visual Communication with Symbolic Graphics',
@@ -13,7 +40,7 @@ List<Section> K1sectionData = [
     sourceFilePath: '/widget_icon_ex',
   ),
   Section(
-    id: 's2',
+    id: 's5',
     category: 'cat1',
     title: 'Text',
     subtitle: 'Flutter\'s Versatile Display Elements',
@@ -21,8 +48,44 @@ List<Section> K1sectionData = [
     imagePath: 'imagePath',
     sourceFilePath: '/widget_text_ex',
   ),
-    Section(
-    id: 's3',
+     Section(
+    id: 's6',
+    category: 'cat1',
+    title: 'Row,Column & Expanded',
+    subtitle: 'Layouts with Row, Column & Expanded: Crafting Versatile UIs in Flutter',
+    description: 'description',
+    imagePath: 'imagePath',
+    sourceFilePath: '/widget_rowcolumn_ex',
+  ),
+   Section(
+    id: 's7',
+    category: 'cat1',
+    title: 'Container',
+    subtitle: 'Layout and Spacing: Creating Aesthetic UIs with Container, Margin & Padding',
+    description: 'description',
+    imagePath: 'imagePath',
+    sourceFilePath: '/widget_container_ex',
+  ),
+  Section(
+    id: 's8',
+    category: 'cat1',
+    title: 'PlaceHolder',
+    subtitle: 'Using Placeholder for Layout and Design in Flutter',
+    description: 'description',
+    imagePath: 'imagePath',
+    sourceFilePath: '/widget_placeholder_ex',
+  ),
+     Section(
+    id: 's9',
+    category: 'cat1',
+    title: 'Stack',
+    subtitle: 'Layered and Indexed UI Composition: Crafting Dynamic Layouts with Stack & IndexedStack in Flutter',
+    description: 'description',
+    imagePath: 'imagePath',
+    sourceFilePath: '/widget_stack_ex',
+  ),
+  Section(
+    id: 's10',
     category: 'cat1',
     title: 'CheckBox',
     subtitle: 'Building Interactive UIs with Flutter',
@@ -31,7 +94,7 @@ List<Section> K1sectionData = [
     sourceFilePath: '/widget_checkbox_ex',
   ),
   Section(
-    id: 's4',
+    id: 's11',
     category: 'cat1',
     title: 'Switch',
     subtitle: 'Building Dynamic UIs with Toggle able Elements in Flutter',
@@ -40,7 +103,7 @@ List<Section> K1sectionData = [
     sourceFilePath: '/widget_switch_ex',
   ),
   Section(
-    id: 's5',
+    id: 's12',
     category: 'cat1',
     title: 'Radio',
     subtitle: 'Navigating Choices with Flutter\'s Radio Widget',
@@ -48,24 +111,36 @@ List<Section> K1sectionData = [
     imagePath: 'imagePath',
     sourceFilePath: '/widget_radio_ex',
   ),
-    Section(
-    id: 's6',
+  Section(
+    id: 's13',
     category: 'cat1',
-    title: 'Dropdown ',
-    subtitle: 'Exploring Dropdown Widgets: Crafting Dynamic Selection Interfaces in Flutter',
+    title: 'DropDown ',
+    subtitle:
+        'Exploring Dropdown Widgets: Crafting Dynamic Selection Interfaces in Flutter',
     description: 'description',
     imagePath: 'imagePath',
     sourceFilePath: '/widget_dropdown_ex',
   ),
-   Section(
-    id: 's7',
+  Section(
+    id: 's14',
     category: 'cat1',
     title: 'Chip ',
-    subtitle: 'Elevating UI with Colorful Chips: Dynamic Selection and Visual Delight in Flutter',
+    subtitle:
+        'Elevating UI with Colorful Chips: Dynamic Selection and Visual Delight in Flutter',
     description: 'description',
     imagePath: 'imagePath',
     sourceFilePath: '/widget_chip_ex',
-  )
+  ),
+  Section(
+    id: 's15',
+    category: 'cat1',
+    title: 'Dialogs and Bottom Sheets',
+    subtitle:
+        'Interactive User Feedback: Exploring Dialogs and Bottom Sheets in Flutte',
+    description: 'description',
+    imagePath: 'imagePath',
+    sourceFilePath: '/widget_dialogs_ex',
+  ),
 ];
 
 // ignore: non_constant_identifier_names

@@ -7,13 +7,7 @@ import 'package:provider/provider.dart';
 
 import 'Presentation/Screens/CategoryPage/UI/category_page_screen.dart';
 import 'Providers/category_provider.dart';
-import 'Routes/widget_checkbox_ex.dart';
-import 'Routes/widget_chip_ex.dart';
-import 'Routes/widget_dropdown_ex.dart';
-import 'Routes/widget_radio_ex.dart';
-import 'Routes/widget_switch_ex.dart';
-import 'Routes/widget_text_ex.dart';
-import 'Routes/widget_icon_ex.dart';
+
 
 void main() {
   runApp(
@@ -41,7 +35,9 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Hot',
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
-      themeMode: Provider.of<ThemeProvider>(context).isDarkMode ? ThemeMode.dark : ThemeMode.light,
+      themeMode: Provider.of<ThemeProvider>(context).isDarkMode
+          ? ThemeMode.dark
+          : ThemeMode.light,
       home: const CategoriesPageScreen(),
       // onGenerateRoute: ((settings) {
       //   if(settings.name == '/section_page' ){
@@ -53,13 +49,13 @@ class MyApp extends StatelessWidget {
       routes: {
         '/category': (context) => const CategoryPageScreen(),
         '/section_page': (context) => const SectionPageScreen(),
-        '/widget_icon_ex': (context) => const WidgetIconEx(),
-        '/widget_text_ex': (context) => const WidgetTextEx(),
-         '/widget_checkbox_ex': (context) => const WidgetCheckBoxEx(),
-    '/widget_switch_ex': (context) => const WidgetSwitchEx(),
-    '/widget_radio_ex': (context) => const WidgetRadioEx(),
-    '/widget_dropdown_ex': (context) => const WidgetDropDownEx(),
-    'widget_chip_ex': (context) => const WidgetChipEx(),
+        // '/widget_icon_ex': (context) => const WidgetIconEx(),
+        // '/widget_text_ex': (context) => const WidgetTextEx(),
+        // '/widget_checkbox_ex': (context) => const WidgetCheckBoxEx(),
+        // '/widget_switch_ex': (context) => const WidgetSwitchEx(),
+        // '/widget_radio_ex': (context) => const WidgetRadioEx(),
+        // '/widget_dropdown_ex': (context) => const WidgetDropDownEx(),
+        // 'widget_chip_ex': (context) => const WidgetChipEx(),
       },
     );
   }

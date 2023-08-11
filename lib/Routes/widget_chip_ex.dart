@@ -8,26 +8,27 @@ class WidgetChipEx extends StatefulWidget {
 }
 
 class _WidgetChipExState extends State<WidgetChipEx> {
-  List<String> _selectedLanguages = [];
+  final List<String> _selectedLanguages = [];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Chip Example'),
+        title: const Text('Chip Example'),
       ),
       body: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Wrap(
-              spacing: 8.0,
-              children: <Widget>[
+              spacing: 10.0,
+              children: const <Widget>[
                 Chip(
                   label: Text('Flutter'),
                 ),
                 Chip(
+                  avatar: CircleAvatar(child: Icon(Icons.home)),
                   label: Text('Dart'),
                   backgroundColor: Colors.green,
                   labelStyle: TextStyle(color: Colors.white),
@@ -49,12 +50,13 @@ class _WidgetChipExState extends State<WidgetChipEx> {
                 ),
               ],
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Wrap(
               spacing: 8.0,
               children: <Widget>[
                 FilterChip(
-                  label: Text('Web Development'),
+                  checkmarkColor: Colors.pink,
+                  label: const Text('Web Development'),
                   selected: _selectedLanguages.contains('Web Development'),
                   onSelected: (selected) {
                     setState(() {
@@ -67,7 +69,8 @@ class _WidgetChipExState extends State<WidgetChipEx> {
                   },
                 ),
                 FilterChip(
-                  label: Text('Mobile Development'),
+                  avatar: const CircleAvatar(child: Icon(Icons.android),),
+                  label: const Text('Mobile Development'),
                   selected: _selectedLanguages.contains('Mobile Development'),
                   onSelected: (selected) {
                     setState(() {
@@ -80,7 +83,8 @@ class _WidgetChipExState extends State<WidgetChipEx> {
                   },
                 ),
                 FilterChip(
-                  label: Text('Backend Development'),
+                  backgroundColor: Colors.amberAccent,
+                  label: const Text('Backend Development'),
                   selected: _selectedLanguages.contains('Backend Development'),
                   onSelected: (selected) {
                     setState(() {

@@ -9,7 +9,7 @@ class WidgetDropDownEx extends StatefulWidget {
 
 class _WidgetDropDownExState extends State<WidgetDropDownEx> {
  String _selectedFruit = 'Apple';
-  List<String> _fruits = ['Apple', 'Banana', 'Orange', 'Grapes'];
+  final List<String> _fruits = ['Apple', 'Banana', 'Orange', 'Grapes'];
 
   @override
   Widget build(BuildContext context) {
