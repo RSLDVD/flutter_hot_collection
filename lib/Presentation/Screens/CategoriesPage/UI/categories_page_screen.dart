@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hot/Action/anim_switch.dart';
 import 'package:flutter_hot/Data/Models/category.dart';
 import 'package:flutter_hot/Providers/theme_provider.dart';
 import 'package:provider/provider.dart';
@@ -19,16 +20,16 @@ class _CategoriesPageScreenState extends State<CategoriesPageScreen>
   @override
   void initState() {
     super.initState();
-    _animationController = AnimationController(
-      vsync: this, // Use "this" as the vsync parameter
-      duration: const Duration(milliseconds: 300),
-    );
-    _animationController.forward();
+    // _animationController = AnimationController(
+    //   vsync: this, // Use "this" as the vsync parameter
+    //   duration: const Duration(milliseconds: 300),
+    // );
+    // _animationController.forward();
   }
 
   @override
   void dispose() {
-    _animationController.dispose();
+    // _animationController.dispose();
     super.dispose();
   }
 
@@ -57,57 +58,39 @@ class _CategoriesPageScreenState extends State<CategoriesPageScreen>
           children: <Widget>[
             DrawerHeader(
               margin: const EdgeInsets.only(bottom: 10),
-              duration: const Duration(milliseconds: 377),
-              decoration: BoxDecoration(
-                color: Provider.of<ThemeProvider>(context, listen: false)
-                        .isDarkMode
-                    ? const Color(0xff1B262C)
-                    : const Color(0xff91C8E4),
+              //duration: const Duration(milliseconds: 377),
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+
+                  image: AssetImage("assets/images/sleepycat.gif",),
+                  fit: BoxFit.fill
+                  ),
+                  
+                // color: Provider.of<ThemeProvider>(context, listen: false)
+                //         .isDarkMode
+                //     ? const Color(0xff1B262C)
+                //     : const Color(0xff91C8E4),
               ),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Row(
+                  Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const Text(
                         'Theme Mood',
                         style: TextStyle(
                             fontSize: 20, fontWeight: FontWeight.bold),
                       ),
-                      AnimatedSwitcher(
-                        duration: const Duration(
-                            milliseconds: 400), // Animation duration
-                        child: Consumer<ThemeProvider>(
-                          builder: (context, themeProvider, child) {
-                            return Switch(
-                              activeColor: Colors.cyan,
-                              value: themeProvider.isDarkMode,
-                              onChanged: (bool value) {
-                                themeProvider.toggleTheme();
-                              },
-                            );
+                       Consumer<ThemeProvider>(
+                          builder: (context, themeProvider, _) {
+                            return   AnimSwitch();
                           },
                         ),
-                      ),
+                      
                     ],
-                  ),
-                  AnimatedSwitcher(
-                    duration: const Duration(milliseconds: 377),
-                    child: FadeTransition(
-                      key: ValueKey<bool>(
-                          Provider.of<ThemeProvider>(context).isDarkMode),
-                      opacity: Tween<double>(begin: 0.0, end: 1.0)
-                          .animate(_animationController),
-                      child: CircleAvatar(
-                        radius: 20,
-                        backgroundImage: AssetImage(
-                            Provider.of<ThemeProvider>(context).isDarkMode
-                                ? "assets/images/d_dark.jpg"
-                                : "assets/images/d_light.jpg"),
-                      ),
-                    ),
                   ),
                 ],
               ),
@@ -165,7 +148,7 @@ class _CategoriesPageScreenState extends State<CategoriesPageScreen>
         itemBuilder: (context, index) => CategoryItem(
             id: categories[index].id,
             title: categories[index].title,
-            //color: categories[index].color,
+            subtitle: categories[index].subtitle.toList(),
             imagePath: categories[index].imagePath),
       ),
     );

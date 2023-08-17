@@ -51,11 +51,12 @@ class SectionItem extends StatelessWidget {
       Random random = Random();
       int b = random
           .nextInt(255); // Generate a random value between 0 and 255 for red
-      int g = 0; // Generate a random value between 0 and 255 for green
+      int g =random
+          .nextInt(255); // Generate a random value between 0 and 255 for green
       int r = random
           .nextInt(255); // Generate a random value between 0 and 255 for blue
       return Color.fromARGB(
-          85, r, g, b); // Create a Color object using the random RGB values
+          122, r, g, b); // Create a Color object using the random RGB values
     }
 
 //
@@ -82,8 +83,8 @@ class SectionItem extends StatelessWidget {
             title,
             style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
           ),
-          subtitle: Text(subtitle, style: const TextStyle(fontSize: 14)),
-          trailing: Text(category),
+          subtitle: Text(subtitle, style: const TextStyle(fontSize: 13)),
+          //trailing: Text(category),
         ),
       ),
       onTap: () {

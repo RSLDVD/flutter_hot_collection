@@ -3,13 +3,14 @@ import 'package:flutter/material.dart';
 class CategoryItem extends StatelessWidget {
   final String id;
   final String title;
+  final List<String> subtitle;
   //final Gradient color;
   final String imagePath;
   const CategoryItem(
       {Key? key,
       required this.id,
       required this.title,
-      //required this.color,
+      required this.subtitle,
       required this.imagePath})
       : super(key: key);
 
@@ -26,8 +27,13 @@ class CategoryItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () => _selectCategory(context),
-      splashColor: Colors.black38,
-      borderRadius: BorderRadius.circular(5),
+      //splashColor: Colors.black38,
+      borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(100),
+            topRight: Radius.circular(100),
+            bottomLeft: Radius.circular(20),
+            bottomRight: Radius.circular(100),
+          ),
       child: Container(
         margin: const EdgeInsets.only(left: 10, right: 10, top: 10),
         padding: const EdgeInsets.all(5),
@@ -82,13 +88,32 @@ class CategoryItem extends StatelessWidget {
             ),
           ),
           Positioned(
-              bottom: 50,
+              top: 135,
+              left: 4,
               child: Text(
                 title,
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 16,
                   //color:Color(0xff090088),
+                ),
+              )),
+          Positioned(
+              top: 162,
+              left: 2,
+              child: SizedBox(
+                width: 150,
+                child: Wrap(
+                  spacing: 5,
+                  runSpacing: 2,
+                  children: subtitle.map((s) {
+                    return Text(
+                      s,
+                      style: TextStyle(
+                          fontSize: 12,
+                          color: Theme.of(context).textTheme.subtitle1?.color),
+                    );
+                  }).toList(),
                 ),
               )),
         ]),

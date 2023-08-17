@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class WidgetTextEx extends StatelessWidget {
@@ -6,39 +7,90 @@ class WidgetTextEx extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
+      appBar: AppBar(
+        title: const Text('Text and RichText '),
+      ),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: const [
-            Text(
-              'data',
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              'Simple Text',
               style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  backgroundColor: Colors.amber,
-                  fontSize: 38),
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Colors.blue,
+                letterSpacing: 8,
+                fontStyle: FontStyle.italic,
+                decoration: TextDecoration.underline,
+                decorationColor: Colors.red,
+                decorationThickness: 2,
+              ),
             ),
-            Text(
-              'data',
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  backgroundColor: Colors.amber,
-                  fontStyle: FontStyle.italic,
-                  fontSize: 40),
+            const SizedBox(height: 20),
+            const Text(
+              'Text with Different Alignments',
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 18),
             ),
-            Text(
-              'data',
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  backgroundColor: Colors.amber,
-                  fontSize: 22),
+            const SizedBox(height: 20),
+            RichText(
+              text: const TextSpan(
+                text: 'RichText: ',
+                style: TextStyle(color: Colors.blue, fontSize: 18),
+                children: <TextSpan>[
+                  TextSpan(
+                    text: 'Colored',
+                    style: TextStyle(
+                      color: Colors.red,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  TextSpan(text: ' and '),
+                  TextSpan(
+                    text: 'Bold',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontStyle: FontStyle.italic,
+                    ),
+                  ),
+                  TextSpan(text: '  '),
+                  TextSpan(
+                      text: 'Text',
+                      style: TextStyle(
+                        color: Colors.brown,
+                        backgroundColor: Colors.lime,
+                      )),
+                ],
+              ),
             ),
-            Text(
-              'data',
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  backgroundColor: Colors.amber,
-                  fontSize: 60),
+            const SizedBox(height: 20),
+            RichText(
+              text: TextSpan(
+                text: 'Custom Links: ',
+                style: const TextStyle(color: Colors.black, fontSize: 16),
+                children: <TextSpan>[
+                  TextSpan(
+                    text: 'Click Me',
+                    style: const TextStyle(
+                      color: Colors.blue,
+                      decoration: TextDecoration.underline,
+                    ),
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = () {
+                        // Handle link click here
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                              content: Text(
+                            'Link Cilcked ',
+                          )),
+                        );
+                        ;
+                      },
+                  ),
+                ],
+              ),
             ),
           ],
         ),

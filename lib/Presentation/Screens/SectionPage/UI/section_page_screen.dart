@@ -1,18 +1,18 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_hot/Routes/widget_card_ex.dart';
-import 'package:flutter_hot/Routes/widget_expansionpanellist_ex.dart';
-import 'package:flutter_hot/Routes/widget_slider_ex.dart';
-import 'package:flutter_hot/Routes/widget_stateless_ex.dart';
-import 'package:flutter_hot/Routes/widget_container_ex.dart';
-import 'package:flutter_hot/Routes/widget_dialogs_ex.dart';
-import 'package:flutter_hot/Routes/widget_placeholder_ex.dart';
-import 'package:flutter_hot/Routes/widget_stack_ex.dart';
-import 'package:flutter_hot/Routes/widget_stateful_ex.dart';
-import 'package:flutter_hot/Routes/widget_rowcolumn_ex.dart';
-import 'package:flutter_hot/Routes/widget_stepper_ex.dart';
-import 'package:flutter_hot/Routes/widget_textformfield_ex.dart';
+import 'package:flutter_highlight/themes/a11y-light.dart';
+import 'package:flutter_hot/Action/anim_switch.dart';
+import 'package:flutter_hot/Providers/theme_provider.dart';
+import 'package:flutter_hot/Routes/list_datatable_ex.dart';
+import 'package:flutter_hot/Routes/list_expansiontile_ex.dart';
+import 'package:flutter_hot/Routes/list_gridview_ex.dart';
+import 'package:flutter_hot/Routes/list_listtile_ex.dart';
+import 'package:flutter_hot/Routes/list_listviewbuilder_ex.dart';
+import 'package:flutter_hot/Routes/list_reorderablelist_ex.dart';
+import 'package:flutter_hot/Routes/list_listwheelview_ex.dart';
+import 'package:flutter_hot/Routes/list_slideabletile_ex.dart';
+//
 import 'package:provider/provider.dart';
 import '/../../Providers/category_provider.dart';
 import 'package:http/http.dart' as http;
@@ -31,6 +31,24 @@ import 'package:flutter_hot/Routes/widget_radio_ex.dart';
 import 'package:flutter_hot/Routes/widget_scaffold_ex.dart';
 import 'package:flutter_hot/Routes/widget_switch_ex.dart';
 import 'package:flutter_hot/Routes/widget_text_ex.dart';
+import 'package:flutter_hot/Routes/widget_card_ex.dart';
+import 'package:flutter_hot/Routes/widget_expansionpanellist_ex.dart';
+import 'package:flutter_hot/Routes/widget_slider_ex.dart';
+import 'package:flutter_hot/Routes/widget_stateless_ex.dart';
+import 'package:flutter_hot/Routes/widget_container_ex.dart';
+import 'package:flutter_hot/Routes/widget_dialogs_ex.dart';
+import 'package:flutter_hot/Routes/widget_placeholder_ex.dart';
+import 'package:flutter_hot/Routes/widget_stack_ex.dart';
+import 'package:flutter_hot/Routes/widget_stateful_ex.dart';
+import 'package:flutter_hot/Routes/widget_rowcolumn_ex.dart';
+import 'package:flutter_hot/Routes/widget_stepper_ex.dart';
+import 'package:flutter_hot/Routes/widget_textformfield_ex.dart';
+
+enum TabType {
+  view,
+  code,
+  description,
+}
 
 class SectionPageScreen extends StatefulWidget {
   const SectionPageScreen({Key? key}) : super(key: key);
@@ -42,6 +60,7 @@ class SectionPageScreen extends StatefulWidget {
 class _SectionPageScreenState extends State<SectionPageScreen>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
+  double codeFontSize = 12;
 
   final Map<String, Widget Function()> sectionWidgets = {
     '/widget_icon_ex': () => const WidgetIconEx(),
@@ -60,16 +79,24 @@ class _SectionPageScreenState extends State<SectionPageScreen>
     '/widget_placeholder_ex': () => WidgetPlaceHolderEx(),
     '/widget_dialogs_ex': () => WidgetDialogsEx(),
     '/widget_stepper_ex': () => const WidgetStepperEx(),
-    '/widget_slider_ex' : () => const WidgetSliderEx(),
-    '/widget_card_ex' : () => const WidgetCardEx(),
-    '/widget_expansionpanellist_ex' : () => const WidgetExpansionPanelListEx(),
-    '/widget_textformfield_ex' : () =>  WidgetTextFormFieldEx(),
+    '/widget_slider_ex': () => const WidgetSliderEx(),
+    '/widget_card_ex': () => const WidgetCardEx(),
+    '/widget_expansionpanellist_ex': () => const WidgetExpansionPanelListEx(),
+    '/widget_textformfield_ex': () => WidgetTextFormFieldEx(),
+    '/list_listtile_ex': () => const ListTileEx(),
+    '/list_listviewbuilder_ex': () => const ListViewBuilderEx(),
+    '/list_gridview_ex': () =>  GridViewEx(),
+    '/list_expansiontile_ex': () =>  ExpansionTileEx(),
+    '/list_reorderablelist_ex': () =>  ReorderableListEx(),
+    '/list_listwheelview_ex': () =>  ListWheelViewEx(),
+    '/list_datatable_ex': () =>  DataTableEx(),
+    
   };
 
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(initialIndex: 0, length: 2, vsync: this);
+    _tabController = TabController(initialIndex: 0, length: 3, vsync: this);
   }
 
   @override
@@ -81,7 +108,9 @@ class _SectionPageScreenState extends State<SectionPageScreen>
   Widget _buildTabContent(
     BuildContext context,
     String sectionSourceNames,
-    bool isViewTab,
+    //bool isViewTab,
+    TabType tapType,
+    String description,
   ) {
     final Widget Function()? widgetBuilder = sectionWidgets[sectionSourceNames];
 
@@ -91,70 +120,143 @@ class _SectionPageScreenState extends State<SectionPageScreen>
         child: const Text('Section Not Implemented'),
       );
     }
+    //
+    switch (tapType) {
+      case TabType.view:
+        return widgetBuilder();
+      case TabType.code:
+        return FutureBuilder<String>(
+          future: fetchTextFromGit(sectionSourceNames),
+          builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(child: CircularProgressIndicator());
+            }
 
-    if (isViewTab) {
-      return widgetBuilder(); // Return the actual widget for the "View" tab
-    } else {
-      return FutureBuilder<String>(
-        future: fetchTextFromGit(sectionSourceNames),
-        builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
-          }
+            if (snapshot.hasError) {
+              return Text('Error: ${snapshot.error}');
+            }
 
-          if (snapshot.hasError) {
-            return Text('Error: ${snapshot.error}');
-          }
+            final String codeText = snapshot.data ?? 'Failed to fetch code';
 
-          final String codeText = snapshot.data ?? 'Failed to fetch code';
-
-          return Scaffold(
-            //backgroundColor:  Theme.of(context).scaffoldBackgroundColor,
-            body: Container(
-              color: Colors.black87, //ThemeData.dark().scaffoldBackgroundColor,
-              width: double.maxFinite,
-              height: double.maxFinite,
-              child: SingleChildScrollView(
-                child: Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    HighlightView(
-                      textStyle: const TextStyle(
-                        fontSize: 12,
+            return Scaffold(
+              //backgroundColor:  Theme.of(context).scaffoldBackgroundColor,
+              body: Container(
+                color: Provider.of<ThemeProvider>(context).isDarkMode
+                    ? Colors.black87
+                    : Colors.white, //ThemeData.dark().scaffoldBackgroundColor,
+                width: double.maxFinite,
+                height: double.maxFinite,
+                child: SingleChildScrollView(
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      HighlightView(
+                        textStyle: TextStyle(
+                          fontSize: codeFontSize,
+                        ),
+                        codeText,
+                        language: 'dart',
+                        theme: Provider.of<ThemeProvider>(context).isDarkMode
+                            ? solarizedDarkTheme
+                            : a11yLightTheme, //githubTheme,
+                        padding:
+                            const EdgeInsets.only(top: 50, right: 15, left: 20),
                       ),
-                      codeText,
-                      language: 'dart',
-                      theme: solarizedDarkTheme, //githubTheme,
-                      padding:
-                          const EdgeInsets.only(top: 50, right: 15, left: 20),
-                    ),
-                    Positioned(
-                      top: 0,
-                      right: 2,
-                      child: ElevatedButton(
-                          onPressed: () {
-                            // Add your button logic here
-                            // For example, you can copy the text to the clipboard
-                            if (codeText != null) {
-                              Clipboard.setData(ClipboardData(text: codeText));
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                    content: Text('Text copied to clipboard')),
-                              );
-                            }
-                          },
-                          child: const Icon(
-                            Icons.copy,
-                            semanticLabel: 'Copy to Clipboard',
-                          )),
-                    )
-                  ],
+                      Positioned(
+                        top: 0,
+                        right: 2,
+                        child: ElevatedButton(
+                            style: ButtonStyle(
+                                shape:
+                                    MaterialStateProperty.all<OutlinedBorder>(
+                                  const CircleBorder(),
+                                ),
+                                backgroundColor:
+                                    MaterialStateProperty.all<Color>(
+                                        Colors.transparent)),
+                            onPressed: () {
+                              if (codeText != null) {
+                                Clipboard.setData(
+                                    ClipboardData(text: codeText));
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                      backgroundColor: Colors.amber,
+                                      content: Text(
+                                        'Text copied to clipboard',
+                                        style: TextStyle(color: Colors.black),
+                                      )),
+                                );
+                              }
+                            },
+                            child: const Icon(
+                              Icons.file_copy_sharp,
+                              semanticLabel: 'Copy to Clipboard',
+                            )),
+                      ),
+                      Positioned(
+                        left: 2,
+                        top: 0,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            ElevatedButton(
+                                style: ButtonStyle(
+                                    shape: MaterialStateProperty.all<
+                                        OutlinedBorder>(
+                                      const CircleBorder(),
+                                    ),
+                                    backgroundColor:
+                                        MaterialStateProperty.all<Color>(
+                                            Colors.transparent)),
+                                onPressed: () {
+                                  setState(() {
+                                    codeFontSize--;
+                                  });
+                                },
+                                child: const Icon(Icons.zoom_out_sharp)),
+                            ElevatedButton(
+                                style: ButtonStyle(
+                                    shape: MaterialStateProperty.all<
+                                        OutlinedBorder>(
+                                      const CircleBorder(),
+                                    ),
+                                    backgroundColor:
+                                        MaterialStateProperty.all<Color>(
+                                            Colors.transparent)),
+                                onPressed: () {
+                                  setState(() {
+                                    codeFontSize++;
+                                  });
+                                },
+                                child: const Icon(Icons.zoom_in_sharp)),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            );
+          },
+        );
+
+      case TabType.description:
+        return SingleChildScrollView(
+          child: Container(
+            color: Theme.of(context).scaffoldBackgroundColor,
+            child: Center(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Text(
+                  description,
+                  style: TextStyle(
+                      fontSize: 16, color: Theme.of(context).iconTheme.color,),
                 ),
               ),
             ),
-          );
-        },
-      );
+          ),
+        );
+        break;
     }
   }
 
@@ -189,7 +291,7 @@ class _SectionPageScreenState extends State<SectionPageScreen>
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: DefaultTabController(
-        length: 2,
+        length: 3,
         child: Scaffold(
           appBar: AppBar(
             backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
@@ -197,34 +299,38 @@ class _SectionPageScreenState extends State<SectionPageScreen>
               color: Theme.of(context).appBarTheme.iconTheme!.color,
               icon: const Icon(Icons.arrow_back),
               onPressed: () {
-                // Add the code to handle the back button press here
-                // For example, you can use Navigator to pop the current route
                 Navigator.pop(context);
               },
             ),
-            //backgroundColor: const Color(0xfff8ffd8),
+            actions: [
+              Padding(
+              padding: const EdgeInsets.fromLTRB(0,1,10,0),
+              child: Consumer<ThemeProvider>(builder: (context, themeProvider, _) {
+                return  AnimSwitch();
+              },),
+            ) ],
             title: Text(
               section.title,
               style: TextStyle(
-                fontSize: 22,
+                fontSize: 18,
                 fontWeight: FontWeight.bold,
                 color: Theme.of(context).appBarTheme.titleTextStyle?.color,
               ),
             ),
             centerTitle: true,
             bottom: PreferredSize(
-              preferredSize: const Size.fromHeight(50),
+              preferredSize: const Size.fromHeight(60),
               child: TabBar(
                 tabs: [
                   Tab(
                     icon: Icon(
-                      Icons.aod_rounded,
+                      Icons.phone_android,
                       color: Theme.of(context).appBarTheme.iconTheme?.color,
                     ),
                     child: Text(
                       'View',
                       style: TextStyle(
-                        fontSize: 15,
+                        fontSize: 13,
                         color:
                             Theme.of(context).appBarTheme.titleTextStyle?.color,
                       ),
@@ -232,13 +338,27 @@ class _SectionPageScreenState extends State<SectionPageScreen>
                   ),
                   Tab(
                     icon: Icon(
-                      Icons.source,
+                      Icons.code,
                       color: Theme.of(context).appBarTheme.iconTheme?.color,
                     ),
                     child: Text(
                       'Code',
                       style: TextStyle(
-                        fontSize: 15,
+                        fontSize: 13,
+                        color:
+                            Theme.of(context).appBarTheme.titleTextStyle?.color,
+                      ),
+                    ),
+                  ),
+                  Tab(
+                    icon: Icon(
+                      Icons.summarize_sharp,
+                      color: Theme.of(context).appBarTheme.iconTheme?.color,
+                    ),
+                    child: Text(
+                      'Description',
+                      style: TextStyle(
+                        fontSize: 13,
                         color:
                             Theme.of(context).appBarTheme.titleTextStyle?.color,
                       ),
@@ -249,12 +369,16 @@ class _SectionPageScreenState extends State<SectionPageScreen>
             ),
           ),
           body: TabBarView(
+            //controller: _tabController,
             dragStartBehavior: DragStartBehavior.down,
             children: [
-              _buildTabContent(
-                  context, section.sourceFilePath, true), // View tab
-              _buildTabContent(
-                  context, section.sourceFilePath, false), // Code tab
+              _buildTabContent(context, section.sourceFilePath, TabType.view,
+                  section.description), // View tab
+              _buildTabContent(context, section.sourceFilePath, TabType.code,
+                  section.description),
+              _buildTabContent(context, '/widget_icon_ex', TabType.description,
+                  section.description),
+              // Code tab
             ],
           ),
         ),

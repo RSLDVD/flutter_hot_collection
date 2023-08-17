@@ -15,7 +15,9 @@ class WidgetRowColumnEx extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: const [
-                  ColorBox(color: Colors.pink,),
+                  ColorBox(
+                    color: Colors.pink,
+                  ),
                   ColorBox(color: Colors.green),
                 ],
               ),

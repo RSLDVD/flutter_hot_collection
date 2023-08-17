@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 
 class WidgetStackEx extends StatefulWidget {
   @override
-  _WidgetStackExeState createState() =>
-      _WidgetStackExeState();
+  _WidgetStackExeState createState() => _WidgetStackExeState();
 }
 
 class _WidgetStackExeState extends State<WidgetStackEx> {
@@ -26,14 +25,14 @@ class _WidgetStackExeState extends State<WidgetStackEx> {
                   Container(
                     width: 200,
                     height: 200,
-                    color: Colors.blue,
+                    color: Colors.grey,
                   ),
                   Positioned(
                     top: 50,
                     left: 50,
                     child: Container(
-                      width: 100,
-                      height: 100,
+                      width: 150,
+                      height: 150,
                       color: Colors.red,
                     ),
                   ),
@@ -44,6 +43,15 @@ class _WidgetStackExeState extends State<WidgetStackEx> {
                       width: 100,
                       height: 100,
                       color: Colors.green,
+                    ),
+                  ),
+                  Positioned(
+                    top: 50,
+                    left: 50,
+                    child: Container(
+                      width: 50,
+                      height: 50,
+                      color: Colors.cyan,
                     ),
                   ),
                 ],

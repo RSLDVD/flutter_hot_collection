@@ -7,16 +7,19 @@ class CategoryProvider with ChangeNotifier {
     Category(
         id: 'cat1',
         title: 'Basic Widgets',
+        subtitle: ['scaffold','states','icon','text','row','column', 'Expand','Container','Stack','CheckBox','Switch','...'],
         imagePath: "assets/images/basicWidget.jpg",
         sections: K1sectionData),
     Category(
         id: 'cat2',
-        title: 'Advanced Widgets',
+        title: 'Lists',
+        subtitle: ['ListTile','ListView.builder','GridList','ExpansionTile','Dissmissable List','Reorderable List','', '...'],
         imagePath: "assets/images/advancedWidget.jpg",
         sections: K2sectionData),
     Category(
         id: 'cat3',
         title: 'Ui Widgets',
+        subtitle: ['scaffold','states','icon','text','row','column', '...'],
         // color: const LinearGradient(
         //     begin: Alignment.topCenter,
         //     end: Alignment.bottomRight,

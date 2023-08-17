@@ -48,20 +48,20 @@ class _CategoryPageScreenState extends State<CategoryPageScreen>
           SliverAppBar(
             iconTheme: Theme.of(context).appBarTheme.iconTheme,
             elevation: 5,
-            //pinned: true,
+            pinned: true,
             floating: true,
             snap: true,
             expandedHeight: MediaQuery.of(context).size.height *
                 0.25, // Adjust the height as needed
             flexibleSpace: FlexibleSpaceBar(
-              expandedTitleScale: 1.2,
-              titlePadding: const EdgeInsets.fromLTRB(0, 25, 0, 5),
+              expandedTitleScale: 1,
+              titlePadding: const EdgeInsets.fromLTRB(0, 5, 0, 5),
               centerTitle: true,
               background: Hero(
                 tag: categoryId,
                 child: Image.asset(
                     category.imagePath, // Replace with the actual image path
-                    fit: BoxFit.cover // Adjust the image's fit property as needed
+                    fit: BoxFit.fitWidth // Adjust the image's fit property as needed
                     ),
               ),
               title: Container(
@@ -90,7 +90,7 @@ class _CategoryPageScreenState extends State<CategoryPageScreen>
                     (index / category.sections.length),
                     1,
                     curve: Curves
-                        .easeInCirc, // Choose a different curve if desired
+                        .elasticIn, // Choose a different curve if desired
                   ),
                 );
                 return AnimatedBuilder(
@@ -120,7 +120,7 @@ class _CategoryPageScreenState extends State<CategoryPageScreen>
                               categorySections[index].sourceFilePath,
                         ),
                         const Divider(
-                          height: 10,
+                          height: 5,
                           thickness: 1,
                         )
                       ],
