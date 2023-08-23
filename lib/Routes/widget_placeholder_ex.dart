@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class WidgetPlaceHolderEx extends StatelessWidget {
+  const WidgetPlaceHolderEx({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

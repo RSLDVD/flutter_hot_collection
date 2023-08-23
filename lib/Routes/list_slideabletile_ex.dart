@@ -16,10 +16,10 @@ class SlidableTileEx extends StatefulWidget {
 
 class _SlidableTileExState extends State<SlidableTileEx> {
   static final _kActionPaneTypes = <String, Widget>{
-    'DrawerMotion': DrawerMotion(),
-    'BehindMotion': BehindMotion(),
-    'ScrollMotion': ScrollMotion(),
-    'StretchMotion': StretchMotion(),
+    'DrawerMotion': const DrawerMotion(),
+    'BehindMotion': const BehindMotion(),
+    'ScrollMotion': const ScrollMotion(),
+    'StretchMotion': const StretchMotion(),
   };
   late List<Slidable> _items;
 
@@ -109,12 +109,12 @@ class _SlidableTileExState extends State<SlidableTileEx> {
       Slidable(
         key: const Key('dismissibleTile'),
         startActionPane: ActionPane(
-          motion: DrawerMotion(),
+          motion: const DrawerMotion(),
           dismissible: dismissal,
           children: [mainActions[0]], // 'Archive' action
         ),
         endActionPane: ActionPane(
-          motion: DrawerMotion(),
+          motion: const DrawerMotion(),
           children: [secondaryActions[1]], // 'Delete' action
         ),
         child: const ListTile(

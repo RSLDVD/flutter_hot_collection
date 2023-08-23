@@ -44,6 +44,8 @@ class StatelessWidgetExample extends StatelessWidget {
 }
 
 class ColoredBoxWidget extends StatelessWidget {
+  const ColoredBoxWidget({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -67,10 +69,10 @@ class RoundedButtonWidget extends StatelessWidget {
   final String buttonText;
   final VoidCallback onPressed;
 
-  const RoundedButtonWidget({
+   const RoundedButtonWidget({Key? key, 
     required this.buttonText,
     required this.onPressed,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

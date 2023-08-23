@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hot/Presentation/Screens/CategoriesPage/UI/categories_page_screen.dart';
+import 'package:flutter_hot/Presentation/Screens/FavoritesPage/favorites_page_screen.dart';
 import 'package:flutter_hot/Presentation/Screens/SectionPage/UI/section_page_screen.dart';
 import 'package:flutter_hot/Providers/theme_provider.dart';
 import 'package:flutter_hot/Theme/app_theme.dart';
@@ -8,7 +9,6 @@ import 'package:provider/provider.dart';
 import 'Presentation/Screens/CategoryPage/UI/category_page_screen.dart';
 import 'Providers/category_provider.dart';
 
-
 void main() {
   runApp(
     MultiProvider(
@@ -16,9 +16,10 @@ void main() {
         ChangeNotifierProvider<CategoryProvider>(
           create: (_) => CategoryProvider(),
         ),
+       
         ChangeNotifierProvider(
           create: (context) => ThemeProvider(),
-        )
+        ),
       ],
       child: const MyApp(),
     ),
@@ -49,6 +50,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/category': (context) => const CategoryPageScreen(),
         '/section_page': (context) => const SectionPageScreen(),
+        '/favorites' : (context) => const FavoritesPageScreen(),
         // '/widget_icon_ex': (context) => const WidgetIconEx(),
         // '/widget_text_ex': (context) => const WidgetTextEx(),
         // '/widget_checkbox_ex': (context) => const WidgetCheckBoxEx(),

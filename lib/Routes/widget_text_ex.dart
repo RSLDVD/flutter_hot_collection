@@ -83,10 +83,9 @@ class WidgetTextEx extends StatelessWidget {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
                               content: Text(
-                            'Link Cilcked ',
+                            'Link Clicked ',
                           )),
                         );
-                        ;
                       },
                   ),
                 ],

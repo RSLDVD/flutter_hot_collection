@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ReorderableListEx extends StatefulWidget {
+  const ReorderableListEx({Key? key}) : super(key: key);
+
   @override
   __ReorderableListExState createState() => __ReorderableListExState();
 }

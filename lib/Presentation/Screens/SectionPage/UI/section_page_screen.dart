@@ -4,6 +4,12 @@ import 'package:flutter/services.dart';
 import 'package:flutter_highlight/themes/a11y-light.dart';
 import 'package:flutter_hot/Action/anim_switch.dart';
 import 'package:flutter_hot/Providers/theme_provider.dart';
+import 'package:flutter_hot/Routes/appbar_basicappbar_ex.dart';
+import 'package:flutter_hot/Routes/appbar_bottomappbar_ex.dart';
+import 'package:flutter_hot/Routes/appbar_cupertinonavigationbar_ex.dart';
+import 'package:flutter_hot/Routes/appbar_cupertinoslivernavigationbar_ex.dart';
+import 'package:flutter_hot/Routes/appbar_persistentappbar_ex.dart';
+import 'package:flutter_hot/Routes/appbar_sliverappbar_ex.dart';
 import 'package:flutter_hot/Routes/list_datatable_ex.dart';
 import 'package:flutter_hot/Routes/list_expansiontile_ex.dart';
 import 'package:flutter_hot/Routes/list_gridview_ex.dart';
@@ -12,6 +18,13 @@ import 'package:flutter_hot/Routes/list_listviewbuilder_ex.dart';
 import 'package:flutter_hot/Routes/list_reorderablelist_ex.dart';
 import 'package:flutter_hot/Routes/list_listwheelview_ex.dart';
 import 'package:flutter_hot/Routes/list_slideabletile_ex.dart';
+import 'package:flutter_hot/Routes/navigation_bottomnavigationbar_ex.dart';
+import 'package:flutter_hot/Routes/navigation_drawer_ex.dart';
+import 'package:flutter_hot/Routes/navigation_floatingactionbutton_ex.dart';
+import 'package:flutter_hot/Routes/navigation_navigatormethod_ex.dart';
+import 'package:flutter_hot/Routes/navigation_pageroutebuilder_ex.dart';
+import 'package:flutter_hot/Routes/navigation_tabbars_ex.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 //
 import 'package:provider/provider.dart';
 import '/../../Providers/category_provider.dart';
@@ -72,25 +85,38 @@ class _SectionPageScreenState extends State<SectionPageScreen>
     '/widget_chip_ex': () => const WidgetChipEx(),
     '/widget_scaffold_ex': () => const WidgetScaffoldEx(),
     '/widget_stateless_ex': () => const WidgetStatelessEx(),
-    '/widget_stateful_ex': () => WidgetStatefulEx(),
-    '/widget_container_ex': () => WidgetContainerEx(),
+    '/widget_stateful_ex': () => const WidgetStatefulEx(),
+    '/widget_container_ex': () => const WidgetContainerEx(),
     '/widget_rowcolumn_ex': () => WidgetRowColumnEx(),
-    '/widget_stack_ex': () => WidgetStackEx(),
-    '/widget_placeholder_ex': () => WidgetPlaceHolderEx(),
-    '/widget_dialogs_ex': () => WidgetDialogsEx(),
+    '/widget_stack_ex': () => const WidgetStackEx(),
+    '/widget_placeholder_ex': () => const WidgetPlaceHolderEx(),
+    '/widget_dialogs_ex': () => const WidgetDialogsEx(),
     '/widget_stepper_ex': () => const WidgetStepperEx(),
     '/widget_slider_ex': () => const WidgetSliderEx(),
     '/widget_card_ex': () => const WidgetCardEx(),
     '/widget_expansionpanellist_ex': () => const WidgetExpansionPanelListEx(),
     '/widget_textformfield_ex': () => WidgetTextFormFieldEx(),
     '/list_listtile_ex': () => const ListTileEx(),
-    '/list_listviewbuilder_ex': () => const ListViewBuilderEx(),
-    '/list_gridview_ex': () =>  GridViewEx(),
-    '/list_expansiontile_ex': () =>  ExpansionTileEx(),
-    '/list_reorderablelist_ex': () =>  ReorderableListEx(),
-    '/list_listwheelview_ex': () =>  ListWheelViewEx(),
-    '/list_datatable_ex': () =>  DataTableEx(),
-    
+    '/list_listviewbuilder_ex': () => ListViewBuilderEx(),
+    '/list_gridview_ex': () => GridViewEx(),
+    '/list_expansiontile_ex': () => const ExpansionTileEx(),
+    '/list_reorderablelist_ex': () => const ReorderableListEx(),
+    '/list_listwheelview_ex': () => const ListWheelViewEx(),
+    '/list_slideabletile_ex': () => const SlidableTileEx(),
+    '/list_datatable_ex': () => DataTableEx(),
+    '/appbar_basicappbar_ex': () => BasicAppBarEx(),
+    '/appbar_sliverappbar_ex': () => SliverAppBarEx(),
+    '/appbar_bottomappbar_ex': () => const BottomAppBarEx(),
+    '/appbar_persistentappbar_ex': () => const PersistentAppBarEx(),
+    '/appbar_cupertinonavigationbar_ex': () => CupertinoNavigationBarEx(),
+    '/appbar_cupertinoslivernavigationbar_ex': () =>
+        CupertinoSliverNavigationBarEx(),
+    '/navigation_bottomnavigationbar_ex': () => BottomNavigationBarEx(),
+    '/navigation_tabbars_ex': () => TabBarScreenEx(),
+    '/navigation_drawer_ex': () => DrawerScreenEx(),
+    '/navigation_floatingactionbutton_ex': () => FloatingActionButtonScreenEX(),
+    '/navigation_pageroutebuilder_ex': () => PageRouteBuilderEx(),
+    '/navigation_navigatormethod_ex': () => NavigationMethodsEx(),
   };
 
   @override
@@ -152,6 +178,7 @@ class _SectionPageScreenState extends State<SectionPageScreen>
                     children: [
                       HighlightView(
                         textStyle: TextStyle(
+                          //fontFamily: 'OpenSansCondensed',
                           fontSize: codeFontSize,
                         ),
                         codeText,
@@ -173,7 +200,7 @@ class _SectionPageScreenState extends State<SectionPageScreen>
                                 ),
                                 backgroundColor:
                                     MaterialStateProperty.all<Color>(
-                                        Colors.transparent)),
+                                        Theme.of(context).primaryColor)),
                             onPressed: () {
                               if (codeText != null) {
                                 Clipboard.setData(
@@ -183,14 +210,18 @@ class _SectionPageScreenState extends State<SectionPageScreen>
                                       backgroundColor: Colors.amber,
                                       content: Text(
                                         'Text copied to clipboard',
-                                        style: TextStyle(color: Colors.black),
+                                        style: TextStyle(color: Colors.black, fontFamily: 'OpenSansCondensed',),
                                       )),
                                 );
                               }
                             },
-                            child: const Icon(
+                            child: Icon(
                               Icons.file_copy_sharp,
                               semanticLabel: 'Copy to Clipboard',
+                              color: Theme.of(context)
+                                  .appBarTheme
+                                  .iconTheme
+                                  ?.color,
                             )),
                       ),
                       Positioned(
@@ -207,13 +238,19 @@ class _SectionPageScreenState extends State<SectionPageScreen>
                                     ),
                                     backgroundColor:
                                         MaterialStateProperty.all<Color>(
-                                            Colors.transparent)),
+                                            Theme.of(context).primaryColor)),
                                 onPressed: () {
                                   setState(() {
                                     codeFontSize--;
                                   });
                                 },
-                                child: const Icon(Icons.zoom_out_sharp)),
+                                child: Icon(
+                                  Icons.zoom_out_sharp,
+                                  color: Theme.of(context)
+                                      .appBarTheme
+                                      .iconTheme
+                                      ?.color,
+                                )),
                             ElevatedButton(
                                 style: ButtonStyle(
                                     shape: MaterialStateProperty.all<
@@ -222,13 +259,19 @@ class _SectionPageScreenState extends State<SectionPageScreen>
                                     ),
                                     backgroundColor:
                                         MaterialStateProperty.all<Color>(
-                                            Colors.transparent)),
+                                            Theme.of(context).primaryColor)),
                                 onPressed: () {
                                   setState(() {
                                     codeFontSize++;
                                   });
                                 },
-                                child: const Icon(Icons.zoom_in_sharp)),
+                                child: Icon(
+                                  Icons.zoom_in_sharp,
+                                  color: Theme.of(context)
+                                      .appBarTheme
+                                      .iconTheme
+                                      ?.color,
+                                )),
                           ],
                         ),
                       )
@@ -241,16 +284,18 @@ class _SectionPageScreenState extends State<SectionPageScreen>
         );
 
       case TabType.description:
-        return SingleChildScrollView(
-          child: Container(
-            color: Theme.of(context).scaffoldBackgroundColor,
-            child: Center(
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Text(
-                  description,
-                  style: TextStyle(
-                      fontSize: 16, color: Theme.of(context).iconTheme.color,),
+        return Container(
+          height: double.infinity,
+          color: Theme.of(context).scaffoldBackgroundColor,
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Text(
+                description,
+                style: TextStyle(
+                  fontFamily: 'Montserrat',
+                  fontSize: 16,
+                  color: Theme.of(context).appBarTheme.titleTextStyle?.color,
                 ),
               ),
             ),
@@ -304,14 +349,18 @@ class _SectionPageScreenState extends State<SectionPageScreen>
             ),
             actions: [
               Padding(
-              padding: const EdgeInsets.fromLTRB(0,1,10,0),
-              child: Consumer<ThemeProvider>(builder: (context, themeProvider, _) {
-                return  AnimSwitch();
-              },),
-            ) ],
+                padding: const EdgeInsets.fromLTRB(0, 1, 10, 0),
+                child: Consumer<ThemeProvider>(
+                  builder: (context, themeProvider, _) {
+                    return AnimSwitch();
+                  },
+                ),
+              )
+            ],
             title: Text(
               section.title,
               style: TextStyle(
+                fontFamily: 'Roboto',
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
                 color: Theme.of(context).appBarTheme.titleTextStyle?.color,
@@ -324,13 +373,16 @@ class _SectionPageScreenState extends State<SectionPageScreen>
                 tabs: [
                   Tab(
                     icon: Icon(
+                      size: 18,
                       Icons.phone_android,
                       color: Theme.of(context).appBarTheme.iconTheme?.color,
                     ),
                     child: Text(
                       'View',
                       style: TextStyle(
+                        fontFamily: 'Montserrat',
                         fontSize: 13,
+                        fontWeight: FontWeight.bold,
                         color:
                             Theme.of(context).appBarTheme.titleTextStyle?.color,
                       ),
@@ -339,11 +391,14 @@ class _SectionPageScreenState extends State<SectionPageScreen>
                   Tab(
                     icon: Icon(
                       Icons.code,
+                      size: 18,
                       color: Theme.of(context).appBarTheme.iconTheme?.color,
                     ),
                     child: Text(
                       'Code',
                       style: TextStyle(
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.bold,
                         fontSize: 13,
                         color:
                             Theme.of(context).appBarTheme.titleTextStyle?.color,
@@ -351,13 +406,17 @@ class _SectionPageScreenState extends State<SectionPageScreen>
                     ),
                   ),
                   Tab(
-                    icon: Icon(
-                      Icons.summarize_sharp,
+                    icon: SvgPicture.asset(
+                      'assets/icons/comment.svg',
+                      width: 25,
+                      height: 25,
                       color: Theme.of(context).appBarTheme.iconTheme?.color,
                     ),
                     child: Text(
                       'Description',
                       style: TextStyle(
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.bold,
                         fontSize: 13,
                         color:
                             Theme.of(context).appBarTheme.titleTextStyle?.color,

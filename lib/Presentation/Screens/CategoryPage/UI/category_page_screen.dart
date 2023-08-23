@@ -36,8 +36,8 @@ class _CategoryPageScreenState extends State<CategoryPageScreen>
   Widget build(BuildContext context) {
     // List<Category> categories = context.watch<CategoryProvider>().categoryData;
     final routArg =
-        ModalRoute.of(context)!.settings.arguments as Map<String, String>;
-    final categoryId = routArg['id'] as String;
+        ModalRoute.of(context)?.settings.arguments as Map<String, String>;
+    final categoryId = routArg['id'].toString();
     Category category =
         context.watch<CategoryProvider>().findCategoryById(categoryId);
     List<Section> categorySections = category.sections;
@@ -46,6 +46,11 @@ class _CategoryPageScreenState extends State<CategoryPageScreen>
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
+            leading: IconButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: const Icon(Icons.arrow_back_ios)),
             iconTheme: Theme.of(context).appBarTheme.iconTheme,
             elevation: 5,
             pinned: true,
@@ -61,21 +66,26 @@ class _CategoryPageScreenState extends State<CategoryPageScreen>
                 tag: categoryId,
                 child: Image.asset(
                     category.imagePath, // Replace with the actual image path
-                    fit: BoxFit.fitWidth // Adjust the image's fit property as needed
+                    fit: BoxFit
+                        .fitWidth // Adjust the image's fit property as needed
                     ),
               ),
               title: Container(
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5),
-                  color: Theme.of(context).appBarTheme.backgroundColor,
+                  color: Theme.of(context)
+                      .appBarTheme
+                      .backgroundColor!
+                      .withOpacity(0.7),
                 ),
                 child: Text(
                   category.title,
-                  style: const TextStyle(
-                    fontSize: 18,
+                  style:  TextStyle(
+                    fontFamily: 'Roboto',
+                    fontSize: 22,
                     fontWeight: FontWeight.bold,
-                    //color: Color(0xff3c3d42),
+                    color: Theme.of(context).appBarTheme.titleTextStyle!.color,
                   ),
                 ),
               ),
@@ -84,13 +94,14 @@ class _CategoryPageScreenState extends State<CategoryPageScreen>
           SliverList(
             delegate: SliverChildBuilderDelegate(
               (BuildContext context, int index) {
+                Section section = categorySections[index];
                 final animation = CurvedAnimation(
                   parent: _listController,
                   curve: Interval(
                     (index / category.sections.length),
                     1,
-                    curve: Curves
-                        .elasticIn, // Choose a different curve if desired
+                    curve:
+                        Curves.elasticIn, // Choose a different curve if desired
                   ),
                 );
                 return AnimatedBuilder(
@@ -118,9 +129,10 @@ class _CategoryPageScreenState extends State<CategoryPageScreen>
                           imagePath: categorySections[index].imagePath,
                           sourceFilePath:
                               categorySections[index].sourceFilePath,
+                          isFavorite: categorySections[index].isFavorite,
                         ),
                         const Divider(
-                          height: 5,
+                          height: 3,
                           thickness: 1,
                         )
                       ],

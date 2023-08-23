@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 
 
 class WidgetStatefulEx extends StatefulWidget {
+  const WidgetStatefulEx({Key? key}) : super(key: key);
+
   @override
   _StatefulWidgetExampleState createState() => _StatefulWidgetExampleState();
 }
@@ -67,10 +69,10 @@ class ToggleButtonWidget extends StatelessWidget {
   final bool isHighlighted;
   final VoidCallback onPressed;
 
-  const ToggleButtonWidget({
+   const ToggleButtonWidget({Key? key, 
     required this.isHighlighted,
     required this.onPressed,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -11,19 +11,19 @@ class _WidgetStepperExState extends State<WidgetStepperEx> {
   int _currentStep = 0;
 
   final List<Step> _steps = [
-    Step(
-      title: Text('Step 1'),
-      content: Text('This is the content of Step 1.'),
+    const Step(
+      title:  Text('Step 1'),
+      content:  Text('This is the content of Step 1.'),
       isActive: true,
     ),
-    Step(
-      title: Text('Step 2'),
-      subtitle: Text('Step 2 subtitle'),
+    const Step(
+      title:  Text('Step 2'),
+      subtitle:  Text('Step 2 subtitle'),
       content: Text('This is the content of Step 2.'),
       isActive: false,
     ),
-    Step(
-      title: Text('Step 3'),
+    const Step(
+      title:  Text('Step 3'),
       content: Text('This is the content of Step 3.'),
       isActive: false,
     ),

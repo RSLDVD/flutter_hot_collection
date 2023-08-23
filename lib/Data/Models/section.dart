@@ -7,17 +7,20 @@ class Section {
   final String description;
   final String imagePath;
   final String sourceFilePath;
+    bool isFavorite;
 
   //final Widget Function()? codeWidget;
 
   Section({
     required this.id,
-    required this .category,
+    required this.category,
     required this.title,
     required this.subtitle,
     required this.description,
     required this.imagePath,
     required this.sourceFilePath,
+    required this.isFavorite,
+
     //required this.codeWidget
 }
   );}

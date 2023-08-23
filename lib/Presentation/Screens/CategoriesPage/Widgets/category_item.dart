@@ -29,10 +29,10 @@ class CategoryItem extends StatelessWidget {
       onTap: () => _selectCategory(context),
       //splashColor: Colors.black38,
       borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(100),
-            topRight: Radius.circular(100),
-            bottomLeft: Radius.circular(20),
-            bottomRight: Radius.circular(100),
+            topLeft: Radius.circular(85),
+            topRight: Radius.circular(85),
+            bottomLeft: Radius.circular(25),
+            bottomRight: Radius.circular(25),
           ),
       child: Container(
         margin: const EdgeInsets.only(left: 10, right: 10, top: 10),
@@ -40,10 +40,10 @@ class CategoryItem extends StatelessWidget {
         decoration: BoxDecoration(
           color: Theme.of(context).primaryColor, //Colors.white24,
           borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(100),
-            topRight: Radius.circular(100),
-            bottomLeft: Radius.circular(20),
-            bottomRight: Radius.circular(100),
+            topLeft: Radius.circular(85),
+            topRight: Radius.circular(85),
+            bottomLeft: Radius.circular(25),
+            bottomRight: Radius.circular(25),
           ),
           boxShadow: [
             BoxShadow(
@@ -89,28 +89,31 @@ class CategoryItem extends StatelessWidget {
           ),
           Positioned(
               top: 135,
-              left: 4,
+              left: 2,
               child: Text(
                 title,
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
-                  //color:Color(0xff090088),
+                style:  TextStyle(
+                  fontFamily: 'Roboto',
+                  fontWeight: FontWeight.w600,
+                  fontSize: 17,
+                  color:Theme.of(context).appBarTheme.iconTheme?.color,
                 ),
               )),
           Positioned(
-              top: 162,
+              top: 160,
               left: 2,
               child: SizedBox(
                 width: 150,
                 child: Wrap(
-                  spacing: 5,
-                  runSpacing: 2,
+                  spacing: 4,
+                  runSpacing: 1,
                   children: subtitle.map((s) {
                     return Text(
                       s,
                       style: TextStyle(
-                          fontSize: 12,
+                          fontFamily: 'Montserrat',
+                          fontSize: 12.5,
+                          fontWeight: FontWeight.w100,
                           color: Theme.of(context).textTheme.subtitle1?.color),
                     );
                   }).toList(),

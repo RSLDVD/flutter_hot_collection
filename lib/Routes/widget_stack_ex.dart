@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class WidgetStackEx extends StatefulWidget {
+  const WidgetStackEx({Key? key}) : super(key: key);
+
   @override
   _WidgetStackExeState createState() => _WidgetStackExeState();
 }

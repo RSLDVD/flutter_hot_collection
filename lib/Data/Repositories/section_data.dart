@@ -1,10 +1,15 @@
+
 import '../Models/section.dart';
 
-// ignore: non_constant_identifier_names
-List<Section> K1sectionData = [
+
+
+
+
+  List<Section> K1section = [
   Section(
-    id: 's1',
+    id: 'cat1s1',
     category: 'cat1',
+    isFavorite: false,
     title: 'Scaffold',
     subtitle:
         'Elevating UI with Scaffold: Creating Multifaceted, Interactive Interfaces',
@@ -38,8 +43,9 @@ This example demonstrates how to create a basic app layout using the `Scaffold` 
 ''',
   ),
   Section(
-    id: 's2',
+    id: 'cat1s2',
     category: 'cat1',
+    isFavorite: false,
     title: 'Stateless',
     subtitle: 'Building Vibrant and Consistent Interfaces',
     imagePath: 'imagePath',
@@ -55,8 +61,9 @@ This example demonstrates how to create a basic app layout using the `Scaffold` 
         "By using these components, the code effectively demonstrates the principles of creating reusable widgets using the `StatelessWidget` class. Each custom widget (`ColoredBoxWidget` and `RoundedButtonWidget`) encapsulates specific functionality, promoting clean and modular code design. The `StatelessWidget` class is ideal for components that don't require internal state management, making it an excellent choice for creating UI elements that can be easily composed and combined to build complex user interfaces.\n\n",
   ),
   Section(
-    id: 's3',
+    id: 'cat1s3',
     category: 'cat1',
+    isFavorite: false,
     title: 'Stateful',
     subtitle: 'Crafting Dynamic and Engaging Interfaces',
     imagePath: 'imagePath',
@@ -79,8 +86,9 @@ This example underscores the power of `StatefulWidget` for managing complex UI s
 ''',
   ),
   Section(
-    id: 's4',
+    id: 'cat1s4',
     category: 'cat1',
+    isFavorite: false,
     title: 'Icon',
     subtitle: 'Enhancing Visual Communication with Symbolic Graphics',
     imagePath: 'imagePath',
@@ -99,8 +107,9 @@ This example underscores the power of `StatefulWidget` for managing complex UI s
         "This example illustrates how to incorporate icons into your Flutter application using the `Icon` widget. Icons can enhance the visual representation of your app and provide a visual language that users can quickly understand.",
   ),
   Section(
-    id: 's5',
+    id: 'cat1s5',
     category: 'cat1',
+    isFavorite: false,
     title: 'Text',
     subtitle:
         'Customized Text Display:Styling and RichText Widgets for Creating Colorful and Interactive Text in Flutter',
@@ -133,8 +142,9 @@ This example underscores the power of `StatefulWidget` for managing complex UI s
         "These examples illustrate how to style and format text using the Text and RichText widgets in Flutter. The RichText widget offers the ability to create more complex text displays with different styles and interactive elements, enhancing the user experience of your app.",
   ),
   Section(
-      id: 's6',
+      id: 'cat1s6',
       category: 'cat1',
+      isFavorite: false,
       title: 'Row,Column & Expanded',
       subtitle: 'Layouts with Row, Column & Expanded: Crafting Versatile UIs',
       imagePath: 'imagePath',
@@ -157,8 +167,9 @@ This example underscores the power of `StatefulWidget` for managing complex UI s
           "The ColorBox class defines a Container widget with a fixed width and height of 100 pixels. It takes a Color parameter to specify its background color.\n\n"
           "These layout arrangements showcase how Row, Column, and Expanded widgets can be used to create responsive and flexible UI layouts. The provided code helps in understanding how to manage space distribution, alignment, and responsiveness within the Flutter app.\n\n"),
   Section(
-    id: 's7',
+    id: 'cat1s7',
     category: 'cat1',
+    isFavorite: false,
     title: 'Container',
     subtitle:
         'Layout and Spacing: Creating Aesthetic UIs with Container, Margin & Padding',
@@ -187,8 +198,9 @@ This example underscores the power of `StatefulWidget` for managing complex UI s
         "These examples showcase how the Container widget is used to wrap and stylize widgets, providing a structured layout along with margin and padding adjustments. The flexibility of Containers, combined with margin and padding properties, enables developers to create visually pleasing UI components with consistent spacing and alignment.\n\n",
   ),
   Section(
-    id: 's8',
+    id: 'cat1s8',
     category: 'cat1',
+    isFavorite: false,
     title: 'PlaceHolder',
     subtitle: 'Using Placeholder for Layout and Design',
     imagePath: 'imagePath',
@@ -210,8 +222,9 @@ This example underscores the power of `StatefulWidget` for managing complex UI s
         "These Placeholder widgets are useful for visualizing the layout structure during development. They help developers identify the placement of UI components, sizes, and alignments, making it easier to fine-tune the overall design. Once the actual UI components are ready, Placeholder widgets can be replaced with the final widgets.\n\n\n",
   ),
   Section(
-    id: 's9',
+    id: 'cat1s9',
     category: 'cat1',
+    isFavorite: false,
     title: 'Stack',
     subtitle:
         'Layered and Indexed UI Composition: Crafting Dynamic Layouts with Stack & IndexedStack',
@@ -235,8 +248,9 @@ This example underscores the power of `StatefulWidget` for managing complex UI s
         "This example illustrates how to use the Stack and IndexedStack widgets to create complex layouts and dynamic UIs. The Stack widget is useful for layering widgets, while the IndexedStack widget simplifies the display of different views based on an index. These widgets are commonly used in scenarios where you want to overlap or switch between different components.\n\n",
   ),
   Section(
-    id: 's10',
+    id: 'cat1s10',
     category: 'cat1',
+    isFavorite: false,
     title: 'CheckBox',
     subtitle: 'Building Interactive UIs with Flutter',
     imagePath: 'imagePath',
@@ -257,8 +271,9 @@ This example underscores the power of `StatefulWidget` for managing complex UI s
         "This example illustrates how to create interactive checkboxes using the Checkbox widget in Flutter. By using the onChanged callback and managing the checkbox state using the _isChecked variable, you can provide users with a simple way to make selections or indicate preferences within your app.\n\n\n",
   ),
   Section(
-    id: 's11',
+    id: 'cat1s11',
     category: 'cat1',
+    isFavorite: false,
     title: 'Switch',
     subtitle: 'Building Dynamic UIs with Toggle able Elements',
     imagePath: 'imagePath',
@@ -287,8 +302,9 @@ This example underscores the power of `StatefulWidget` for managing complex UI s
         "By providing various switch options, you can offer users a range of interactive choices in your app's UI.\n\n",
   ),
   Section(
-    id: 's12',
+    id: 'cat1s12',
     category: 'cat1',
+    isFavorite: false,
     title: 'Radio',
     subtitle: 'Navigating Choices with Flutter\'s Radio Widget',
     imagePath: 'imagePath',
@@ -316,8 +332,9 @@ This example underscores the power of `StatefulWidget` for managing complex UI s
         "This example provides a clear demonstration of how to create and manage radio buttons for user input in your Flutter app's interface.\n\n",
   ),
   Section(
-    id: 's13',
+    id: 'cat1s13',
     category: 'cat1',
+    isFavorite: false,
     title: 'DropDown ',
     subtitle:
         'Exploring Dropdown Widgets: Crafting Dynamic Selection Interfaces',
@@ -346,8 +363,9 @@ This example underscores the power of `StatefulWidget` for managing complex UI s
         "The setState method is used to manage changes to the selected fruit, ensuring that the UI is updated accordingly.\n\n",
   ),
   Section(
-    id: 's14',
+    id: 'cat1s14',
     category: 'cat1',
+    isFavorite: false,
     title: 'Chip ',
     subtitle:
         'Elevating UI with Colorful Chips: Dynamic Selection and Visual Delight',
@@ -377,8 +395,9 @@ This example underscores the power of `StatefulWidget` for managing complex UI s
         "The setState method is used to manage changes in the selected state of FilterChips, ensuring that the UI reflects the user's interactions.\n\n",
   ),
   Section(
-    id: 's15',
+    id: 'cat1s15',
     category: 'cat1',
+    isFavorite: false,
     title: 'Dialogs and Bottom Sheets',
     subtitle: 'Interactive User Feedback: Exploring Dialogs and Bottom Sheets',
     imagePath: 'imagePath',
@@ -404,8 +423,9 @@ This example underscores the power of `StatefulWidget` for managing complex UI s
         "By leveraging these pop-up components, developers can enhance the user experience and effectively communicate information within their apps.\n\n",
   ),
   Section(
-    id: 's16',
+    id: 'cat1s16',
     category: 'cat1',
+    isFavorite: false,
     title: 'Stepper',
     subtitle:
         'Guided Step-by-Step Progress: Creating Interactive User Flows with the Stepper Widget',
@@ -432,8 +452,9 @@ This example underscores the power of `StatefulWidget` for managing complex UI s
         "The Stepper widget is a versatile tool for creating user-friendly and organized interfaces that break down complex tasks into manageable steps.\n\n",
   ),
   Section(
-    id: 's17',
+    id: 'cat1s17',
     category: 'cat1',
+    isFavorite: false,
     title: 'Slider',
     subtitle:
         'Interactive Data Control: Crafting Colorful and Engaging User Experiences with the Slider Widget',
@@ -459,8 +480,9 @@ This example underscores the power of `StatefulWidget` for managing complex UI s
         "Sliders are often used for scenarios such as adjusting volume, brightness, or any value within a range.\n\n",
   ),
   Section(
-    id: 's18',
+    id: 'cat1s18',
     category: 'cat1',
+    isFavorite: false,
     title: 'Card',
     subtitle:
         'Crafting Eye-catching Cards with Textual Information using the Card Widget',
@@ -485,8 +507,9 @@ This example underscores the power of `StatefulWidget` for managing complex UI s
         "The Card widget is customizable with properties like color, elevation, shape, and content, allowing developers to match the cards to the app's design language.\n\n\n",
   ),
   Section(
-    id: 's19',
+    id: 'cat1s19',
     category: 'cat1',
+    isFavorite: false,
     title: 'ExpansionPanelList',
     subtitle:
         'Creating Organized and Expandable Content using the ExpansionPanelList Widget',
@@ -512,8 +535,9 @@ This example underscores the power of `StatefulWidget` for managing complex UI s
         "It showcases the use of ExpansionPanel and ListTile widgets to create a collapsible content structure that enhances the user experience by allowing users to focus on specific content sections.\n\n\n",
   ),
   Section(
-    id: 's20',
+    id: 'cat1s20',
     category: 'cat1',
+    isFavorite: false,
     title: 'TextFormField',
     subtitle:
         'User Input Management: Creating Colorful Input Fields with Validation using the TextFormField Widget',
@@ -548,10 +572,11 @@ This example underscores the power of `StatefulWidget` for managing complex UI s
 ];
 
 // ignore: non_constant_identifier_names
-List<Section> K2sectionData = [
+List<Section> K2section = [
   Section(
-    id: 's1',
+    id: 'cat2s1',
     category: 'cat2',
+    isFavorite: false,
     title: 'List Tile',
     subtitle: 'Enhanced List Tile Showcase',
     imagePath: 'imagePath',
@@ -571,8 +596,9 @@ The app displays an AppBar titled "Enhanced List Tile Showcase" and a detailed d
 ''',
   ),
   Section(
-    id: 's2',
+    id: 'cat2s2',
     category: 'cat2',
+    isFavorite: false,
     title: 'Dismissible List View builder ',
     subtitle: 'Interactive Deletion , Swipe to dismiss ',
     imagePath: 'imagePath',
@@ -597,8 +623,9 @@ This code offers a practical example of integrating interactive elements into yo
 ''',
   ),
   Section(
-    id: 's3',
+    id: 'cat2s3',
     category: 'cat2',
+    isFavorite: false,
     title: 'Grid View builder ',
     subtitle: 'Dynamic Grid with Icons and Text',
     imagePath: 'imagePath',
@@ -630,8 +657,9 @@ In summation, this code example serves as a practical demonstration of how to cr
 ''',
   ),
   Section(
-    id: 's4',
+    id: 'cat2s4',
     category: 'cat2',
+    isFavorite: false,
     title: 'ExpansionTile ',
     subtitle: 'Nested ExpansionTile List ',
     imagePath: 'imagePath',
@@ -662,9 +690,10 @@ The 'main' function initializes the app with an AppBar and a Scaffold containing
 In summary, this example provides insights into creating nested ExpansionTile widgets to build organized, interactive, and collapsible content sections in your Flutter applications.
 ''',
   ),
-    Section(
-    id: 's5',
+  Section(
+    id: 'cat2s5',
     category: 'cat2',
+    isFavorite: false,
     title: 'Reorderable List ',
     subtitle: 'Interactive List Reordering ',
     imagePath: 'imagePath',
@@ -694,9 +723,10 @@ The 'main' function initializes the app with an 'AppBar' and a 'Scaffold' contai
 In summary, this example illustrates how to enable dynamic list reordering within a Flutter application using the 'ReorderableListView' widget. It serves as a foundation for creating user-friendly interfaces where users can effortlessly prioritize and arrange items according to their preferences.
 ''',
   ),
-    Section(
-    id: 's6',
+  Section(
+    id: 'cat2s6',
     category: 'cat2',
+    isFavorite: false,
     title: 'ListWheelView',
     subtitle: 'Visual Scrolling with ListWheelView ',
     imagePath: 'imagePath',
@@ -729,11 +759,13 @@ The 'main' function initializes the app, and the 'ListWheelViewEx' widget is pla
 In summary, this example exemplifies the utilization of 'ListWheelView' to create scrollable lists with unique visual properties. It's well-suited for instances where aesthetic appeal and interactive scrolling are key requirements.
 ''',
   ),
-      Section(
-    id: 's7',
+  Section(
+    id: 'cat2s7',
     category: 'cat2',
+    isFavorite: false,
     title: 'Slidable List Tile ',
-    subtitle: 'Learn how to implement slideable actions and dismissible tiles using the flutter_slidable package ',
+    subtitle:
+        'Learn how to implement slideable actions and dismissible tiles using the flutter_slidable package ',
     imagePath: 'imagePath',
     sourceFilePath: '/list_slideabletile_ex',
     description: """
@@ -750,9 +782,10 @@ In this example, the flutter_slidable package is used to showcase various ways o
 This example provides a hands-on experience with slideable actions and dismissible tiles, which are common patterns for managing actions in a list view.
 """,
   ),
-     Section(
-    id: 's8',
+  Section(
+    id: 'cat2s8',
     category: 'cat2',
+    isFavorite: false,
     title: 'Data Table ',
     subtitle: 'Creating Interactive DataTable with Checkboxes in Flutte ',
     imagePath: 'imagePath',
@@ -769,9 +802,10 @@ The DataTable widget is enclosed in a SingleChildScrollView with horizontal scro
 In summary, the DataTableEx example demonstrates how to create a user-friendly table with interactive checkboxes in Flutter. This approach is useful for scenarios where users need to select or mark specific rows of data. By combining the power of DataTable with interactive widgets like checkboxes, developers can create versatile and engaging user interfaces for data representation and selection.
 ''',
   ),
-       Section(
-    id: 's9',
+  Section(
+    id: 'cat2s9',
     category: 'cat2',
+    isFavorite: false,
     title: ' ',
     subtitle: ' ',
     imagePath: 'imagePath',
@@ -780,86 +814,349 @@ In summary, the DataTableEx example demonstrates how to create a user-friendly t
   ),
 ];
 // ignore: non_constant_identifier_names
-List<Section> K3sectionData = [
+List<Section> K3section = [
   Section(
-    id: 's1',
+    id: 'cat3s1',
     category: 'cat3',
-    title: 'Icon',
-    subtitle: 'subtitle',
-    description: 'description',
+    isFavorite: false,
+    title: 'Basic AppBar',
+    subtitle: 'Creating a Customized AppBar with Interactivity',
     imagePath: 'imagePath',
-    sourceFilePath: '/widget_icon_ex',
+    sourceFilePath: '/appbar_basicappbar_ex',
+    description: '''
+The BasicAppbarEx class showcases a simple implementation of an AppBar in Flutter with added customization and interactive elements. The example demonstrates how to create a basic app bar with a custom background color, a title, a leading icon button, action icons, and a PopupMenuButton.
+
+The AppBar widget is integrated within the Scaffold's app bar property. In this example, the AppBar is customized with a purple background color and a title that reads "Example App Bar."
+
+The leading icon button, represented by the Icons.menu icon, provides users with a way to trigger a menu or navigation-related action. While the onPressed callback for the leading icon is empty in this example, developers can implement custom logic based on the specific app requirements.
+
+Two action icons are added to the AppBar using the actions property. The first action is an IconButton with the Icons.search icon, allowing users to trigger a search-related action. The second action is a PopupMenuButton, which displays a popup menu with two items ("Item 1" and "Item 2"). The onSelected callback is invoked when a user selects an item from the popup menu.
+
+The body of the Scaffold consists of a Center widget containing the text "Hello, World!" for demonstration purposes.
+
+In summary, the BasicAppbarEx example provides insight into creating a basic app bar with customized appearance and interactive elements such as leading and action icons. Additionally, it demonstrates the usage of a PopupMenuButton for presenting a context menu to users.
+''',
   ),
   Section(
-    id: 's2',
+    id: 'cat3s2',
     category: 'cat3',
-    title: 'Text',
-    subtitle: 'subtitle',
-    description: 'description',
+    isFavorite: false,
+    title: 'Sliver AppBar',
+    subtitle:
+        'Sliver App Bar & Controlling Sliver AppBar Visibility with a Switch',
     imagePath: 'imagePath',
-    sourceFilePath: '/widget_text_ex',
+    sourceFilePath: '/appbar_sliverappbar_ex',
+    description: '''
+The SliverAppBarEx class exemplifies the usage of a SliverAppBar in Flutter and showcases the dynamic control of its visibility using a Switch widget. The example demonstrates how to create a scrollable app layout with an expandable SliverAppBar, a toggle switch, and a dynamic list of items.
+
+The SliverAppBar is incorporated within a CustomScrollView to achieve a complex scrollable layout with sliver-based components. The SliverAppBar's flexibleSpace property includes a FlexibleSpaceBar with a title reading "Sliver AppBar Example." The expandedHeight and pinned properties determine the behavior of the SliverAppBar during scrolling.
+
+Beneath the SliverAppBar, a SliverToBoxAdapter holds a SwitchListTile. This SwitchListTile is used to control the visibility of the SliverAppBar based on user interaction. When the switch is toggled, the SliverAppBar either remains pinned to the top of the screen or scrolls off-screen based on the value of the _isAppBarVisible variable.
+
+A conditional SliverList is included to display a list of ListTile widgets within the CustomScrollView. The visibility of this list is determined by the state of the _isAppBarVisible variable. When the SliverAppBar is visible, the SliverList is rendered, presenting a dynamic list of items labeled "List Item x."
+
+In summary, the SliverAppBarEx example provides insight into creating a scrollable layout with a dynamically controllable SliverAppBar using a Switch widget. It demonstrates how to integrate sliver-based components within a CustomScrollView to achieve complex scrolling behavior and dynamic UI updates.
+''',
   ),
   Section(
-    id: 's3',
+    id: 'cat3s3',
     category: 'cat3',
-    title: 'Button',
-    subtitle: 'subtitle',
-    description: 'description',
+    isFavorite: false,
+    title: 'Bottom AppBar',
+    subtitle: 'Creating a Customized Bottom App Bar Example',
     imagePath: 'imagePath',
-    sourceFilePath: '/widget_text_ex',
+    sourceFilePath: '/appbar_bottomappbar_ex',
+    description: '''
+
+The BottomAppBarEx class provides a comprehensive example of building a customized Bottom App Bar using Flutter's widget framework. This code showcases various customization options, interactive elements, and enhanced user experience within the Bottom App Bar layout.
+
+Explanation:
+The provided code demonstrates the following features:
+
+1. Customization Options: The code allows users to customize the appearance and behavior of the Bottom App Bar through options like FloatingActionButton position, mini FAB, and the presence of a bottom bar notch.
+
+2. FloatingActionButton: A customizable FloatingActionButton is included at the center of the app bar, with options to toggle its mini appearance and trigger a toast message when pressed.
+
+3. App Bar and Action: An AppBar is displayed at the top of the screen, featuring a title and an actions area. Although the actions functionality is not yet implemented (onPressed is empty), it showcases the potential to add settings or additional actions.
+
+4. Configuration List: The ListView contains a configuration list with options for modifying the appearance of the app bar and the behavior of the FAB. It includes options to change the FloatingActionButton position, enable/disable the bottom bar notch, and toggle the mini FAB.
+
+5. Custom BottomAppBar: The BottomAppBar is customized to feature a visually appealing design and includes interactive icons for opening a custom modal bottom sheet, initiating a custom search action, and displaying a custom menu action.
+
+6. Custom Modal Bottom Sheet: The _showCustomModalBottomSheet function showcases how to create and display a custom modal bottom sheet when the menu icon is tapped. This provides users with additional information or options.
+
+Overall, this code example serves as a template for creating a rich and user-friendly app interface with a customized Bottom App Bar layout. It demonstrates various techniques to enhance the user experience and engage users with interactive elements.
+''',
   ),
   Section(
-    id: 's4',
+    id: 'cat3s4',
     category: 'cat3',
-    title: 'Text',
-    subtitle: 'subtitle',
-    description: 'description',
+    isFavorite: false,
+    title: 'Persistent AppBar',
+    subtitle: ' Custom Persistent App Bar with Toggleable Visibility',
     imagePath: 'imagePath',
-    sourceFilePath: '/widget_text_ex',
+    sourceFilePath: '/appbar_persistentappbar_ex',
+    description:
+        "This Flutter code snippet demonstrates how to create a custom persistent app bar with toggleable visibility. "
+        "In many mobile applications, app bars play a crucial role in providing easy access to navigation, actions, and information. "
+        "By incorporating a bottom app bar that remains visible as users scroll through content, you can offer a consistent and "
+        "convenient user experience.\n\n"
+        "The architecture of this example is built upon a `Scaffold` widget, a fundamental structure in Flutter apps. The `Scaffold` "
+        "encompasses an `AppBar` at the top, which includes a title and settings icon. The body of the `Scaffold` comprises a "
+        "vertical `ListView` that hosts a `ListTile`. This `ListTile` is equipped with a `Switch` widget, allowing users to dynamically "
+        "toggle the visibility of the app bar.\n\n"
+        "When the app bar is visible, a custom `BottomAppBar` is affixed at the bottom of the screen. This `BottomAppBar` features "
+        "three `IconButton` widgets: menu, search, and more_vert (representing a menu with additional options). Each button invokes "
+        "specific actions when pressed. The menu button opens a custom modal bottom sheet with centered text content. The search "
+        "button showcases a Toast notification, providing a visual cue to the user.\n\n"
+        "This example empowers developers to craft an intuitive user interface by incorporating toggleable visibility for the app bar. "
+        "Users can now choose whether they want the app bar to persistently remain on-screen while they interact with the application's "
+        "content. This dynamic approach enhances user engagement and navigational efficiency, catering to varying preferences and "
+        "situational contexts.\n\n"
+        "By utilizing Flutter's widgets like `Scaffold`, `AppBar`, `BottomAppBar`, and interactive components such as `Switch` and "
+        "`IconButton`, developers can architect sophisticated and responsive interfaces that seamlessly adapt to user interactions. "
+        "Whether it's a news reader, a to-do list, or a social media app, the flexibility offered by Flutter's widget ecosystem empowers "
+        "developers to craft delightful and user-centric experiences.",
   ),
   Section(
-    id: 's5',
+    id: 'cat3s5',
     category: 'cat3',
-    title: 'Text',
-    subtitle: 'subtitle',
-    description: 'description',
+    isFavorite: false,
+    title: 'Cupertino NavigationBar',
+    subtitle:
+        'CupertinoNavigationBar Example - Demonstrating the use of CupertinoNavigationBar in a Flutter app',
     imagePath: 'imagePath',
-    sourceFilePath: '/widget_text_ex',
+    sourceFilePath: '/appbar_cupertinonavigationbar_ex',
+    description: '''
+This Flutter example showcases the integration of the CupertinoNavigationBar widget within an app. The CupertinoNavigationBar is designed to provide the characteristic iOS navigation bar appearance and behavior, making it suitable for iOS-style interfaces.
+
+In this example, the app utilizes the Cupertino package along with the fluttertoast package to demonstrate the implementation of the navigation bar.
+
+The CupertinoNavigationBar is placed within a CupertinoPageScaffold, which is a high-level widget commonly used in iOS apps. It contains a middle property to display the title in the center of the navigation bar. Additionally, a trailing property hosts a CupertinoButton with an icon that simulates a settings button. Tapping this button triggers a toast message through the fluttertoast package, showcasing an action that could be linked to settings functionality in a real-world application.
+
+The rest of the screen content is embedded within the child property of the CupertinoPageScaffold. Here, a centered CupertinoButton is placed for demonstration purposes. When pressed, it also displays a toast message through the fluttertoast package, demonstrating an action that could be associated with a primary interaction in the app.
+
+By running this example, developers can observe how to effectively integrate the CupertinoNavigationBar into their apps and achieve a consistent iOS-like navigation experience. The appearance and behavior of the navigation bar can be further customized and extended according to the app's specific design and functionality requirements.
+
+In summary, this example showcases how the CupertinoNavigationBar widget can be utilized to create a navigation bar with iOS-style aesthetics and actions, making it well-suited for iOS-themed Flutter applications.
+''',
   ),
   Section(
-    id: 's6',
+    id: 'cat3s6',
     category: 'cat3',
-    title: 'Text',
-    subtitle: 'subtitle',
-    description: 'description',
+    isFavorite: false,
+    title: 'Cupertino SliverNavigationBar ',
+    subtitle: 'Implementing Cupertino Sliver Navigation Bar in Flutter',
     imagePath: 'imagePath',
-    sourceFilePath: '/widget_text_ex',
+    sourceFilePath: '/appbar_cupertinoslivernavigationbar_ex',
+    description: '''
+The provided code exemplifies the integration of the CupertinoSliverNavigationBar in a Flutter app with a Cupertino design. The CupertinoSliverNavigationBar offers a sleek and intuitive navigation bar experience, compatible with Cupertino-style applications. This example showcases the creation of an engaging user interface using the CupertinoPageScaffold, CupertinoNavigationBar, and various sliver-based widgets.
+
+In this example:
+
+1. The app structure is established using the CupertinoApp widget, ensuring a consistent and familiar Cupertino visual identity throughout the application.
+
+2. Within the CupertinoPageScaffold, the primary navigation bar is presented using the CupertinoNavigationBar. The navigation bar features a centered title ("Cupertino Sliver Nav Bar Example") and an associated settings button. When users tap the settings button, a toast notification is triggered through the fluttertoast package, providing user feedback.
+
+3. The main content area is structured as a CustomScrollView, facilitating the integration of sliver-based widgets that allow dynamic and responsive layouts.
+
+4. The first sliver in the CustomScrollView is the CupertinoSliverNavigationBar. This component introduces a large title ("Welcome to Cupertino") and is complemented by a trailing profile button. When the profile button is pressed, a toast notification informs the user, creating a seamless interaction experience.
+
+5. The second sliver, SliverList, contains a collection of ListTile widgets. These widgets are generated using the SliverChildBuilderDelegate, which constructs a list of list items with varying indices. This section underscores the versatility of the CupertinoSliverNavigationBar in tandem with other sliver-based widgets, culminating in a visually pleasing and feature-rich presentation.
+
+By delving into this example, developers can gain a comprehensive understanding of how to seamlessly incorporate the CupertinoSliverNavigationBar into their Flutter applications. The implementation aligns with Cupertino design principles, ensuring that applications deliver a polished and engaging user experience while benefiting from the convenience of sliver-based layouts.
+''',
   ),
   Section(
-    id: 's7',
+    id: 'cat3s7',
     category: 'cat3',
-    title: 'Text',
+    isFavorite: false,
+    title: 'Basic AppBar',
     subtitle: 'subtitle',
-    description: 'description',
     imagePath: 'imagePath',
-    sourceFilePath: '/widget_text_ex',
-  ),
-  Section(
-    id: 's8',
-    category: 'cat3',
-    title: 'Text',
-    subtitle: 'subtitle',
+    sourceFilePath: '/appbar__ex',
     description: 'description',
-    imagePath: 'imagePath',
-    sourceFilePath: '/widget_text_ex',
-  ),
-  Section(
-    id: 's9',
-    category: 'cat3',
-    title: 'Text',
-    subtitle: 'subtitle',
-    description: 'description',
-    imagePath: 'imagePath',
-    sourceFilePath: '/widget_text_ex',
   ),
 ];
+
+List<Section> K4section = [
+  Section(
+    id: 'cat4s1',
+    category: 'cat4',
+    isFavorite: false,
+    title: 'BottomNavigationBar',
+    subtitle: 'Exploring Bottom Navigation Bars in Flutter',
+    imagePath: 'imagePath',
+    sourceFilePath: '/navigation_bottomnavigationbar_ex',
+    description: '''
+In this Flutter code example, we delve into the concept of using the BottomNavigationBar widget to create an effective and engaging navigation experience within a mobile app. The code showcases the functional and visual aspects of the BottomNavigationBar, along with the capability to add various items to it.
+
+The main goal of this example is to familiarize developers with the implementation of a bottom navigation bar, which is a common UI element in mobile applications. This navigation pattern allows users to easily switch between different sections or functionalities of the app with just a tap.
+
+The code starts by setting up a MaterialApp with a theme and a home screen defined as a BottomNavigationBarExample widget. This widget extends StatefulWidget to maintain a dynamic state. Inside the state, there are three main components:
+
+1. Pages: A list of PlaceholderWidget instances, each representing a different screen or section of the app. These pages are displayed based on the user's selection in the bottom navigation bar.
+
+2. BottomNavigationBar: A navigation bar placed at the bottom of the screen. It contains three BottomNavigationBarItem instances, each representing a navigation option. Icons and labels are provided for each item. The current selected item is tracked using the _selectedIndex variable.
+
+3. _onItemTapped Function: A function that updates the selected index when a navigation option is tapped. This triggers a state change and re-renders the UI to display the corresponding page.
+
+Throughout the code, the PlaceholderWidget is used to create temporary content for each page. This can be replaced with actual page implementations.
+
+By examining this code, developers can gain a comprehensive understanding of how to build a responsive and user-friendly bottom navigation bar. They will learn to customize the appearance, handle user interactions, and seamlessly switch between different sections of the app. This example serves as a foundational guide for creating effective navigation systems in Flutter apps.
+''',
+  ),
+  Section(
+    id: 'cat4s2',
+    category: 'cat4',
+    isFavorite: false,
+    title: 'TabBar and TabBarView',
+    subtitle: 'Creating a Customized TabBar with TabBarView',
+    imagePath: 'imagePath',
+    sourceFilePath: '/navigation_tabbars_ex',
+    description: '''
+In this Flutter code example, we delve into the concept of using TabBar and TabBarView widgets to create a versatile and organized navigation experience within an app. The provided code showcases the functional and visual aspects of TabBar and TabBarView, while demonstrating how to add and customize different tabs.
+
+The main objective of this example is to help developers grasp the implementation of a tab-based navigation pattern. Tabs are an essential UI element that allow users to switch between different sections or categories of content without navigating away from the current screen.
+
+The code starts by defining a MaterialApp and introducing a TabBarExample widget. This widget serves as the entry point of the application. Inside the TabBarScreen widget, the DefaultTabController widget is used to handle the state of the tabs. The "length" parameter specifies the number of tabs to be displayed.
+
+The AppBar at the top of the screen contains a TabBar widget, which is populated with Tab widgets. Each Tab widget represents a different tab option. The "text" property of the Tab widget allows developers to label the tabs according to the content they represent.
+
+The body of the Scaffold is a TabBarView widget, containing a list of children. Each child represents the content that corresponds to a specific tab. In this example, the content is a simple Text widget with a descriptive message.
+
+Developers can observe how the TabBar and TabBarView work together to create a seamless navigation experience. When a user selects a tab, the associated content is displayed in the TabBarView. This example serves as an essential guide for creating efficient and user-friendly tab-based navigation systems in Flutter apps. Developers can further customize the appearance and content of each tab to suit their application's needs.
+''',
+  ),
+  Section(
+    id: 'cat4s3',
+    category: 'cat4',
+    isFavorite: false,
+    title: 'Drawer',
+    subtitle: 'Creating a Customized Drawer with Interactivity',
+    imagePath: 'imagePath',
+    sourceFilePath: '/navigation_drawer_ex',
+    description: '''
+This Flutter code example demonstrates the usage of the Drawer widget to create a navigation menu that slides in from the side of the screen. The provided code showcases the functional and visual aspects of the Drawer, as well as how to add different items and customize its appearance.
+
+The main purpose of the example is to help developers understand how to implement a navigation drawer, which is a common UI pattern used to provide easy access to various sections of an app. The Drawer contains a list of items that users can interact with to navigate to different screens or perform specific actions.
+
+The code starts by defining a MaterialApp and introducing a DrawerExample widget. This widget serves as the entry point of the application. Inside the DrawerScreen widget, a Scaffold is used to create the app's structure. The AppBar at the top contains a title.
+
+The drawer property of the Scaffold is set to a Drawer widget. Inside the Drawer, a ListView is used to hold a list of items. The UserAccountsDrawerHeader widget provides a header with the user's account information and profile picture.
+
+The ListTile widgets represent the menu items in the drawer. Each ListTile includes an icon, a title, and an onTap callback that defines the action to be taken when the item is tapped. The onTap callback typically involves navigating to a different screen or performing a specific action.
+
+Developers can see how the Drawer smoothly slides in and out from the side of the screen when the user interacts with it. This example serves as a comprehensive guide for creating and customizing navigation drawers in Flutter apps. It covers crucial aspects such as adding user account information, icons, and handling tap events for different menu items.
+''',
+  ),
+  Section(
+    id: 'cat4s4',
+    category: 'cat4',
+    isFavorite: false,
+    title: 'FloatingActionButton',
+    subtitle: 'Creating a FloatingActionButton with Navigation',
+    imagePath: 'imagePath',
+    sourceFilePath: '/navigation_floatingactionbutton_ex',
+    description: '''
+This Flutter code example showcases the integration of a FloatingActionButton (FAB) with navigation to another screen. The provided code illustrates how to implement functional changes by associating a custom action with the FAB, as well as how to navigate between different screens using MaterialPageRoute.
+
+The main goal of this example is to help developers learn how to incorporate FloatingActionButton and navigation into their Flutter apps. The FAB is a prominent UI element used to trigger important actions, while navigation allows users to move between different parts of an app.
+
+The code begins with defining a MaterialApp and introduces a FloatingActionButtonNavigationExample widget. Inside the HomeScreen widget, a Scaffold is used to structure the app's layout. An AppBar is added to the top of the screen with a title.
+
+In the body of the Scaffold, an ElevatedButton is placed. When pressed, it triggers navigation to the DetailScreen using the Navigator.push method and MaterialPageRoute. This demonstrates how to transition between screens in a Flutter app.
+
+Additionally, a FloatingActionButton is added to the screen. The onPressed callback shows a SnackBar when the FAB is pressed. This functionality provides feedback to the user when the button is tapped.
+
+By studying this example, developers can gain insights into using FloatingActionButton to trigger actions and employing navigation techniques to move between different screens. The code showcases the relationship between UI elements and user interactions, helping developers build more interactive and engaging apps.
+''',
+  ),
+  Section(
+    id: 'cat4s5',
+    category: 'cat4',
+    isFavorite: false,
+    title: 'Page Route Builder',
+    subtitle: 'provided PageRouteBuilder navigation code example',
+    imagePath: 'imagePath',
+    sourceFilePath: '/navigation_pageroutebuilder_ex',
+    description: '''
+This Flutter code example demonstrates the use of PageRouteBuilder for custom navigation animations between screens. PageRouteBuilder allows developers to define custom page transitions when navigating between different parts of an app.
+
+The primary objective of this code is to teach how to implement custom animations using PageRouteBuilder. The provided example showcases a simple slide animation when transitioning from one screen to another.
+
+The code begins by creating a MaterialApp and defining a PageRouteBuilderNavigationExample widget. Inside the HomeScreen widget, a Scaffold is used to structure the app's layout. An AppBar is added to the top of the screen with a title.
+
+In the body of the Scaffold, an ElevatedButton is placed. When pressed, it triggers navigation to the DetailScreen using Navigator.push and PageRouteBuilder. The PageRouteBuilder is configured with transitionDuration, transitionsBuilder, and pageBuilder properties.
+
+The transitionDuration property specifies how long the animation will take. The transitionsBuilder property defines the animation logic, and in this case, it creates a slide animation from the right side.
+
+The pageBuilder property is used to build the destination screen. In this example, the DetailScreen is returned.
+
+Through studying this example, developers can gain insights into creating custom navigation animations using PageRouteBuilder. By altering the transition logic and destination screens, developers can experiment with different types of animations and navigation behaviors.
+''',
+  ),
+  Section(
+    id: 'cat4s6',
+    category: 'cat4',
+    isFavorite: false,
+    title: 'Navigator.pop & push',
+    subtitle: 'Navigator Methods in Navigation',
+    imagePath: 'imagePath',
+    sourceFilePath: '/navigation_navigatormethod_ex',
+    description: '''
+This Flutter code example demonstrates the usage of various navigation methods provided by the Navigator class for managing navigation and screen transitions within an app.
+
+The primary objective of this code is to introduce and explain different navigation methods available in Flutter, such as Navigator.push, Navigator.pushReplacement, Navigator.popAndPushNamed, Navigator.pushNamedAndRemoveUntil, and Navigator.pushReplacementNamed. These methods enable developers to control the flow of navigation and manage the navigation stack effectively.
+
+In this example, a MaterialApp is created with named routes for the HomeScreen, DetailScreen, and SettingsScreen. The HomeScreen widget contains a Scaffold with an AppBar and multiple ElevatedButtons, each representing a different navigation method.
+
+The first button demonstrates the use of Navigator.push to navigate to the DetailScreen. The second button utilizes Navigator.pushReplacement to replace the current screen with the SettingsScreen. The third button showcases Navigator.popAndPushNamed, which pops the current screen and pushes the SettingsScreen.
+
+The fourth button demonstrates Navigator.pushNamedAndRemoveUntil, which pushes the HomeScreen while removing all previous screens from the navigation stack. The final button uses Navigator.pushReplacementNamed to replace the current screen with the DetailScreen.
+
+Throughout this example, developers can learn how to implement various navigation methods and understand their behaviors. By experimenting with these methods, developers can effectively control navigation transitions and maintain a well-organized navigation stack.
+''',
+  ),
+  Section(
+    id: 'cat4s7',
+    category: 'cat4',
+    isFavorite: false,
+    title: 'BottomNavigationBar',
+    subtitle: 'Creating a Customized AppBar with Interactivity',
+    imagePath: 'imagePath',
+    sourceFilePath: '/navigation__ex',
+    description: '',
+  ),
+];
+
+List<Section> K5section = [
+  Section(
+    id: 'cat5s1',
+    category: 'cat5',
+    isFavorite: false,
+    title: 'Basic AppBar',
+    subtitle: 'Creating a Customized AppBar with Interactivity',
+    imagePath: 'imagePath',
+    sourceFilePath: '/appbar_basicappbar_ex',
+    description: '''
+The BasicAppbarEx class showcases a simple implementation of an AppBar in Flutter with added customization and interactive elements. The example demonstrates how to create a basic app bar with a custom background color, a title, a leading icon button, action icons, and a PopupMenuButton.
+
+The AppBar widget is integrated within the Scaffold's app bar property. In this example, the AppBar is customized with a purple background color and a title that reads "Example App Bar."
+
+The leading icon button, represented by the Icons.menu icon, provides users with a way to trigger a menu or navigation-related action. While the onPressed callback for the leading icon is empty in this example, developers can implement custom logic based on the specific app requirements.
+
+Two action icons are added to the AppBar using the actions property. The first action is an IconButton with the Icons.search icon, allowing users to trigger a search-related action. The second action is a PopupMenuButton, which displays a popup menu with two items ("Item 1" and "Item 2"). The onSelected callback is invoked when a user selects an item from the popup menu.
+
+The body of the Scaffold consists of a Center widget containing the text "Hello, World!" for demonstration purposes.
+
+In summary, the BasicAppbarEx example provides insight into creating a basic app bar with customized appearance and interactive elements such as leading and action icons. Additionally, it demonstrates the usage of a PopupMenuButton for presenting a context menu to users.
+''',
+  ),
+];
+
+
+
+
+// ignore: non_constant_identifier_names
+

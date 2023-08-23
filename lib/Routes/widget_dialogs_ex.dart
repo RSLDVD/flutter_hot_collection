@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class WidgetDialogsEx extends StatelessWidget {
+  const WidgetDialogsEx({Key? key}) : super(key: key);
+
   void _showSimpleDialog(BuildContext context) {
     showDialog(
       context: context,

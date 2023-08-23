@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hot/Action/anim_switch.dart';
-import 'package:flutter_hot/Data/Models/category.dart';
+import 'package:flutter_hot/Presentation/Screens/CategoriesPage/Widgets/categories_grid_view_builder.dart';
+import 'package:flutter_hot/Presentation/Screens/CategoriesPage/Widgets/custom_bottom_navigation_bar.dart';
+import 'package:flutter_hot/Presentation/Screens/FavoritesPage/favorites_page_screen.dart';
+import 'package:flutter_hot/Presentation/Screens/WebLogPage/web_log_page_screen.dart';
 import 'package:flutter_hot/Providers/theme_provider.dart';
 import 'package:provider/provider.dart';
-import '../../../../Providers/category_provider.dart';
-import '../Widgets/category_item.dart';
 
 class CategoriesPageScreen extends StatefulWidget {
   const CategoriesPageScreen({Key? key}) : super(key: key);
@@ -15,7 +16,7 @@ class CategoriesPageScreen extends StatefulWidget {
 
 class _CategoriesPageScreenState extends State<CategoriesPageScreen>
     with SingleTickerProviderStateMixin {
-  late AnimationController _animationController;
+  int _selectedIndex = 0;
 
   @override
   void initState() {
@@ -35,21 +36,48 @@ class _CategoriesPageScreenState extends State<CategoriesPageScreen>
 
   @override
   Widget build(BuildContext context) {
-    List<Category> categories = context.watch<CategoryProvider>().categoryData;
+    final List<Widget> _pages = [
+      const CategoryGridViewBuilder(),
+      const WebLogPageScreen(),
+      const FavoritesPageScreen(),
+    ];
+
+    //List<Category> categories = context.watch<CategoryProvider>().categoryData;
 
     return Scaffold(
       appBar: AppBar(
-        actions: const [],
-        //backgroundColor: const Color(0xfff8ffd8),
-        title: const Text(
-          'Flutter Hot Collection',
-          style: TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-            //color: Color(0xff090088),
-          ),
-        ),
-      ),
+          actions: [
+            IconButton(onPressed: () => {}, icon: const Icon(Icons.search))
+          ],
+          //backgroundColor: const Color(0xfff8ffd8),
+          title: RichText(
+            text: TextSpan(
+                text: 'Flutter ',
+                style: const TextStyle(
+                  fontFamily: 'Roboto',
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF0FABBC),
+                ),
+                children: [
+                  const TextSpan(
+                      text: 'Hot ',
+                      style: TextStyle(
+                        fontFamily: 'Montserrat',
+                        fontSize: 19,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFFFA163F),
+                      )),
+                  TextSpan(
+                      text: 'Collection',
+                      style: TextStyle(
+                          fontFamily: 'Roboto',
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color:
+                              Theme.of(context).appBarTheme.iconTheme?.color)),
+                ]),
+          )),
       drawer: Drawer(
         //width: MediaQuery.of(context).size.width * 4 / 5,
         // Add a Drawer widget here
@@ -61,11 +89,11 @@ class _CategoriesPageScreenState extends State<CategoriesPageScreen>
               //duration: const Duration(milliseconds: 377),
               decoration: const BoxDecoration(
                 image: DecorationImage(
+                    image: AssetImage(
+                      "assets/images/sleepycat.gif",
+                    ),
+                    fit: BoxFit.fill),
 
-                  image: AssetImage("assets/images/sleepycat.gif",),
-                  fit: BoxFit.fill
-                  ),
-                  
                 // color: Provider.of<ThemeProvider>(context, listen: false)
                 //         .isDarkMode
                 //     ? const Color(0xff1B262C)
@@ -84,12 +112,11 @@ class _CategoriesPageScreenState extends State<CategoriesPageScreen>
                         style: TextStyle(
                             fontSize: 20, fontWeight: FontWeight.bold),
                       ),
-                       Consumer<ThemeProvider>(
-                          builder: (context, themeProvider, _) {
-                            return   AnimSwitch();
-                          },
-                        ),
-                      
+                      Consumer<ThemeProvider>(
+                        builder: (context, themeProvider, _) {
+                          return AnimSwitch();
+                        },
+                      ),
                     ],
                   ),
                 ],
@@ -138,18 +165,13 @@ class _CategoriesPageScreenState extends State<CategoriesPageScreen>
           ],
         ),
       ),
-      body: GridView.builder(
-        gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-            maxCrossAxisExtent: 250,
-            childAspectRatio: 8 / 11,
-            crossAxisSpacing: 0,
-            mainAxisSpacing: 0),
-        itemCount: categories.length,
-        itemBuilder: (context, index) => CategoryItem(
-            id: categories[index].id,
-            title: categories[index].title,
-            subtitle: categories[index].subtitle.toList(),
-            imagePath: categories[index].imagePath),
+      body: _pages[_selectedIndex],
+      bottomNavigationBar: CustomBottomNavigationBar(
+        onIndexChanged: (index) {
+          setState(() {
+            _selectedIndex = index;
+          });
+        },
       ),
     );
   }

@@ -45,7 +45,7 @@ class _WidgetSwitchExState extends State<WidgetSwitchEx> {
             ),
             ListTile(
               title: const Text('Custom Toggle Switch'),
-              trailing: Container(
+              trailing: SizedBox(
                 width: 90.0,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
