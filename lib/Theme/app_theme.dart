@@ -8,7 +8,7 @@ class AppTheme {
     splashColor: Colors.grey,
     primaryColor: const Color(0xFFeef1f6),
     bottomAppBarColor: const Color(0xFFD71313),
-    accentColor: const Color(0xFF555a54),
+    hintColor: const Color(0xFF555a54),
     scaffoldBackgroundColor: const Color(0xffF6F4EB),
     textTheme: TextTheme(
       subtitle1: TextStyle(
@@ -37,7 +37,7 @@ class AppTheme {
     splashColor: Colors.white30,
     primaryColor: const Color(0xff181818),
     bottomAppBarColor: const Color(0xFFD71313),
-    accentColor: const Color(0xff222222),
+    hintColor: const Color(0xff222222),
     scaffoldBackgroundColor: const Color(0xff20262E),//Color(0xff323232),
     textTheme:
         TextTheme(

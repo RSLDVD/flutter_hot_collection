@@ -49,13 +49,13 @@ class _CategoriesPageScreenState extends State<CategoriesPageScreen>
         title: const Text('Exit Confirmation'),
         content: const Text('Do you want to leave App?'),
         actions: <Widget>[
-          FlatButton(
+          ElevatedButton(
             child: const Text('No'),
             onPressed: () {
               Navigator.of(context).pop(false); // User wants to stay
             },
           ),
-          FlatButton(
+          ElevatedButton(
             child: const Text('Yes'),
             onPressed: () {
               Navigator.of(context).pop(true); // User confirms leaving
@@ -132,7 +132,7 @@ class _CategoriesPageScreenState extends State<CategoriesPageScreen>
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               DrawerHeader(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                     //image: DecorationImage(
                     // image: AssetImage(
                     //   "assets/images/sleepycat.gif",
@@ -140,7 +140,9 @@ class _CategoriesPageScreenState extends State<CategoriesPageScreen>
                     // fit: BoxFit.fill
                     //),
     
-                    color: Theme.of(context).appBarTheme.backgroundColor),
+                    color: Colors.transparent
+                    //Theme.of(context).appBarTheme.backgroundColor
+                    ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
