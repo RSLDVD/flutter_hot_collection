@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 class AppTheme {
   static final ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
-    splashColor: Colors.amber,
+    splashColor: Colors.grey,
     primaryColor: const Color(0xFFeef1f6),
-    bottomAppBarColor: const Color(0xFF3F0071),
+    bottomAppBarColor: const Color(0xFFD71313),
     accentColor: const Color(0xFF555a54),
     scaffoldBackgroundColor: const Color(0xffF6F4EB),
     textTheme: TextTheme(
@@ -34,11 +34,11 @@ class AppTheme {
 
   static final ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
-    splashColor: Colors.amber,
-    primaryColor: const Color(0xFF444444),
-    bottomAppBarColor: const Color(0xFF0FABBC),
-    accentColor: const Color(0xff000000),
-    scaffoldBackgroundColor: const Color(0xff1B262C),//Color(0xff323232),
+    splashColor: Colors.white30,
+    primaryColor: const Color(0xff181818),
+    bottomAppBarColor: const Color(0xFFD71313),
+    accentColor: const Color(0xff222222),
+    scaffoldBackgroundColor: const Color(0xff20262E),//Color(0xff323232),
     textTheme:
         TextTheme(
       subtitle1: TextStyle(
@@ -48,17 +48,17 @@ class AppTheme {
       ),
     ),
     appBarTheme: const AppBarTheme(
-      backgroundColor:Color(0xff323232),// Color(0xff1B262C),
+      backgroundColor:Color(0xff222222),// Color(0xff1B262C),
       iconTheme: IconThemeData(
-        color: Color(0xffFFE3D8),
+        color: Color(0xffeeeeeE),
       ),
       titleTextStyle: TextStyle(
         fontFamily: 'OpenSansCondensed', 
         fontWeight: FontWeight.bold,
-        color: Color(0xffFFE3D8),
+        color: Color(0xffDDDDDD),
       ),
     ),
     drawerTheme: const DrawerThemeData(
-        backgroundColor: const Color(0xff1B262C), scrimColor: Colors.black38),
+        backgroundColor: const Color(0xff20262E), scrimColor: Colors.black38),
   );
 }

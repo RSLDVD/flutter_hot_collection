@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 class ListViewBuilderEx extends StatelessWidget {
-   ListViewBuilderEx({Key? key});
+   const ListViewBuilderEx({Key? key});
 
   @override
   Widget build(BuildContext context) {
     const numItems = 20;
-    const _biggerFont = TextStyle(fontSize: 18.0);
+    const biggerFont = TextStyle(fontSize: 18.0);
 
     Widget _buildRow(int idx) {
       return Dismissible(
@@ -26,7 +26,7 @@ class ListViewBuilderEx extends StatelessWidget {
           ),
           title: Text(
             'Updated Item $idx',
-            style: _biggerFont,
+            style: biggerFont,
           ),
           trailing: const Icon(Icons.edit),
         ),

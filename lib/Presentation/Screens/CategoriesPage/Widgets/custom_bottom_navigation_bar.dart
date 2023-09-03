@@ -25,6 +25,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
+      backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
       selectedItemColor: Theme.of(context).bottomAppBarColor,
       items: [
       BottomNavigationBarItem(

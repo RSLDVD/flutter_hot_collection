@@ -1,10 +1,29 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_hot/Data/Repositories/section_data.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../Data/Models/category.dart';
 import '../Data/Models/section.dart';
 
 class CategoryProvider with ChangeNotifier {
+  final SharedPreferences prefs;
+  CategoryProvider({required this.prefs}) {
+    // Load favorite sections from SharedPreferences during initialization
+    final favoriteSectionIds = prefs.getStringList('favoriteSections') ?? [];
+    // _favoriteSections.addAll(
+    //   categoryData.expand((category) => category.sections).where(
+    //         (section) => favoriteSectionIds.contains(section.id),
+    //       ),
+    // );
+    for (final category in _categoryData) {
+      for (final section in category.sections) {
+        if (favoriteSectionIds.contains(section.id)) {
+          section.isFavorite = true;
+          _favoriteSections.add(section);
+        }
+      }
+    }
+  }
+
   final List<Category> _categoryData = [
     Category(
         id: 'cat1',
@@ -19,12 +38,12 @@ class CategoryProvider with ChangeNotifier {
           'Expand,',
           'Container,',
           'Stack,',
-          'CheckBox,',
-          'Switch,',
+          //'CheckBox,',
+          //'Switch,',
           '...'
         ],
         imagePath: "assets/images/basicWidget.jpg",
-        sections: K1section),
+        sections: k1section),
     Category(
         id: 'cat2',
         title: 'Lists',
@@ -34,12 +53,12 @@ class CategoryProvider with ChangeNotifier {
           'GridList,',
           'ExpansionTile,',
           'Dissmissable List,',
-          'Reorderable List,',
-          '',
+          // 'Reorderable List,',
+          //'',
           '...'
         ],
         imagePath: "assets/images/advancedWidget.jpg",
-        sections: K2section),
+        sections: k2section),
     Category(
         id: 'cat3',
         title: 'App Bar',
@@ -48,12 +67,12 @@ class CategoryProvider with ChangeNotifier {
           'SliverAppBar,',
           'BottomAppBar,',
           'PersistentAppBar,',
-          'CupertinoNavigationBar,',
+          //'CupertinoNavigationBar,',
           // 'CupertinoSliverNavigationBar,',
           // '...'
         ],
         imagePath: "assets/images/appbar.jpg",
-        sections: K3section),
+        sections: k3section),
     Category(
         id: 'cat4',
         title: 'Navigation',
@@ -61,7 +80,7 @@ class CategoryProvider with ChangeNotifier {
           'BottomNavigationBar,',
           'TabBar and TabBarView,',
           'Drawer,',
-          'FloatingActionButton (FAB),',
+          //'FloatingActionButton (FAB),',
           'PageRouteBuilder,',
           // 'Navigator.pop & push,',
           // 'Navigator.pushReplacement,',
@@ -70,7 +89,7 @@ class CategoryProvider with ChangeNotifier {
           // 'Navigator.pushReplacementNamed,'
         ],
         imagePath: "assets/images/navigation.jpg",
-        sections: K4section),
+        sections: k4section),
     Category(
         id: 'cat5',
         title: 'Animation',
@@ -79,11 +98,19 @@ class CategoryProvider with ChangeNotifier {
           'SliverAppBar',
           'BottomAppBar',
           'PersistentAppBar',
-          'CupertinoNavigationBar',
-          'CupertinoSliverNavigationBar',
         ],
         imagePath: "assets/images/animation.jpg",
-        sections: K5section),
+        sections: k5section),
+    Category(
+        id: 'cat6',
+        title: 'State Management',
+        subtitle: [
+          'AppBar',
+          'SliverAppBar',
+        ],
+        imagePath: "assets/images/stateManagement.jpg",
+        sections: k6section),
+   
   ];
 
   List<Category> get categoryData {
@@ -99,18 +126,28 @@ class CategoryProvider with ChangeNotifier {
   final List<Section> _favoriteSections = [];
   List<Section> get favoriteSections => _favoriteSections;
   //
-  void toggleSectionFavorite(String sectionId, String catId) {
+  Future<void> toggleSectionFavorite(String sectionId, String catId) async {
     final loadedCategory = categoryData.firstWhere((c) => c.id == catId);
     final loadedSection = loadedCategory.sections
         .firstWhere((section) => section.id == sectionId);
 
-    if (loadedSection.isFavorite) {
+    if (_favoriteSections.contains(loadedSection)) {
       _favoriteSections.remove(loadedSection);
+      loadedSection.isFavorite = false;
+      //notifyListeners();
     } else {
       _favoriteSections.add(loadedSection);
+      loadedSection.isFavorite = true;
+      //notifyListeners();
     }
 
-    loadedSection.isFavorite = !loadedSection.isFavorite;
+    //loadedSection.isFavorite = !_favoriteSections.contains(loadedSection);
+    final favoriteSectionIds =
+        _favoriteSections.map((section) => section.id).toList();
+    await prefs.setStringList('favoriteSections', favoriteSectionIds);
+
     notifyListeners();
+
+    // Update the favorite sections list in SharedPreferences
   }
 }

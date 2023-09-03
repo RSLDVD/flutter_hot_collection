@@ -80,7 +80,7 @@ class _SlidableTileExState extends State<SlidableTileEx> {
     final dismissal = DismissiblePane(
       onDismissed: () {
         _showSnackBar('Dismiss Archive');
-        setState(() => this._items.removeAt(_items.length - 1));
+        setState(() => _items.removeAt(_items.length - 1));
       },
       confirmDismiss: () async {
         final bool? ret = await showDialog<bool>(

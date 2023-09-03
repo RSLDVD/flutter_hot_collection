@@ -4,6 +4,19 @@ import 'package:flutter/services.dart';
 import 'package:flutter_highlight/themes/a11y-light.dart';
 import 'package:flutter_hot/Action/anim_switch.dart';
 import 'package:flutter_hot/Providers/theme_provider.dart';
+import 'package:flutter_hot/Routes/animation_advanced3danimation_ex.dart';
+import 'package:flutter_hot/Routes/animation_advancedcurvedanimation_ex.dart';
+import 'package:flutter_hot/Routes/animation_advancedgestureanimation_ex.dart';
+import 'package:flutter_hot/Routes/animation_advancedphysicsanimation_ex.dart';
+import 'package:flutter_hot/Routes/animation_basicanimations_ex.dart';
+import 'package:flutter_hot/Routes/animation_customanimatedwidget_ex.dart';
+import 'package:flutter_hot/Routes/animation_customanimationcontroller_ex.dart';
+import 'package:flutter_hot/Routes/animation_custompainteranimation_ex.dart';
+import 'package:flutter_hot/Routes/animation_gridstaggeredanimation_ex.dart';
+import 'package:flutter_hot/Routes/animation_heroanimation_ex.dart';
+import 'package:flutter_hot/Routes/animation_liststaggeredanimation_ex.dart';
+import 'package:flutter_hot/Routes/animation_tweenanimation_ex.dart';
+import 'package:flutter_hot/Routes/animation_tweenbuilderanimation_ex.dart';
 import 'package:flutter_hot/Routes/appbar_basicappbar_ex.dart';
 import 'package:flutter_hot/Routes/appbar_bottomappbar_ex.dart';
 import 'package:flutter_hot/Routes/appbar_cupertinonavigationbar_ex.dart';
@@ -97,7 +110,7 @@ class _SectionPageScreenState extends State<SectionPageScreen>
     '/widget_expansionpanellist_ex': () => const WidgetExpansionPanelListEx(),
     '/widget_textformfield_ex': () => WidgetTextFormFieldEx(),
     '/list_listtile_ex': () => const ListTileEx(),
-    '/list_listviewbuilder_ex': () => ListViewBuilderEx(),
+    '/list_listviewbuilder_ex': () => const ListViewBuilderEx(),
     '/list_gridview_ex': () => GridViewEx(),
     '/list_expansiontile_ex': () => const ExpansionTileEx(),
     '/list_reorderablelist_ex': () => const ReorderableListEx(),
@@ -117,6 +130,22 @@ class _SectionPageScreenState extends State<SectionPageScreen>
     '/navigation_floatingactionbutton_ex': () => FloatingActionButtonScreenEX(),
     '/navigation_pageroutebuilder_ex': () => PageRouteBuilderEx(),
     '/navigation_navigatormethod_ex': () => NavigationMethodsEx(),
+    '/animation_basicanimations_ex': () => const BasicAnimationsEx(),
+    '/animation_liststaggeredanimation_ex': () => ListStaggeredAnimationsEx(),
+    '/animation_gridstaggeredanimation_ex': () => GridStaggeredAnimationsEx(),
+    '/animation_tweenanimation_ex': () => TweenAnimationsEx(),
+    '/animation_tweenbuilderanimation_ex': () => TweenBuilderAnimationEx(),
+    '/animation_heroanimation_ex': () => HeroAnimationEx(),
+    '/animation_custompainteranimation_ex': () => CustomPainterAnimationEX(),
+    '/animation_customanimationcontroller_ex': () =>
+        CustomAnimationControllerEx(),
+    '/animation_customanimatedwidget_ex': () => CustomAnimatedWidgetEx(),
+    '/animation_advancedcurvedanimation_ex': () => AdvancedCurvedAnimationEx(),
+    '/animation_advancedphysicsanimation_ex': () =>
+        AdvancedPhysicsAnimationEx(),
+    '/animation_advanced3danimation_ex': () => const Advanced3DAnimationEx(),
+    '/animation_advancedgestureanimation_ex': () =>
+        AdvancedGestureAnimationEx(),
   };
 
   @override
@@ -155,7 +184,9 @@ class _SectionPageScreenState extends State<SectionPageScreen>
           future: fetchTextFromGit(sectionSourceNames),
           builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(child: CircularProgressIndicator());
+              return const Center(
+                  child: CircularProgressIndicator(
+                      color: Colors.black));
             }
 
             if (snapshot.hasError) {
@@ -200,20 +231,20 @@ class _SectionPageScreenState extends State<SectionPageScreen>
                                 ),
                                 backgroundColor:
                                     MaterialStateProperty.all<Color>(
-                                        Theme.of(context).primaryColor)),
+                                        Colors.black38)),
                             onPressed: () {
-                              if (codeText != null) {
-                                Clipboard.setData(
-                                    ClipboardData(text: codeText));
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(
-                                      backgroundColor: Colors.amber,
-                                      content: Text(
-                                        'Text copied to clipboard',
-                                        style: TextStyle(color: Colors.black, fontFamily: 'OpenSansCondensed',),
-                                      )),
-                                );
-                              }
+                              Clipboard.setData(ClipboardData(text: codeText));
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                    backgroundColor: Colors.amber,
+                                    content: Text(
+                                      'Text copied to clipboard',
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontFamily: 'OpenSansCondensed',
+                                      ),
+                                    )),
+                              );
                             },
                             child: Icon(
                               Icons.file_copy_sharp,
@@ -238,7 +269,7 @@ class _SectionPageScreenState extends State<SectionPageScreen>
                                     ),
                                     backgroundColor:
                                         MaterialStateProperty.all<Color>(
-                                            Theme.of(context).primaryColor)),
+                                            Colors.black87)),
                                 onPressed: () {
                                   setState(() {
                                     codeFontSize--;
@@ -257,9 +288,9 @@ class _SectionPageScreenState extends State<SectionPageScreen>
                                         OutlinedBorder>(
                                       const CircleBorder(),
                                     ),
-                                    backgroundColor:
-                                        MaterialStateProperty.all<Color>(
-                                            Theme.of(context).primaryColor)),
+                                    backgroundColor: MaterialStateProperty.all<
+                                            Color>(
+                                        Colors.black87)),
                                 onPressed: () {
                                   setState(() {
                                     codeFontSize++;
@@ -301,7 +332,6 @@ class _SectionPageScreenState extends State<SectionPageScreen>
             ),
           ),
         );
-        break;
     }
   }
 
@@ -352,7 +382,7 @@ class _SectionPageScreenState extends State<SectionPageScreen>
                 padding: const EdgeInsets.fromLTRB(0, 1, 10, 0),
                 child: Consumer<ThemeProvider>(
                   builder: (context, themeProvider, _) {
-                    return AnimSwitch();
+                    return const AnimSwitch();
                   },
                 ),
               )

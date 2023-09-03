@@ -34,10 +34,10 @@ class _BottomAppBarExState extends State<BottomAppBarEx> {
           ListTile(
             title: const Text('FloatingActionButton position:'),
             trailing: DropdownButton<FloatingActionButtonLocation>(
-              value: this._fabLocation,
+              value: _fabLocation,
               onChanged: (FloatingActionButtonLocation? newVal) {
                 if (newVal != null) {
-                  setState(() => this._fabLocation = newVal);
+                  setState(() => _fabLocation = newVal);
                 }
               },
               items: const [
@@ -59,37 +59,37 @@ class _BottomAppBarExState extends State<BottomAppBarEx> {
           ListTile(
             title: const Text('Mini FAB:'),
             trailing: Switch(
-              value: this._isFabMini,
+              value: _isFabMini,
               onChanged: (bool val) {
-                setState(() => this._isFabMini = val);
+                setState(() => _isFabMini = val);
               },
             ),
           ),
           ListTile(
             title: const Text('BottomAppBar notch:'),
             trailing: Switch(
-              value: this._isBottomBarNotched,
+              value: _isBottomBarNotched,
               onChanged: (bool val) {
-                setState(() => this._isBottomBarNotched = val);
+                setState(() => _isBottomBarNotched = val);
               },
             ),
           ),
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        mini: this._isFabMini,
+        mini: _isFabMini,
         onPressed: () =>
             Fluttertoast.showToast(msg: 'Custom floating action button'),
         child: const Icon(Icons.star),
       ),
-      floatingActionButtonLocation: this._fabLocation,
-      bottomNavigationBar: this._buildBottomAppBar(context),
+      floatingActionButtonLocation: _fabLocation,
+      bottomNavigationBar: _buildBottomAppBar(context),
     );
   }
 
   BottomAppBar _buildBottomAppBar(BuildContext context) {
     return BottomAppBar(
-      shape: this._isBottomBarNotched ? const CircularNotchedRectangle() : null,
+      shape: _isBottomBarNotched ? const CircularNotchedRectangle() : null,
       color: Theme.of(context).primaryColor,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

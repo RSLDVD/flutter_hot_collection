@@ -30,16 +30,16 @@ class _PersistentAppBarExState extends State<PersistentAppBarEx> {
           ListTile(
             title: const Text('Show App Bar:'),
             trailing: Switch(
-              value: this._isAppBarVisible,
+              value: _isAppBarVisible,
               onChanged: (bool val) {
-                setState(() => this._isAppBarVisible = val);
+                setState(() => _isAppBarVisible = val);
               },
             ),
           ),
         ],
       ),
       bottomNavigationBar:
-          this._isAppBarVisible ? _buildPersistentAppBar(context) : null,
+          _isAppBarVisible ? _buildPersistentAppBar(context) : null,
     );
   }
 
@@ -105,7 +105,7 @@ class CustomShapeBorder extends NotchedShape {
 
     path.lineTo(cornerRadius + xOffset, appBarHeight - yOffset - bottomMargin);
     path.arcToPoint(
-      Offset(0 + xOffset, appBarHeight - cornerRadius - yOffset - bottomMargin),
+      const Offset(0 + xOffset, appBarHeight - cornerRadius - yOffset - bottomMargin),
       clockwise: false,
       radius: const Radius.circular(cornerRadius),
     );

@@ -12,9 +12,9 @@ class _BottomNavigationBarExState
   int _selectedIndex = 0;
 
   final List<Widget> _pages = [
-    PlaceholderWidget(Colors.red, 'Page 1'),
-    PlaceholderWidget(Colors.green, 'Page 2'),
-    PlaceholderWidget(Colors.blue, 'Page 3'),
+    const PlaceholderWidget(Colors.red, 'Page 1'),
+    const PlaceholderWidget(Colors.green, 'Page 2'),
+    const PlaceholderWidget(Colors.blue, 'Page 3'),
   ];
 
   void _onItemTapped(int index) {
@@ -57,7 +57,7 @@ class PlaceholderWidget extends StatelessWidget {
   final Color color;
   final String text;
 
-  PlaceholderWidget(this.color, this.text);
+  const PlaceholderWidget(this.color, this.text);
 
   @override
   Widget build(BuildContext context) {

@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_hot/Providers/category_provider.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -38,87 +36,68 @@ class SectionItem extends StatelessWidget {
       '/section_page',
       arguments: {
         'id': id,
-        //  'index': index.toString(),
-        //  'title': title,
         'category': category,
-        //  'subtitle': subtitle,
-        //  'description': description,
-        //  'sourceFilePath': sourceFilePath
       },
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    // List<Category> categories= context.watch<CategoryProvider>().categoryData;
-
-//
-    // Color getRandomColor() {
-    //   Random random = Random();
-    //   int b = random
-    //       .nextInt(255); // Generate a random value between 0 and 255 for red
-    //   int g = random
-    //       .nextInt(255); // Generate a random value between 0 and 255 for green
-    //   int r = random
-    //       .nextInt(255); // Generate a random value between 0 and 255 for blue
-    //   return Color.fromARGB(
-    //       220, r, g, b); // Create a Color object using the random RGB values
-    // }
-
-//
     return InkWell(
       child: ClipRRect(
         borderRadius: BorderRadius.circular(5),
         child: ListTile(
-            isThreeLine: true,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(50),
-            ),
-            //minLeadingWidth: 200,
+          isThreeLine: true,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(50),
+          ),
+          //minLeadingWidth: 200,
 
-            leading: CircleAvatar(
-              backgroundColor: colors[index],
-              radius: 20,
-              child: Text(
-                '${index + 1}',
-                style: const TextStyle(
-                    fontFamily: 'OpenSansCondensed',
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold),
-              ),
-            ),
-            title: Text(
-              title,
+          leading: CircleAvatar(
+            backgroundColor: colors[index],
+            radius: 20,
+            child: Text(
+              '${index + 1}',
               style: const TextStyle(
-                  fontFamily: 'Roboto',
-                  fontSize: 17,
+                  fontFamily: 'OpenSansCondensed',
+                  color: Colors.white,
                   fontWeight: FontWeight.bold),
             ),
-            subtitle: Text(subtitle,
-                style: const TextStyle(
-                  fontFamily: 'Montserrat',
-                  fontSize: 12,
-                )),
-            trailing: IconButton(
-              onPressed: () {
-                Provider.of<CategoryProvider>(context, listen: false)
-                    .toggleSectionFavorite(id, category);
+          ),
+          title: Text(
+            title,
+            style: TextStyle(
+                fontFamily: 'Roboto',
+                fontSize: 17,
+                fontWeight: FontWeight.bold,
+                color: Theme.of(context).appBarTheme.titleTextStyle?.color),
+          ),
+          subtitle: Text(subtitle,
+              style: const TextStyle(
+                fontFamily: 'Montserrat',
+                fontSize: 12,
+              )),
+          trailing: IconButton(
+            icon: Consumer<CategoryProvider>(
+              builder: (c, categoryProvider, _) {
+                return SvgPicture.asset(
+                  isFavorite
+                      ? 'assets/icons/bookmark-fill.svg'
+                      : 'assets/icons/bookmark-border.svg',
+                  width: 24,
+                  height: 24,
+                  color: isFavorite 
+                  ? const Color(0xFFFF5722) 
+                  : Theme.of(context).appBarTheme.iconTheme?.color,
+                );
               },
-              icon: isFavorite
-                  ? SvgPicture.asset(
-                      'assets/icons/bookmark-fill.svg',
-                      width: 25,
-                      height: 25,
-                      color: const Color(0xFFFFBD39),
-                    )
-                  : SvgPicture.asset(
-                      'assets/icons/bookmark-border.svg',
-                      width: 20,
-                      height: 20,
-                      color: Theme.of(context).appBarTheme.iconTheme?.color,
-                    ),
-            ) //
             ),
+            onPressed: () async {
+              await Provider.of<CategoryProvider>(context, listen: false)
+                  .toggleSectionFavorite(id, category);
+            },
+          ),
+        ),
       ),
       onTap: () {
         _selectSection(context);

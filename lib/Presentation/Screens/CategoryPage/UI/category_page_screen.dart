@@ -3,9 +3,9 @@ import 'package:flutter_hot/Data/Models/category.dart';
 import 'package:flutter_hot/Data/Models/section.dart';
 
 import 'package:flutter_hot/Providers/category_provider.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import '../Widgets/section_item.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter/animation.dart';
 
 class CategoryPageScreen extends StatefulWidget {
   const CategoryPageScreen({Key? key}) : super(key: key);
@@ -17,18 +17,14 @@ class CategoryPageScreen extends StatefulWidget {
 class _CategoryPageScreenState extends State<CategoryPageScreen>
     with SingleTickerProviderStateMixin {
   // final String categoryId;
-  late AnimationController _listController;
+  //late AnimationController _listController;
   @override
   void initState() {
     super.initState();
-    _listController = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 500));
-    _listController.forward();
   }
 
   @override
   void dispose() {
-    _listController.dispose();
     super.dispose();
   }
 
@@ -67,7 +63,7 @@ class _CategoryPageScreenState extends State<CategoryPageScreen>
                 child: Image.asset(
                     category.imagePath, // Replace with the actual image path
                     fit: BoxFit
-                        .fitWidth // Adjust the image's fit property as needed
+                        .cover // Adjust the image's fit property as needed
                     ),
               ),
               title: Container(
@@ -81,7 +77,7 @@ class _CategoryPageScreenState extends State<CategoryPageScreen>
                 ),
                 child: Text(
                   category.title,
-                  style:  TextStyle(
+                  style: TextStyle(
                     fontFamily: 'Roboto',
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
@@ -94,51 +90,34 @@ class _CategoryPageScreenState extends State<CategoryPageScreen>
           SliverList(
             delegate: SliverChildBuilderDelegate(
               (BuildContext context, int index) {
-                Section section = categorySections[index];
-                final animation = CurvedAnimation(
-                  parent: _listController,
-                  curve: Interval(
-                    (index / category.sections.length),
-                    1,
-                    curve:
-                        Curves.elasticIn, // Choose a different curve if desired
-                  ),
-                );
-                return AnimatedBuilder(
-                  animation: animation,
-                  builder: (context, child) {
-                    return FadeTransition(
-                      opacity: animation,
-                      child: child,
-                    );
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.only(
-                      left: 8,
-                      right: 8,
-                    ),
-                    child: Column(
-                      children: [
-                        SectionItem(
-                          id: categorySections[index].id,
-                          category: categorySections[index].category,
-                          index: index,
-                          title: categorySections[index].title,
-                          subtitle: categorySections[index].subtitle,
-                          description: categorySections[index].description,
-                          imagePath: categorySections[index].imagePath,
-                          sourceFilePath:
-                              categorySections[index].sourceFilePath,
-                          isFavorite: categorySections[index].isFavorite,
-                        ),
-                        const Divider(
-                          height: 3,
-                          thickness: 1,
-                        )
-                      ],
-                    ),
-                  ),
-                );
+                return AnimationConfiguration.staggeredList(
+                    position: index,
+                    duration: const Duration(milliseconds: 277),
+                    child: SlideAnimation(
+                      curve: Curves.bounceInOut,
+                        //verticalOffset: 2.0,
+                        horizontalOffset: 50.0,
+                        child: FadeInAnimation(
+                            child: Column(
+                          children: [
+                            SectionItem(
+                              id: categorySections[index].id,
+                              category: categorySections[index].category,
+                              index: index,
+                              title: categorySections[index].title,
+                              subtitle: categorySections[index].subtitle,
+                              description: categorySections[index].description,
+                              imagePath: categorySections[index].imagePath,
+                              sourceFilePath:
+                                  categorySections[index].sourceFilePath,
+                              isFavorite: categorySections[index].isFavorite,
+                            ),
+                            const Divider(
+                              height: 3,
+                              thickness: 1,
+                            )
+                          ],
+                        ))));
               },
               childCount: category.sections.length,
             ),

@@ -1,11 +1,6 @@
-
 import '../Models/section.dart';
 
-
-
-
-
-  List<Section> K1section = [
+List<Section> k1section = [
   Section(
     id: 'cat1s1',
     category: 'cat1',
@@ -572,7 +567,7 @@ This example underscores the power of `StatefulWidget` for managing complex UI s
 ];
 
 // ignore: non_constant_identifier_names
-List<Section> K2section = [
+List<Section> k2section = [
   Section(
     id: 'cat2s1',
     category: 'cat2',
@@ -814,7 +809,7 @@ In summary, the DataTableEx example demonstrates how to create a user-friendly t
   ),
 ];
 // ignore: non_constant_identifier_names
-List<Section> K3section = [
+List<Section> k3section = [
   Section(
     id: 'cat3s1',
     category: 'cat3',
@@ -979,7 +974,7 @@ By delving into this example, developers can gain a comprehensive understanding 
   ),
 ];
 
-List<Section> K4section = [
+List<Section> k4section = [
   Section(
     id: 'cat4s1',
     category: 'cat4',
@@ -1130,32 +1125,378 @@ Throughout this example, developers can learn how to implement various navigatio
   ),
 ];
 
-List<Section> K5section = [
+List<Section> k5section = [
   Section(
     id: 'cat5s1',
     category: 'cat5',
     isFavorite: false,
-    title: 'Basic AppBar',
-    subtitle: 'Creating a Customized AppBar with Interactivity',
+    title: 'Basic Animations',
+    subtitle:
+        'AnimatedOpacity, AnimatedContainer, AnimatedCrossFade, AnimatedPositioned, AnimatedPadding, AnimatedAlign, AnimatedDefaultTextStyle, AnimatedPhysicalModel, AnimatedSize, and AnimatedSwitcher',
     imagePath: 'imagePath',
-    sourceFilePath: '/appbar_basicappbar_ex',
-    description: '''
-The BasicAppbarEx class showcases a simple implementation of an AppBar in Flutter with added customization and interactive elements. The example demonstrates how to create a basic app bar with a custom background color, a title, a leading icon button, action icons, and a PopupMenuButton.
+    sourceFilePath: '/animation_basicanimations_ex',
+    description: """
+Imports: The required packages are imported.
 
-The AppBar widget is integrated within the Scaffold's app bar property. In this example, the AppBar is customized with a purple background color and a title that reads "Example App Bar."
+Class Definitions:
+BasicAnimationsEx: This is the main widget class, derived from StatefulWidget.
+_BasicAnimationsExState: This is the state class for BasicAnimationsEx, derived from State<BasicAnimationsEx>. It holds the dynamic data that can change over time.
 
-The leading icon button, represented by the Icons.menu icon, provides users with a way to trigger a menu or navigation-related action. While the onPressed callback for the leading icon is empty in this example, developers can implement custom logic based on the specific app requirements.
+State Properties Initialization:
+_isVisible, _containerWidth, _containerHeight, _opacityValue, _isCrossFaded, _paddingValue, _alignment, _fontSize, _isPhysicalModel, _elevation, _size, _switcherIndex: These properties hold the current state of different aspects of the animation.
 
-Two action icons are added to the AppBar using the actions property. The first action is an IconButton with the Icons.search icon, allowing users to trigger a search-related action. The second action is a PopupMenuButton, which displays a popup menu with two items ("Item 1" and "Item 2"). The onSelected callback is invoked when a user selects an item from the popup menu.
+State Update Functions:
+_toggleVisibility(): Flips the _isVisible property between true and false.
+_toggleCrossFade(): Toggles _isCrossFaded between true and false.
+_changePadding(): Alternates _paddingValue between 16.0 and 32.0.
+_changeAlignment(): Switches _alignment between Alignment.center and Alignment.topLeft.
+_togglePhysicalModel(): Toggles _isPhysicalModel and sets _elevation accordingly.
+_toggleSize(): Switches _size between 100.0 and 200.0.
+_switcherNext(): Cycles _switcherIndex through 0, 1, and 2 using modular arithmetic.
 
-The body of the Scaffold consists of a Center widget containing the text "Hello, World!" for demonstration purposes.
+build Method:
+The build method returns a Scaffold widget.
+Inside the Scaffold, there's a SingleChildScrollView containing a Column widget.
+The Column widget contains a series of Animated widgets and other components.
 
-In summary, the BasicAppbarEx example provides insight into creating a basic app bar with customized appearance and interactive elements such as leading and action icons. Additionally, it demonstrates the usage of a PopupMenuButton for presenting a context menu to users.
-''',
+Animated Widgets:
+AnimatedOpacity: Animates the opacity of its child widget based on _isVisible.
+AnimatedCrossFade: Cross-fades between two child widgets based on _isCrossFaded.
+AnimatedPadding: Animates padding changes of its child widget.
+AnimatedAlign: Animates the alignment of its child widget.
+AnimatedPhysicalModel: Animates elevation and shadow changes of its child widget.
+AnimatedSize: Animates the size of its child widget.
+AnimatedSwitcher: Animates the transition between different child widgets based on _switcherIndex.
+
+Floating Action Buttons (FABs):
+At the bottom of the Scaffold, there's a column of FloatingActionButton widgets.
+These FABs trigger the corresponding state update functions when pressed, leading to changes in animations.
+
+State Changes:
+When any FAB is pressed, its corresponding state update function is called via the onPressed callback.
+These functions modify the state properties using setState, causing the widget to rebuild and animations to change accordingly.
+
+Widget Building:
+The widgets inside the build method are built according to the current state.
+The animations and changes in the UI are based on the values of the state properties.
+The user interactions with FABs trigger these changes and result in animated transitions.
+""",
+  ),
+  Section(
+    id: 'cat5s2',
+    category: 'cat5',
+    isFavorite: false,
+    title: 'Staggered Animations(List)',
+    subtitle:
+        'creates a visually appealing effect where the list items slide in and fade in with different delays, creating a staggered animation effect',
+    imagePath: 'imagePath',
+    sourceFilePath: '/animation_liststaggeredanimation_ex',
+    description: """
+This code snippet is a Flutter example that demonstrates how to implement staggered animations in a ListView. It imports the necessary packages, including dart:math for generating random colors and flutter_staggered_animations for handling the animations.
+
+The ListStaggeredAnimationsEx class is a stateless widget that represents the main widget of the application. It builds a Scaffold with a body that contains an AnimationLimiter widget, which is used to limit the animations to a specific area. Inside the AnimationLimiter, there is a ListView.builder that generates a list of items.
+
+For each item in the list, the code generates a random color using the Random class from dart:math. Then, it applies staggered animations using the AnimationConfiguration.staggeredList widget. This widget takes in the position of the item in the list and the animation duration. It wraps the SlideAnimation and FadeInAnimation widgets, which control the sliding and fading animations of the list items.
+
+Finally, the code builds a ListTile with a CircleAvatar as the leading widget. The CircleAvatar displays the item index and has a random background color.
+
+This code creates a visually appealing effect where the list items slide in and fade in with different delays, creating a staggered animation effect.
+
+Please note that this code snippet assumes that you have the necessary packages (flutter_staggered_animations) imported and set up correctly in your Flutter project.
+""",
+  ),
+  Section(
+    id: 'cat5s3',
+    category: 'cat5',
+    isFavorite: false,
+    title: 'Staggered Animations(Grid)',
+    subtitle:
+        'example that demonstrates how to implement staggered animations in a GridView',
+    imagePath: 'imagePath',
+    sourceFilePath: '/animation_gridstaggeredanimation_ex',
+    description: """
+The given code snippet is a Flutter example that demonstrates how to implement staggered animations in a GridView. It imports the necessary packages, including dart:math for generating random colors and flutter_staggered_animations for handling the animations.
+
+The GridStaggeredAnimationsEx class is a stateless widget that represents the main widget of the application. It builds a Scaffold with a body that contains an AnimationLimiter widget, which is used to limit the animations to a specific area. Inside the AnimationLimiter, there is a GridView.count that generates a grid of items.
+
+For each item in the grid, the code generates a random color using the Random class from dart:math. Then, it applies staggered animations using the AnimationConfiguration.toStaggeredList widget. This widget takes in the animation duration and a child animation builder. The child animation builder wraps each child widget with a SlideAnimation and FadeInAnimation, controlling the sliding and fading animations of the grid items.
+
+Finally, the code builds a Container with a rectangular shape and a random background color. Inside the container, there is a ListTile with a CircleAvatar as the leading widget. The CircleAvatar displays the item index and has a random background color. Additionally, the ListTile also has a subtitle that displays the item index.
+
+This code creates a visually appealing effect where the grid items slide in and fade in with different delays, creating a staggered animation effect.
+
+Please note that this code snippet assumes that you have the necessary packages (flutter_staggered_animations) imported and set up correctly in your Flutter project.
+""",
+  ),
+  Section(
+    id: 'cat5s4',
+    category: 'cat5',
+    isFavorite: false,
+    title: 'Tween Animations',
+    subtitle: 'creates a basic animation using the TweenAnimationBuilder class',
+    imagePath: 'imagePath',
+    sourceFilePath: '/animation_tweenanimation_ex',
+    description: """
+The code you provided is a Flutter widget that demonstrates the use of tween animations using the AnimatedBuilder and AnimationController classes. It creates a container with a text widget that gradually changes opacity over a duration of 2 seconds.
+
+Here's a breakdown of how the code works:
+
+The TweenAnimationsEx class extends StatefulWidget and overrides the createState method to create an instance of _TweenAnimationsExState, which is a private class extending State and mixing in SingleTickerProviderStateMixin. The SingleTickerProviderStateMixin is used to provide the vsync parameter for the AnimationController.
+
+In the _TweenAnimationsExState class, the initState method is overridden to set up the animation. It creates an AnimationController with a duration of 2 seconds and assigns it to the _controller variable. The vsync parameter is set to this to provide the ticker provider for the animation.
+
+The _animation variable is initialized as a Tween<double> animation, using Tween to define the range of values for the animation (from 0.0 to 1.0) and animate to bind it to the _controller.
+
+The _controller is then started by calling _controller.forward(), which plays the animation.
+
+In the build method, a Scaffold widget is returned as the root of the widget tree. The body property is set to a Center widget, which centers its child vertically and horizontally.
+
+Within the Center widget, an AnimatedBuilder widget is used to rebuild the UI whenever the animation value changes. The animation property is set to _animation, and the builder property takes a BuildContext and Widget? as arguments. Inside the builder function, a Container is returned with a width and height of 250, a blue background color, and centered alignment.
+
+Inside the Container, an Opacity widget is used to control the opacity of its child based on the animation value. The opacity property is set to _animation.value, and the child is a Text widget with the text "Tween Animations by opacity". The text has a bold font weight, a font size of 20, and a white color.
+
+By running this code, you should see a blue container with the text gradually fading in over a period of 2 seconds.
+""",
+  ),
+  Section(
+    id: 'cat5s5',
+    category: 'cat5',
+    isFavorite: false,
+    title: 'Tween Sequence & AnimationBuilder',
+    subtitle:
+        'demonstrates the use of TweenAnimationBuilder to create smooth animations by interpolating values for opacity and size',
+    imagePath: 'imagePath',
+    sourceFilePath: '/animation_tweenbuilderanimation_ex',
+    description: """
+The given code snippet showcases the use of the TweenAnimationBuilder widget in a Flutter application. This widget facilitates animations by interpolating values between a given range over a specified duration.
+
+The _TweenBuilderAnimationExState class extends StatefulWidget and manages the state of opacity and size properties used for the animations.
+
+In the build method, a Scaffold widget is the main structure of the UI. The body property centers its content using a Center widget. Inside the Center widget, a Column widget is used to vertically stack multiple widgets.
+
+Two instances of TweenAnimationBuilder are used for demonstrating animations. The first TweenAnimationBuilder animates the opacity of a blue container from 0 to 1. It utilizes the Opacity widget to adjust the opacity based on the interpolated value.
+
+The second TweenAnimationBuilder animates the size of a red container from 100 to 200. The width and height of the container are both updated using the interpolated value.
+
+The floatingActionButton triggers changes in the opacity and size values upon being pressed, which in turn initiates the animations. The opacity toggles between 0.0 and 1.0, while the size toggles between 100.0 and 200.0.
+
+By running this code, you can observe how the TweenAnimationBuilder widget simplifies the process of creating animations by interpolating between values, resulting in smoother and visually appealing effects.
+""",
+  ),
+  Section(
+    id: 'cat5s6',
+    category: 'cat5',
+    isFavorite: false,
+    title: 'Hero & PageRouteBuilder Animations',
+    subtitle:
+        'showcases the use of Hero widgets and PageRouteBuilder to create smooth and visually appealing transitions between two pages in a Flutter application',
+    imagePath: 'imagePath',
+    sourceFilePath: '/animation_heroanimation_ex',
+    description: """
+The given Flutter code snippet showcases the use of Hero widgets and PageRouteBuilder to create smooth and visually appealing transitions between two pages in a Flutter application.
+
+The HeroAnimationEx class is the starting point of the application, setting up the MaterialApp and specifying the home widget as the FirstPage.
+
+In the FirstPage class, a Scaffold widget with an AppBar and a centered GestureDetector is displayed. When the GestureDetector is tapped, it triggers a custom PageRouteBuilder to transition to the SecondPage.
+
+The transitionsBuilder parameter of the PageRouteBuilder defines how the animation will be handled during the transition. In this case, a SlideTransition is used to slide the widget from right to left.
+
+The Hero widget within the GestureDetector is given the tag 'heroTag'. It wraps a blue container, creating a Hero animation that smoothly transitions between the two pages.
+
+The SecondPage class represents the destination page. It consists of a Scaffold widget with an AppBar and a GestureDetector. When the GestureDetector is tapped, it uses Navigator.pop to return to the previous page.
+
+Inside the GestureDetector, there's another Hero widget with the same tag 'heroTag', wrapping a red container. This Hero animation creates a seamless visual transition back to the FirstPage.
+
+By running this code, you can observe how Hero widgets and custom PageRouteBuilder can be utilized to achieve smooth and captivating page transitions in a Flutter application.
+""",
+  ),
+  Section(
+    id: 'cat5s7',
+    category: 'cat5',
+    isFavorite: false,
+    title: 'CustomPainter Animations',
+    subtitle:
+        'Flutter code snippet that demonstrates how to create custom animations using the CustomPainter class',
+    imagePath: 'imagePath',
+    sourceFilePath: '/animation_custompainteranimation_ex',
+    description: """
+The Flutter code snippet showcases the implementation of a custom animation using the 'CustomPainter' class, offering developers the ability to create dynamic graphics and animations in their applications.
+
+The '_CustomPainterAnimationExState' class, extending 'State' and utilizing 'SingleTickerProviderStateMixin', serves as the core of the animation logic. Inside the 'initState' method, an 'AnimationController' is initialized, using the 'vsync' parameter for animation synchronization. The animation's duration is set to 2 seconds, creating a smooth transition effect. A 'CurvedAnimation' instance is created to control the animation progression, utilizing the 'Curves.easeInOut' curve for a gradual start and end. By invoking 'repeat' with 'reverse' set to true, the animation oscillates between its starting and ending states.
+
+The 'build' method constructs the user interface, featuring a 'Scaffold' with an 'AppBar' titled 'Custom Painter Animation'. The main content of the screen is wrapped within the 'Center' widget. An 'AnimatedBuilder' listens to the animation's changes and triggers the rebuilding of the widget tree. Inside this builder, a 'CustomPaint' widget is employed, with its 'painter' property set to an instance of the 'MyCustomPainter' class. This custom painter takes the current animation value and draws a circle that dynamically changes its radius based on the animation's progression.
+
+The 'MyCustomPainter' class extends 'CustomPainter' and defines the painting logic for the animation. It receives the animation's value and creates a 'Paint' instance for drawing. The circle's properties, including color, stroke width, and style, are set accordingly. The 'paint' method uses the calculated radius, based on the animation value, to draw a circle at the center of the canvas.
+
+Furthermore, the 'shouldRepaint' method, returning 'true', indicates that the widget should be repainted upon updates, ensuring that the animation is smoothly rendered.
+
+By running this code, you can experience how 'CustomPainter' enables the creation of engaging and dynamic animations. The provided example illustrates a simple yet effective demonstration of a circle's radius changing over time, highlighting the potential of Flutter's custom graphics capabilities.
+""",
+  ),
+  Section(
+    id: 'cat5s8',
+    category: 'cat5',
+    isFavorite: false,
+    title: 'Custom Animation Controller',
+    subtitle:
+        ' Here\'s an example Flutter code snippet that demonstrates the usage of custom animation controllers to create animations',
+    imagePath: 'imagePath',
+    sourceFilePath: '/animation_customanimationcontroller_ex',
+    description: """
+The Flutter code snippet exemplifies the utilization of custom animation controllers to generate fluid and captivating animations within an application.
+
+The '_CustomAnimationControllerExState' class is the cornerstone of the animation implementation. It extends 'State' and employs the 'SingleTickerProviderStateMixin' mixin, allowing the widget to synchronize animations with the application's frame rate. The 'initState' method initializes an 'AnimationController', specifying the animation's duration and associating it with the widget's lifecycle using the 'vsync' parameter.
+
+Inside the 'initState' method, a 'CurvedAnimation' is set up to control the animation progression. The 'Curves.easeInOut' curve lends a smooth acceleration and deceleration to the animation. Subsequently, '_controller.forward()' is invoked to initiate the animation.
+
+The 'build' method constructs the user interface, encapsulated within a 'Scaffold' widget. The 'appBar' property displays an 'AppBar' labeled 'Custom Animation Controller'. The body of the screen is centered using the 'Center' widget.
+
+Within the 'Center' widget, an 'AnimatedBuilder' listens to changes in the animation's value and triggers the rebuilding of the widget tree accordingly. This optimization aids in the efficient rendering of the animation.
+
+To showcase the animation, the 'Transform.scale' widget is utilized. It applies a scaling transformation to the child widget based on the animation's value. In this example, a blue 'Container' is animated to smoothly scale up and down in size as governed by the animation.
+
+Upon running this code, you can observe how custom animation controllers facilitate the creation of captivating animations with a high degree of customization. The example demonstrates the growth and contraction of a blue container over a specified duration, providing insight into Flutter's animation capabilities.
+""",
+  ),
+  Section(
+    id: 'cat5s9',
+    category: 'cat5',
+    isFavorite: false,
+    title: 'Custom Animated Widget',
+    subtitle:
+        'showcases the implementation of a custom animated widget using the \'ImplicitlyAnimatedWidget\' class',
+    imagePath: 'imagePath',
+    sourceFilePath: '/animation_customanimatedwidget_ex',
+    description: """
+The following Flutter code snippet showcases the implementation of a custom animated widget using the 'ImplicitlyAnimatedWidget' class. This allows developers to create reusable animated components that smoothly transition between different states.
+
+The '_CustomAnimatedWidgetExState' class is at the core of the animation demonstration. As a 'StatefulWidget', it manages the opacity value and provides a method to toggle it. The 'build' method constructs the user interface, which includes a 'CustomOpacityAnimatedWidget' wrapped around a 'Container'. This custom animated widget applies an opacity animation to its child, resulting in a fade-in/fade-out effect. The animation's duration is set to 1 second.
+
+Within the custom widget, the '_CustomOpacityAnimatedWidgetState' class extends 'AnimatedWidgetBaseState' and implements the animation logic. The 'forEachTween' method is utilized to handle the animation of the opacity value. It calculates the start and end values of the animation and creates a 'Tween' to interpolate between them.
+
+The user interface includes an 'AppBar' titled 'Custom Animated Widget' and a 'FloatingActionButton' that toggles the opacity of the animated widget on tap. The 'CustomOpacityAnimatedWidget' wraps a blue 'Container' containing centered text reading 'Hello'. When the opacity changes, the text container smoothly fades in and out.
+
+Running this code demonstrates the power of creating custom animated widgets using the 'ImplicitlyAnimatedWidget' class, enabling developers to easily apply animations to various components and achieve visually engaging effects.
+""",
+  ),
+  Section(
+    id: 'cat5s10',
+    category: 'cat5',
+    isFavorite: false,
+    title: 'Advanced Curved Animation  ',
+    subtitle: 'advanced curved animation using the \'CurvedAnimation\' class',
+    imagePath: 'imagePath',
+    sourceFilePath: '/animation_advancedcurvedanimation_ex',
+    description: """
+The Flutter code snippet demonstrates the implementation of an advanced curved animation using the 'CurvedAnimation' class. This specialized animation curve adds an elastic-out effect to the animation, resulting in a unique and engaging visual experience.
+
+The '_AdvancedCurvedAnimationExState' class drives the animation. It extends 'State' and utilizes the 'SingleTickerProviderStateMixin' mixin for animation synchronization. The 'initState' method initializes an 'AnimationController' with a duration of 2 seconds and associates it with the widget's lifecycle using the 'vsync' parameter. An 'Animation' instance is created using the 'CurvedAnimation' class, which applies an 'elasticOut' curve for a distinctive bounce effect. The animation is set to reverse after completion using 'repeat(reverse: true)', creating a continuous elastic animation.
+
+The user interface includes an 'AppBar' titled 'Advanced Curved Animation'. The main content area is centered using the 'Center' widget. Inside the 'AnimatedBuilder', the animation is used to scale a 'Container'. The animation value controls the scale factor of the container, creating the elastic animation effect. The container's color is set to blue.
+
+By running this code, you can observe the utilization of advanced curved animations to add dynamic and captivating visual elements to your Flutter application. The elastic-out curve creates a bouncing animation that offers a playful interaction, making your app more engaging and visually appealing.
+""",
+  ),
+  Section(
+    id: 'cat5s11',
+    category: 'cat5',
+    isFavorite: false,
+    title: 'Advanced Physics-Based Animation',
+    subtitle: 'Example of Advanced Physics-based Animations in Flutter',
+    imagePath: 'imagePath',
+    sourceFilePath: '/animation_advancedphysicsanimation_ex',
+    description: """
+The following Flutter code snippet illustrates the implementation of an advanced physics-based animation. This type of animation utilizes a physics simulation to create dynamic and natural movements, providing a realistic and engaging user experience.
+
+The '_AdvancedPhysicsAnimationExState' class takes center stage in driving the physics-based animation. It extends 'State' and utilizes the 'SingleTickerProviderStateMixin' mixin to synchronize the animation with the application's frame rate. In the 'initState' method, an 'AnimationController' is initialized with a duration of 2 seconds and associated with the widget's lifecycle using the 'vsync' parameter.
+
+The '_animation' instance is created using a 'Tween' that defines the starting and ending values for the animation. It is further wrapped within a 'CurvedAnimation' instance with a linear curve to maintain a constant velocity. The animation value is continuously updated using the 'addListener' method to rebuild the widget.
+
+To showcase the physics simulation, the animation is orchestrated to first play forward, then reverse, and finally repeat. This sequence is achieved by chaining asynchronous calls using the 'then' method on the '_controller'. This results in a visually appealing animation that transitions smoothly from growth to shrinkage and then cycles through repetition.
+
+The user interface consists of an 'AppBar' titled 'Advanced Physics-based Animation'. The main content area contains a 'Container' whose dimensions are dictated by the animation value. As the animation progresses, the container expands and contracts seamlessly, offering a physics-based animation effect.
+
+By executing this code, you can observe the application of advanced physics-based animations to generate realistic and captivating motion within your Flutter app. This approach adds depth and interactivity to your user interface, enhancing user engagement and enjoyment.
+""",
+  ),
+  Section(
+    id: 'cat5s12',
+    category: 'cat5',
+    isFavorite: false,
+    title: 'Advanced 3D Animation',
+    subtitle:
+        'Implementing Advanced 3D Animations with Flutter\'s Transform Widget and Matrix4 Class',
+    imagePath: 'imagePath',
+    sourceFilePath: '/animation_advanced3danimation_ex',
+    description: """
+The Flutter code snippet showcases the implementation of an advanced 3D animation, adding a visually captivating and interactive effect to your application's user interface.
+
+In the '_Advanced3DAnimationExState' class, the core of the 3D animation is crafted. This class extends 'State' and employs the 'SingleTickerProviderStateMixin' mixin to ensure synchronization between the animation and the application's frame rate. Within the 'initState' method, an 'AnimationController' is established with a duration of 2 seconds, coupled with the widget's lifecycle through the 'vsync' parameter.
+
+The '_rotationAnimation' is a vital component, utilizing a 'Tween' to determine the range of rotation for the animation. The animation is wrapped in a 'CurvedAnimation' with an 'easeInOut' curve, contributing to smooth and natural transitions. The animation's rotation value spans from 0 to 2 * pi radians (a full circle) for a complete 3D rotation effect.
+
+To facilitate dynamic animation, the '_controller' is set to 'repeat(reverse: true)', resulting in an oscillating rotation that alternates between clockwise and counter-clockwise.
+
+The user interface design incorporates an 'AppBar' titled 'Advanced 3D Animation'. In the main content area, an 'AnimatedBuilder' is employed to listen to changes in the '_rotationAnimation' value. The 'Transform' widget utilizes the animation's value to apply a 3D rotation transformation to the child widget, creating an immersive visual effect.
+
+The child widget is a 'Container' with a blue background color, containing centered text that reads '3D Animation'. As the animation progresses, the container elegantly rotates in a 3D space, delivering a dynamic and visually pleasing user experience.
+
+By running this code, you can observe the integration of advanced 3D animations into your Flutter application, enhancing its interactivity and aesthetic appeal. The rotation animation introduces depth and dimension, making your app more engaging and enjoyable for users.
+""",
+  ),
+  Section(
+    id: 'cat5s13',
+    category: 'cat5',
+    isFavorite: false,
+    title: 'Advanced Gesture-based Animations',
+    subtitle:
+        'demonstrates how to implement advanced gesture-based animations using the GestureDetector, AnimationController, and custom animations',
+    imagePath: 'imagePath',
+    sourceFilePath: '/animation_advancedgestureanimation_ex',
+    description: """
+The Flutter code snippet demonstrates the implementation of advanced gesture-based animations, offering users an engaging and interactive experience by allowing them to control animations through touch interactions.
+
+The '_AdvancedGestureAnimationExState' class is the heart of this animation example. Extending 'State' and utilizing 'SingleTickerProviderStateMixin' for animation synchronization, it manages both the animation and gesture interactions. 
+
+The '_controller' serves as an 'AnimationController' to govern the animation's behavior. It's given a duration of 1 second and synchronized with the widget's lifecycle through 'vsync'.
+
+The '_animation' is created as a 'CurvedAnimation', utilizing the '_controller' for the animation curve. This animation is utilized to control the horizontal translation of the widget.
+
+The '_startPosition', '_endPosition', and '_dragPosition' variables track the positions during drag gestures.
+
+Three methods, '_onDragStart', '_onDragUpdate', and '_onDragEnd', handle the drag gesture interactions. They record the start position, update the drag position, calculate the drag delta, and use it to update the animation value. When the drag ends, the animation is played forward, and if the drag fraction exceeds a certain threshold, the animation reverses.
+
+The user interface incorporates a 'Scaffold' with an 'AppBar' titled 'Advanced Gesture-based Animation'. Within the 'body', a 'GestureDetector' captures horizontal drag interactions. The 'AnimatedBuilder' utilizes the '_animation' value to apply a horizontal translation using the 'Transform.translate' widget. This moves the 'Container' left or right based on the drag distance.
+
+The child 'Container' features a blue background color, containing centered text that reads 'Swipe me!'. As users drag the container horizontally, it smoothly translates, reflecting their gestures and offering an interactive animation experience.
+
+By executing this code, you'll witness the integration of advanced gesture-based animations that empower users to control animations through touch interactions, making your app more dynamic and engaging.
+""",
+  ),
+  Section(
+    id: 'cat5s14',
+    category: 'cat5',
+    isFavorite: false,
+    title: 'Tween Animations',
+    subtitle: '',
+    imagePath: 'imagePath',
+    sourceFilePath: '/animation__ex',
+    description: '',
   ),
 ];
 
-
+List<Section> k6section = [
+  Section(
+    id: 'cat6s1',
+    category: 'cat6',
+    isFavorite: false,
+    title: 'Tween Animations',
+    subtitle: '',
+    imagePath: 'imagePath',
+    sourceFilePath: '/animation__ex',
+    description: '',
+  ),
+];
 
 
 // ignore: non_constant_identifier_names

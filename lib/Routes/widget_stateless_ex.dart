@@ -28,7 +28,7 @@ class StatelessWidgetExample extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ColoredBoxWidget(),
+            const ColoredBoxWidget(),
             const SizedBox(height: 20),
             RoundedButtonWidget(
               buttonText: 'Click Me',

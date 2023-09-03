@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class ThemeProvider extends ChangeNotifier {
   bool _isDarkMode = false;
   late AnimationController _animationController;
+  
 
   AnimationController get animationController => _animationController;
 

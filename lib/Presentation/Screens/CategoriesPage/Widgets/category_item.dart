@@ -29,10 +29,10 @@ class CategoryItem extends StatelessWidget {
       onTap: () => _selectCategory(context),
       //splashColor: Colors.black38,
       borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(85),
-            topRight: Radius.circular(85),
-            bottomLeft: Radius.circular(25),
-            bottomRight: Radius.circular(25),
+            topLeft: Radius.circular(130),
+            topRight: Radius.circular(130),
+            bottomLeft: Radius.circular(50),
+            bottomRight: Radius.circular(90),
           ),
       child: Container(
         margin: const EdgeInsets.only(left: 10, right: 10, top: 10),
@@ -43,18 +43,20 @@ class CategoryItem extends StatelessWidget {
             topLeft: Radius.circular(85),
             topRight: Radius.circular(85),
             bottomLeft: Radius.circular(25),
-            bottomRight: Radius.circular(25),
+            bottomRight: Radius.circular(55),
           ),
           boxShadow: [
             BoxShadow(
-              color: Theme.of(context).accentColor.withOpacity(0.4),
-              spreadRadius: 2,
-              blurRadius: 3,
-              offset: const Offset(0, 2),
+              color: Theme.of(context).hintColor.withOpacity(0.4),
+              spreadRadius: 0.5,
+              blurRadius: 1,
+              offset: const Offset(0, 0.2),
             ),
           ],
         ),
-        child: Stack(alignment: Alignment.center, children: [
+        child: Stack(
+          alignment: Alignment.center, 
+          children: [
           Positioned(
             top: 1,
             // right: 4,
@@ -67,11 +69,11 @@ class CategoryItem extends StatelessWidget {
                 boxShadow: [
                   BoxShadow(
                     color: Theme.of(context)
-                        .accentColor
+                        .hintColor
                         .withOpacity(0.7), // Shadow color
-                    spreadRadius: 3, // Spread radius
-                    blurRadius: 5, // Blur radius
-                    offset: const Offset(0, 3), // Offset in the y direction
+                    spreadRadius: 0.5, // Spread radius
+                    blurRadius: 1, // Blur radius
+                    offset: const Offset(0, 0.2), // Offset in the y direction
                   ),
                 ],
                 shape: BoxShape.circle,
@@ -80,6 +82,7 @@ class CategoryItem extends StatelessWidget {
                 tag: id,
                 child: CircleAvatar(
                   radius: 62,
+                  backgroundColor: Colors.transparent,
                   backgroundImage: AssetImage(
                     imagePath,
                   ),
@@ -96,7 +99,7 @@ class CategoryItem extends StatelessWidget {
                   fontFamily: 'Roboto',
                   fontWeight: FontWeight.w600,
                   fontSize: 17,
-                  color:Theme.of(context).appBarTheme.iconTheme?.color,
+                  color:Theme.of(context).appBarTheme.titleTextStyle?.color,
                 ),
               )),
           Positioned(

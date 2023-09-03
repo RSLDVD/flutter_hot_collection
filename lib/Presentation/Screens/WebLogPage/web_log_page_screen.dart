@@ -26,12 +26,15 @@ class WebLogPageScreen extends StatelessWidget {
           back: Container(
             width: 200, // Adjust the size as needed
             height: 200, // Adjust the size as needed
-            color: Theme.of(context).accentColor, // You can change this to a different color
+            color: Colors.transparent, // You can change this to a different color
             child: const Center(
-              child: Text(
-                'در حال ساخت ',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 32),
-              ),
+              child: CircleAvatar(
+                      radius: 100,
+                      backgroundColor: Colors.transparent,
+                      backgroundImage: AssetImage(
+                        'assets/images/ic_launcher0.png',
+                      ),
+                    ),
             ),
           ),
         ),
